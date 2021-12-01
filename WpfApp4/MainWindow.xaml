@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="863" Width="550" MinHeight="860" MinWidth="500">
     <StackPanel>
-        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}">
+        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
