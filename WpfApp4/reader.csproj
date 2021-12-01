@@ -2,13 +2,27 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="mainMenuIcons\booksIcon.png" />
+    <None Remove="mainMenuIcons\cartIcon.png" />
+    <None Remove="menuButtonsBG\libraryBG.png" />
+    <None Remove="menuButtonsBG\shopBG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="mainMenuIcons\booksIcon.png" />
+    <Resource Include="mainMenuIcons\cartIcon.png" />
+    <Resource Include="menuButtonsBG\libraryBG.png" />
+    <Resource Include="menuButtonsBG\shopBG.png" />
   </ItemGroup>
 
 </Project>

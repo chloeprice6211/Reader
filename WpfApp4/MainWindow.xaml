@@ -27,6 +27,33 @@
                 ⋮
             </Button>
         </Grid>
+        <Grid x:Name="menuGrid" Style="{StaticResource 3DotsStackPanel}" Margin="0,0,10,0" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource menuIconButtons}" HorizontalAlignment="Left" Margin="15,0,10,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/menuButtonsBG/libraryBG.png"/>
+                </Button.Background>
+                <StackPanel>
+                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Left">Library</Label>
+                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\booksIcon.png"></Image>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Column="1" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left">
+                <Button.Background>
+                    <ImageBrush ImageSource="/menuButtonsBG/shopBG.png"/>
+                </Button.Background>
+                <StackPanel >
+                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Shop</Label>
+                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\cartIcon.png"></Image>
+                </StackPanel>
+            </Button>
+        </Grid>
+
         <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
         <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
             <FlowDocument Style="{StaticResource normalParagraph}">
