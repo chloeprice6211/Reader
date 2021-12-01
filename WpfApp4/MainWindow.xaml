@@ -37,8 +37,8 @@
                 <Button.Background>
                     <ImageBrush ImageSource="/menuButtonsBG/libraryBG.png"/>
                 </Button.Background>
-                <StackPanel>
-                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Left">Library</Label>
+                <StackPanel Width="100" MouseEnter="MenuButtonHoverEnter" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
+                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Library</Label>
                     <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\booksIcon.png"></Image>
                 </StackPanel>
             </Button>
@@ -47,7 +47,7 @@
                 <Button.Background>
                     <ImageBrush ImageSource="/menuButtonsBG/shopBG.png"/>
                 </Button.Background>
-                <StackPanel >
+                <StackPanel Width="100" MouseEnter="MenuButtonHoverEnter" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
                     <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Shop</Label>
                     <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\cartIcon.png"></Image>
                 </StackPanel>

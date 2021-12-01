@@ -119,5 +119,35 @@ namespace reader
                 FontButton.Visibility = Visibility.Hidden; ThemeButton.Visibility = Visibility.Hidden; OpenButton.Visibility = Visibility.Hidden;
             }
         }
+
+        private void MenuButtonHoverEnter(object sender, MouseEventArgs e)
+        {
+            foreach (object child in (sender as StackPanel).Children)
+            {
+                if (child is Label)
+                {
+                    (child as Label).FontSize += 5;
+                }
+                else if (child is Image)
+                {
+                    (child as Image).Height -= 15;
+                }
+            }
+        }
+
+        private void MenuButtonHoverLeave(object sender, MouseEventArgs e)
+        {
+            foreach (object child in (sender as StackPanel).Children)
+            {
+                if (child is Label)
+                {
+                    (child as Label).FontSize -= 5;
+                }
+                else if (child is Image)
+                {
+                    (child as Image).Height += 15;
+                }
+            }
+        }
     }
 }
