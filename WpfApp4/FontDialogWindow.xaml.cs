@@ -22,21 +22,21 @@ namespace reader
         public FontDialogWindow(Paragraph main)
         {
             InitializeComponent();
-
-            TextProperties newStyle = new(main);
+            FontChanging(main.FontFamily);
+            TextProperties newStyle = new TextProperties(main);
             SetCurrentTextProperties(newStyle);
 
-            
-           
+
+
         }
         private void changingValue(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if(fontSizeSliderValueLabel != null)
+            if (fontSizeSliderValueLabel != null)
             {
                 fontSizeSliderValueLabel.Content = (sender as Slider).Value.ToString();
                 exampleText.FontSize = (sender as Slider).Value;
             }
-            
+
         }
 
         private void ifBoldTextChecked(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace reader
 
         private void ApplyButtonClick(object sender, RoutedEventArgs e)
         {
-            TextProperties newProperty = new(exampleText);
+            TextProperties newProperty = new TextProperties(exampleText);
 
             Close();
 
@@ -67,20 +67,38 @@ namespace reader
         public void SetCurrentTextProperties(TextProperties currentProperties)
         {
             fontSizeSlider.Value = currentProperties.FontSize;
-            if(currentProperties.ThisWeight == FontWeights.Bold)
+            if (currentProperties.ThisWeight == FontWeights.Bold)
             {
                 isBoldCheckBox.IsChecked = true;
             }
-            if(currentProperties.ThisStyle == FontStyles.Italic)
+            if (currentProperties.ThisStyle == FontStyles.Italic)
             {
                 isItalicCheckBox.IsChecked = true;
             }
-
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void FontChanging(object sender, EventArgs e)
+        {
+            exampleText.FontFamily = new FontFamily(FontComboBox.Text);
+
+        }
+        private void FontChanging(FontFamily temp)
+        {
+            exampleText.FontFamily = temp;
+
+            switch (temp.ToString())
+            {
+                case "Times New Roman": FontComboBox.SelectedIndex = 0; break;
+                case "Calibri": FontComboBox.SelectedIndex = 1; break;
+                case "Tahoma": FontComboBox.SelectedIndex = 2; break;
+                case "Comic sans MS": FontComboBox.SelectedIndex = 3; break;
+            }
+
         }
     }
 }

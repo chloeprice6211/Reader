@@ -31,38 +31,28 @@ namespace reader
 
             InitializeComponent();
             Title = "Reader";
-            
-            txtContent = "temporary text";
+
+            txtContent = "ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf";
 
             myParagraph.Inlines.Add(txtContent);
-            
+
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
-            if (FontButton.Visibility == Visibility.Hidden && ThemeButton.Visibility == Visibility.Hidden)
-            {
-                FontButton.Visibility = 0;
-                ThemeButton.Visibility = 0;
-                OpenButton.Visibility = 0;
-            }
-            else
-            {
-                FontButton.Visibility = Visibility.Hidden; ThemeButton.Visibility = Visibility.Hidden; OpenButton.Visibility = Visibility.Hidden;
-            }
+            HideButtons();
         }
 
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            FontDialogWindow newWindow = new(myParagraph);
+            FontDialogWindow newWindow = new FontDialogWindow(myParagraph);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
-            newStyle = new(newWindow.exampleText);
+            newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(myParagraph);
 
-            FontButton.Visibility = Visibility.Hidden;
-            ThemeButton.Visibility = Visibility.Hidden;
-            
+            HideButtons();
+
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
@@ -74,6 +64,7 @@ namespace reader
 
                 ThemeButton.Foreground = Brushes.White;
                 FontButton.Foreground = Brushes.White;
+                OpenButton.Foreground = Brushes.White;
                 DotsButton.Foreground = Brushes.White;
                 isDark = true;
                 return;
@@ -85,26 +76,47 @@ namespace reader
 
                 ThemeButton.Foreground = Brushes.Black;
                 FontButton.Foreground = Brushes.Black;
+                OpenButton.Foreground = Brushes.Black;
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
 
-            
+
 
         }
 
         private void OpenClick(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog my = new();
+            OpenFileDialog my = new OpenFileDialog();
             StreamReader reader;
             string text;
 
-            my.ShowDialog();
-            reader = new(my.FileName);
-            text = reader.ReadToEnd();
 
-            myParagraph.Inlines.Clear();
-            myParagraph.Inlines.Add(text);
+            my.ShowDialog();
+
+            if (my.FileName != "")
+            {
+                reader = new StreamReader(my.FileName);
+                text = reader.ReadToEnd();
+
+                myParagraph.Inlines.Clear();
+                myParagraph.Inlines.Add(text);
+
+                HideButtons();
+            }
+        }
+        private void HideButtons()
+        {
+            if (FontButton.Visibility == Visibility.Hidden && ThemeButton.Visibility == Visibility.Hidden)
+            {
+                FontButton.Visibility = 0;
+                ThemeButton.Visibility = 0;
+                OpenButton.Visibility = 0;
+            }
+            else
+            {
+                FontButton.Visibility = Visibility.Hidden; ThemeButton.Visibility = Visibility.Hidden; OpenButton.Visibility = Visibility.Hidden;
+            }
         }
     }
 }
