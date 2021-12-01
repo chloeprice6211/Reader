@@ -90,6 +90,7 @@ namespace reader
             OpenFileDialog my = new OpenFileDialog();
             StreamReader reader;
             string text;
+            string a;
 
 
             my.ShowDialog();
