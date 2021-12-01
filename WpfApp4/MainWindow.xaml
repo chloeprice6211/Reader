@@ -27,6 +27,7 @@
                 ⋮
             </Button>
         </Grid>
+        <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
         <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
             <FlowDocument Style="{StaticResource normalParagraph}">
                 <Paragraph Name="myParagraph" FontSize="24">

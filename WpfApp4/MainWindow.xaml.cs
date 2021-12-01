@@ -31,6 +31,8 @@ namespace reader
 
             InitializeComponent();
             Title = "Reader";
+            Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
+            Icon = BitmapFrame.Create(iconUri);
 
             StreamReader reader = new StreamReader(@"..\..\..\books\book1.txt");
             txtContent = reader.ReadToEnd();
@@ -87,6 +89,7 @@ namespace reader
         private void OpenClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog my = new OpenFileDialog();
+            my.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             StreamReader reader;
             string text;
 

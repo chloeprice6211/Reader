@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="FontDialogWindow" Height="271" Width="400 ">
+        Title="Font customization" Height="271" Width="400 ">
     <StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="320">
             <Grid.ColumnDefinitions>
