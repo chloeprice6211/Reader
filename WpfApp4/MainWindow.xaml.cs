@@ -89,6 +89,7 @@ namespace reader
         private void OpenClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog my = new OpenFileDialog();
+            my.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             StreamReader reader;
             string text;
 
