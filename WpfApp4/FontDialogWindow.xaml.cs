@@ -25,9 +25,6 @@ namespace reader
             FontChanging(main.FontFamily);
             TextProperties newStyle = new TextProperties(main);
             SetCurrentTextProperties(newStyle);
-
-
-
         }
         private void changingValue(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
