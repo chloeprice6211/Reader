@@ -32,10 +32,9 @@ namespace reader
             InitializeComponent();
             Title = "Reader";
 
-            txtContent = "ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf ASDksdjfkdsfkdskfksdfkaskhfsakdfsafasdkfkhdsafkasdkfaksdfkhasdhkfasdf";
-
+            StreamReader reader = new StreamReader(@"..\..\..\books\book1.txt");
+            txtContent = reader.ReadToEnd();
             myParagraph.Inlines.Add(txtContent);
-
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -90,8 +89,6 @@ namespace reader
             OpenFileDialog my = new OpenFileDialog();
             StreamReader reader;
             string text;
-            string a;
-
 
             my.ShowDialog();
 
