@@ -31,8 +31,8 @@ namespace reader
 
             InitializeComponent();
             Title = "Reader";
-            StreamReader reader = new("texts/mytext.txt");
-            txtContent = reader.ReadToEnd();
+            
+            txtContent = "temporary text";
 
             myParagraph.Inlines.Add(txtContent);
             
