@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using System.Windows.Controls;
 
 namespace reader
 {
@@ -126,11 +127,11 @@ namespace reader
             {
                 if (child is Label)
                 {
-                    (child as Label).FontSize += 5;
+                    (child as Label).FontSize += 8;
                 }
                 else if (child is Image)
                 {
-                    (child as Image).Height -= 15;
+                    (child as Image).Height -= 20;
                 }
             }
         }
@@ -141,11 +142,11 @@ namespace reader
             {
                 if (child is Label)
                 {
-                    (child as Label).FontSize -= 5;
+                    (child as Label).FontSize -= 8;
                 }
                 else if (child is Image)
                 {
-                    (child as Image).Height += 15;
+                    (child as Image).Height += 20;
                 }
             }
         }
