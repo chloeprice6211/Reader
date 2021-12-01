@@ -21,6 +21,11 @@ namespace reader
     {
         public FontDialogWindow(Paragraph main)
         {
+            Title = "Font customization";
+            Uri FontDialogWindowIcon = new(@"..\..\..\icons\fontDialogWindowIcon.ico",UriKind.RelativeOrAbsolute);
+            Icon = BitmapFrame.Create(FontDialogWindowIcon);
+            
+
             InitializeComponent();
             FontChanging(main.FontFamily);
             TextProperties newStyle = new TextProperties(main);
