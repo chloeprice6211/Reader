@@ -1,0 +1,74 @@
+﻿<Window x:Class="reader.FontDialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:reader"
+        mc:Ignorable="d"
+        Title="FontDialogWindow" Height="271" Width="400 ">
+    <StackPanel>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="320">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <ComboBox Style="{StaticResource ComboBoxCommonStyle}" Name="FontComboBox" SelectedIndex="0" Margin="15">
+                <TextBlock>Times New Roman</TextBlock>
+                <TextBlock >Calibri</TextBlock>
+                <TextBlock>Tahoma</TextBlock>
+                <TextBlock>Comic sans MS</TextBlock>
+            </ComboBox>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="15">
+                <Slider
+                    Name="fontSizeSlider"
+                    Minimum="8" 
+                    Maximum="24"
+                    IsSnapToTickEnabled="True" 
+                    Width="100" 
+                    ValueChanged="changingValue"
+                    TickPlacement="BottomRight" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    />
+                <Label x:Name="fontSizeSliderValueLabel"></Label>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Label FontWeight="Bold">Bold</Label>
+                <CheckBox Name="isBoldCheckBox" VerticalAlignment="Center" Click="ifBoldTextChecked"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label FontStyle="Italic">Italic</Label>
+                <CheckBox Name="isItalicCheckBox" VerticalAlignment="Center" Click="ifItalicClicked"></CheckBox>
+            </StackPanel>
+        </Grid>
+        <Label HorizontalAlignment="Center" Margin="0,25,0,0" FontSize="9" Foreground="#FF969696" FontWeight="Normal">
+            EXAMPLE
+        </Label>
+        <TextBlock Height="50" Width="150" Name="exampleText" HorizontalAlignment="Center" TextAlignment="Center" >
+            Hello World
+        </TextBlock>
+
+        <Grid Margin="0,5,0,0" HorizontalAlignment="Center">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10,10,10,10"/>
+                    <Setter Property="Width" Value="80"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Height" Value="28"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Background="#FF3ABEE0" Click="ApplyButtonClick">Apply</Button>
+            <Button Background="#FF969696" Grid.Column="1" Click="CancelButton">Cancel</Button>
+        </Grid>
+    </StackPanel>
+</Window>

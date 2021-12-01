@@ -1,0 +1,38 @@
+﻿<Window x:Class="reader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:reader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="863" Width="550" MinHeight="860" MinWidth="500">
+    <StackPanel>
+        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Visibility="Hidden" Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick">
+                Font
+            </Button>
+            <Button Visibility="Hidden" Name="ThemeButton" Grid.Column="1" Style="{StaticResource CustomizationKeys}" Click="ThemeClick">
+                Theme
+            </Button>
+            <Button Visibility="Hidden" Name="OpenButton" Style="{StaticResource CustomizationKeys}" Click="OpenClick" Grid.Column="2">
+                Open
+            </Button>
+            <Button Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold" Grid.Column="3" Click="DotsClick">
+                ⋮
+            </Button>
+        </Grid>
+        <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
+            <FlowDocument Style="{StaticResource normalParagraph}">
+                <Paragraph Name="myParagraph" FontSize="24">
+
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </StackPanel>
+</Window>
