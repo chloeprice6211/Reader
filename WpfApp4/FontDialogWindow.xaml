@@ -26,8 +26,8 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="15">
                 <Slider
                     Name="fontSizeSlider"
-                    Minimum="8" 
-                    Maximum="24"
+                    Minimum="15" 
+                    Maximum="30"
                     IsSnapToTickEnabled="True" 
                     Width="100" 
                     ValueChanged="changingValue"
