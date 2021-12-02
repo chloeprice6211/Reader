@@ -28,7 +28,10 @@ namespace reader
         static bool isDark = false;
         public MainWindow()
         {
+
             string temp = "dsadasd";
+            string my;
+
             string txtContent;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
             Book bookItem;
