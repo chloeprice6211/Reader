@@ -34,6 +34,7 @@ namespace reader
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
+            MaxWidth = 1200;
 
             StreamReader reader = new StreamReader(@"..\..\..\books\book1.txt");
             txtContent = reader.ReadToEnd();
