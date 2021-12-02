@@ -23,18 +23,15 @@
         <StackPanel>
             <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
             <Separator Background="#7FA0A0A0"/>
-            <Grid Margin="15,10,15,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+           
+            <WrapPanel Name="MainStoreWrapPanel" HorizontalAlignment="Left">
+                <WrapPanel.Resources>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Margin" Value="15,0" />
+                    </Style>
+                </WrapPanel.Resources>
 
-                <Grid HorizontalAlignment="Center">
+                <Grid Name="MenuItemGrid" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -44,19 +41,10 @@
                     <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">Mark Tven</Label>
                     <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
                     <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}" Click="OnBuyBookButtonClick">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">25</Label>
-
-                        </Grid>
                     </Button>
                    
                 </Grid>
-                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -66,19 +54,11 @@
                     <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">C++</Label>
                     <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
                     <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">50</Label>
-
-                        </Grid>
+                  
                     </Button>
 
                 </Grid>
-                <Grid Grid.Column="2" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -88,21 +68,13 @@
                     <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">Star Wars</Label>
                     <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
                     <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">24</Label>
-
-                        </Grid>
+                    
                     </Button>
 
                 </Grid>
 
 
-            </Grid>
+            </WrapPanel>
         </StackPanel>
        
     </StackPanel>

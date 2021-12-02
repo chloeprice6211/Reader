@@ -10,7 +10,7 @@ namespace reader
 {
     static class StoreLibrary
     {
-        static List<Book> BooksToSell = new List<Book>();
+        public static List<Book> BooksToSell = new List<Book>();
         
         static public void AddBook(Book item)
         {
@@ -24,6 +24,7 @@ namespace reader
            for(int a = 0;a<allBooks.Length;a++)
             {
                 tempItem = new(allBooks[a]);
+                AddBook(tempItem);
             }
 
         }

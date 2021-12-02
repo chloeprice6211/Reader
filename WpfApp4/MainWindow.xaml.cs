@@ -50,10 +50,17 @@ namespace reader
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
-            if (menuGrid.Visibility == Visibility.Collapsed) { menuGrid.Visibility = Visibility.Visible; }
-            else menuGrid.Visibility = Visibility.Collapsed;
+            if (menuGrid.Visibility == Visibility.Collapsed)
+            { menuGrid.Visibility = Visibility.Visible;
+                mainFlowDoc.Height -= 100;
+            }
+            else
+            {
+                mainFlowDoc.Height += 100;
+                menuGrid.Visibility = Visibility.Collapsed;
+            }
+            
 
-            string TESTVARIABLE;
 
         }
 
@@ -65,8 +72,6 @@ namespace reader
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(myParagraph);
-
-
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)

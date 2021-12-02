@@ -23,6 +23,7 @@ namespace reader
         {
             InitializeComponent();
             Title = "Store";
+            ShopItemsInitialization();
         }
 
         private void OnAddBalanceButtonClick(object sender, RoutedEventArgs e)
@@ -35,6 +36,17 @@ namespace reader
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
            
+        }
+        private void ShopItemsInitialization()
+        {
+            int count = 0;
+            foreach(Grid childGrid in MainStoreWrapPanel.Children)
+            {
+               (childGrid.Children[0] as Label).Content = StoreLibrary.BooksToSell[count].Name;
+                (childGrid.Children[2] as Button).Content = "$" + StoreLibrary.BooksToSell[count].Price;
+
+                count++;
+            }
         }
     }
 }

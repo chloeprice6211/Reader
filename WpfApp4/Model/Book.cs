@@ -42,5 +42,21 @@ namespace reader
 
             _content = reader.ReadToEnd();
         }
+
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+        }
+        public int Price
+        {
+            get
+            {
+                return _price;
+            }
+        }
+     
     }
 }
