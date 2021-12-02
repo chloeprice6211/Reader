@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -15,10 +15,6 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Controls;
-using Microsoft.Win32;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 
 namespace reader
 {
@@ -29,22 +25,23 @@ namespace reader
 
     public partial class MainWindow : Window
     {
-        string text;
         static bool isDark = false;
         public MainWindow()
         {
             string txtContent;
+            string storeBooksPath = @"../../../books/StoreLibraryBooks/";
+            Book bookItem;
 
             InitializeComponent();
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
+            StoreLibrary.AddAllBooks(storeBooksPath);
 
-            StreamReader reader = new StreamReader(@"..\..\..\books\book1.txt");
+            StreamReader reader = new StreamReader(@"..\..\..\books\Library\book1.txt");
             txtContent = reader.ReadToEnd();
             myParagraph.Inlines.Add(txtContent);
-            text = txtContent;
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -85,7 +82,7 @@ namespace reader
                 Background = Brushes.White;
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
                 themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\darkThemeIcon.png", UriKind.Relative));
-
+            
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
@@ -102,9 +99,9 @@ namespace reader
                 {
                     (child as Label).FontSize += 8;
                 }
-                else if (child is System.Windows.Controls.Image)
+                else if (child is Image)
                 {
-                    (child as System.Windows.Controls.Image).Height -= 20;
+                    (child as Image).Height -= 20;
                 }
             }
         }
@@ -117,9 +114,9 @@ namespace reader
                 {
                     (child as Label).FontSize -= 8;
                 }
-                else if (child is System.Windows.Controls.Image)
+                else if (child is Image)
                 {
-                    (child as System.Windows.Controls.Image).Height += 20;
+                    (child as Image).Height += 20;
                 }
             }
         }
@@ -129,24 +126,16 @@ namespace reader
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
         }
+
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-
-
-        }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
             
+        }
 
-            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(new FileStream("hello.pdf", FileMode.Create, FileAccess.Write)));
-            Document document = new Document(pdfDocument);
-
-
-            document.Add(new Paragraph(text));
-            document.Close();
-            Console.WriteLine("Awesome PDF just got created.");
-
+        private void OnShopButtonClick(object sender, RoutedEventArgs e)
+        {
+            ShopWindow shopwin = new ShopWindow();
+            shopwin.Show();
         }
     }
-} 
+}

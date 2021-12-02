@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="Font customization" Height="271" Width="400 ">
     <StackPanel>
-       
-
-
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="320">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

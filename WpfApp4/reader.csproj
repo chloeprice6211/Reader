@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\BookImageStore.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -23,10 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="itext7" Version="7.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Resource Include="images\BookImageStore.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />

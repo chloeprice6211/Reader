@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace reader.Model
+namespace reader
 {
-    internal class Library
+    static class Library
     {
+       static List<Book> myLibrary = new List<Book>();
+
+        static public void AddBook(Book toAdd)
+        {
+            myLibrary.Add(toAdd);
+        }
     }
 }

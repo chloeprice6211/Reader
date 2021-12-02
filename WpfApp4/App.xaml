@@ -57,5 +57,26 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="StoreHeader" TargetType="Label">
+            <Setter Property="FontFamily"  Value="Calibri"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="Foreground" Value="#757575"/>
+        </Style>
+        <Style x:Key="BookImageStore" TargetType="Image">
+            <Setter Property="Height" Value="150"/>
+        </Style>
+        <Style x:Key="BuyButtonStore" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#FF63D08E"/>
+        </Style>
+        <Style x:Key="ShopBuyButtonLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="BookItemHeader" TargetType="Label">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="25"/>
+        </Style>
     </Application.Resources>
 </Application>
