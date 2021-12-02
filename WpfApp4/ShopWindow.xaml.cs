@@ -35,7 +35,17 @@ namespace reader
 
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
-           
+            string temporary = (sender as Button).Content.ToString();
+            temporary = temporary.Replace("$", "");
+            int temp = Convert.ToInt32(currentBalance.Content);
+
+            if (temp - Convert.ToInt32(temporary) <0)
+            {
+                return;
+            }
+            temp -= Convert.ToInt32(temporary);
+
+            currentBalance.Content = temp;
         }
         private void ShopItemsInitialization()
         {
@@ -48,5 +58,6 @@ namespace reader
                 count++;
             }
         }
+       
     }
 }
