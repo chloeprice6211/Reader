@@ -29,6 +29,7 @@ namespace reader
         public MainWindow()
         {
             string temp;
+            string my;
             string txtContent;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
             Book bookItem;
