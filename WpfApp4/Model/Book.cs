@@ -42,5 +42,11 @@ namespace reader
 
             _content = reader.ReadToEnd();
         }
+
+        public string Name
+        {
+            get;
+        }
+     
     }
 }

@@ -53,8 +53,6 @@ namespace reader
             if (menuGrid.Visibility == Visibility.Collapsed) { menuGrid.Visibility = Visibility.Visible; }
             else menuGrid.Visibility = Visibility.Collapsed;
 
-           
-
         }
 
         private void FontClick(object sender, RoutedEventArgs e)
@@ -65,8 +63,6 @@ namespace reader
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(myParagraph);
-
-
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
