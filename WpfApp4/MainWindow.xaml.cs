@@ -66,8 +66,6 @@ namespace reader
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(myParagraph);
-
-
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
