@@ -34,6 +34,7 @@ namespace reader
 
             string txtContent;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
+            string str144;
             Book bookItem;
 
             InitializeComponent();
