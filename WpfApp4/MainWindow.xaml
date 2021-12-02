@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500">
     <StackPanel>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                
+         <MenuItem Header="Save File" Click="MenuItem_Click"></MenuItem>
+               <Separator />
+      
+
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+          
+        </Menu>
         <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

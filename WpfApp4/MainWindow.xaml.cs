@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
-using System.Windows.Controls;
 
 namespace reader
 {
@@ -24,11 +23,11 @@ namespace reader
     ///
 
     public partial class MainWindow : Window
-    {
+    {    string text;
         static bool isDark = false;
         public MainWindow()
         {
-
+           
             string temp = "dsadasd";
             string my;
             string txtContent;
@@ -47,6 +46,7 @@ namespace reader
             StreamReader reader = new StreamReader(@"..\..\..\books\Library\book1.txt");
             txtContent = reader.ReadToEnd();
             myParagraph.Inlines.Add(txtContent);
+            text = txtContent;
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -141,6 +141,41 @@ namespace reader
         {
             ShopWindow shopwin = new ShopWindow();
             shopwin.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Filesave(text);
+            MessageBox.Show("a");
+        }
+
+
+
+
+        void Filesave(string textbuf)
+        {
+             string writePath = @"C:hta.txt";
+           
+        
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine(textbuf);
+                }
+ 
+                using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
+                {
+                    sw.WriteLine("Дозапись");
+                    sw.Write(4.5);
+                }
+               MessageBox.Show("Запись выполнена");
+            }
+            catch (Exception e)
+               {
+              Console.WriteLine(e.Message);
+               }
+            
         }
     }
 }
