@@ -31,8 +31,8 @@ namespace reader
 
             string temp = "dsadasd";
             string my;
-
             string txtContent;
+            string str14;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
             string str144;
             Book bookItem;
