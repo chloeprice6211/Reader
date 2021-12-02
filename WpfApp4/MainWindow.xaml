@@ -66,7 +66,7 @@
 
         <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
     
-                <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
+                <FlowDocumentReader x:Name="mainFlowDoc" Height="725"  >
                 <FlowDocument Style="{StaticResource normalParagraph}" >
                     <Paragraph  Name="myParagraph" FontSize="24">
 
