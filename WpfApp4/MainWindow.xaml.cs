@@ -30,6 +30,7 @@ namespace reader
         {
             string temp;
             string my;
+            string reader14;
             string txtContent;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
             Book bookItem;
