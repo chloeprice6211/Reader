@@ -50,6 +50,13 @@ namespace reader
                 return _name;
             }
         }
+        public int Price
+        {
+            get
+            {
+                return _price;
+            }
+        }
      
     }
 }

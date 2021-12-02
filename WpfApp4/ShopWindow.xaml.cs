@@ -43,10 +43,10 @@ namespace reader
             foreach(Grid childGrid in MainStoreWrapPanel.Children)
             {
                (childGrid.Children[0] as Label).Content = StoreLibrary.BooksToSell[count].Name;
-               
+                (childGrid.Children[2] as Button).Content = "$" + StoreLibrary.BooksToSell[count].Price;
+
                 count++;
             }
-            MessageBox.Show(StoreLibrary.BooksToSell.Count.ToString());
         }
     }
 }
