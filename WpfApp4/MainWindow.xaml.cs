@@ -83,7 +83,7 @@ namespace reader
                 Background = Brushes.White;
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
                 themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\darkThemeIcon.png", UriKind.Relative));
-            
+
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
@@ -127,5 +127,24 @@ namespace reader
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
         }
+        private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
+        {
+
+
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(new FileStream("hello.pdf", FileMode.Create, FileAccess.Write)));
+            Document document = new Document(pdfDocument);
+
+
+            document.Add(new Paragraph(text));
+            document.Close();
+            Console.WriteLine("Awesome PDF just got created.");
+
+        }
     }
-}
+} 
