@@ -41,7 +41,9 @@ namespace reader
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
-            HideButtons();
+            if (menuGrid.Visibility == Visibility.Collapsed) { menuGrid.Visibility = Visibility.Visible; }
+            else menuGrid.Visibility = Visibility.Collapsed;
+
         }
 
         private void FontClick(object sender, RoutedEventArgs e)
@@ -53,7 +55,6 @@ namespace reader
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(myParagraph);
 
-            HideButtons();
 
         }
 
@@ -63,11 +64,7 @@ namespace reader
             {
                 mainFlowDoc.Foreground = Brushes.White;
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
-
-                ThemeButton.Foreground = Brushes.White;
-                FontButton.Foreground = Brushes.White;
-                OpenButton.Foreground = Brushes.White;
-                DotsButton.Foreground = Brushes.White;
+                fontImage.ImageSource = new BitmapImage(new Uri(@"..\..\..\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
                 isDark = true;
                 return;
             }
@@ -76,49 +73,12 @@ namespace reader
                 mainFlowDoc.Foreground = Brushes.Black;
                 Background = Brushes.White;
 
-                ThemeButton.Foreground = Brushes.Black;
-                FontButton.Foreground = Brushes.Black;
-                OpenButton.Foreground = Brushes.Black;
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
 
 
 
-        }
-
-        private void OpenClick(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog my = new OpenFileDialog();
-            my.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            StreamReader reader;
-            string text;
-
-            my.ShowDialog();
-
-            if (my.FileName != "")
-            {
-                reader = new StreamReader(my.FileName);
-                text = reader.ReadToEnd();
-
-                myParagraph.Inlines.Clear();
-                myParagraph.Inlines.Add(text);
-
-                HideButtons();
-            }
-        }
-        private void HideButtons()
-        {
-            if (FontButton.Visibility == Visibility.Hidden && ThemeButton.Visibility == Visibility.Hidden)
-            {
-                FontButton.Visibility = 0;
-                ThemeButton.Visibility = 0;
-                OpenButton.Visibility = 0;
-            }
-            else
-            {
-                FontButton.Visibility = Visibility.Hidden; ThemeButton.Visibility = Visibility.Hidden; OpenButton.Visibility = Visibility.Hidden;
-            }
         }
 
         private void MenuButtonHoverEnter(object sender, MouseEventArgs e)
@@ -149,6 +109,12 @@ namespace reader
                     (child as Image).Height += 20;
                 }
             }
+        }
+
+        private void FontCustomizationHoverEnter(object sender, MouseEventArgs e)
+        {
+            (sender as Button).BorderBrush = Brushes.Black;
+            (sender as Button).BorderThickness = new Thickness(1);
         }
     }
 }
