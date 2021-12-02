@@ -24,6 +24,7 @@ namespace reader
            for(int a = 0;a<allBooks.Length;a++)
             {
                 tempItem = new(allBooks[a]);
+                AddBook(tempItem);
             }
 
         }

@@ -68,8 +68,6 @@
         <Style x:Key="BuyButtonStore" TargetType="Button">
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#FF63D08E"/>
-        </Style>
-        <Style x:Key="ShopBuyButtonLabel" TargetType="Label">
             <Setter Property="FontFamily" Value="Calibri"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="Foreground" Value="White"/>

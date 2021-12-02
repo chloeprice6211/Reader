@@ -40,10 +40,10 @@ namespace reader
         private void ShopItemsInitialization()
         {
             int count = 0;
-            foreach(Grid childGrid in MainStoreGrid.Children)
+            foreach(Grid childGrid in MainStoreWrapPanel.Children)
             {
-                (childGrid.Children[0] as Label).Content = StoreLibrary.BooksToSell[count].Name;
-               
+               (childGrid.Children[0] as Label).Content = StoreLibrary.BooksToSell[count].Name;
+                (childGrid.Children[2] as Button).Content = "$" + StoreLibrary.BooksToSell[count].Price;
 
                 count++;
             }

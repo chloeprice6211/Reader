@@ -45,7 +45,17 @@ namespace reader
 
         public string Name
         {
-            get;
+            get
+            {
+                return _name;
+            }
+        }
+        public int Price
+        {
+            get
+            {
+                return _price;
+            }
         }
      
     }
