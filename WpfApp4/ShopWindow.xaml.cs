@@ -35,7 +35,7 @@ namespace reader
 
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
-           
+           currentBalance-=
         }
         private void ShopItemsInitialization()
         {
@@ -48,5 +48,6 @@ namespace reader
                 count++;
             }
         }
+       
     }
 }
