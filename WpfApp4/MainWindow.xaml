@@ -7,26 +7,63 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="863" Width="550" MinHeight="860" MinWidth="500">
     <StackPanel>
-        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0">
+        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                 <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" MouseEnter="FontCustomizationHoverEnter" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush x:Name="fontImage" ImageSource="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
+                    </Button.Background>
+                </Button>
+            <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush x:Name="themeImage" ImageSource="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png" Stretch="Uniform"/>
+                    </Button.Background>
+            </Button>
+
+            
+        </Grid>
+        <Button Grid.Column="1" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
+                ⋮
+            </Button>
+            
+        </Grid>
+
+        <Grid Visibility="Collapsed" x:Name="menuGrid" Style="{StaticResource 3DotsStackPanel}" Margin="0,0,10,0" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Visibility="Hidden" Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick">
-                Font
+            <Button Style="{StaticResource menuIconButtons}" HorizontalAlignment="Left" Margin="15,0,10,0">
+                <Button.Background>
+                    <ImageBrush ImageSource="/menuButtonsBG/libraryBG.png"/>
+                </Button.Background>
+                <StackPanel Width="100"  Background="Transparent" MouseEnter="MenuButtonHoverEnter" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
+                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Library</Label>
+                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\booksIcon.png"></Image>
+                </StackPanel>
             </Button>
-            <Button Visibility="Hidden" Name="ThemeButton" Grid.Column="1" Style="{StaticResource CustomizationKeys}" Click="ThemeClick">
-                Theme
-            </Button>
-            <Button Visibility="Hidden" Name="OpenButton" Style="{StaticResource CustomizationKeys}" Click="OpenClick" Grid.Column="2">
-                Open
-            </Button>
-            <Button Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold" Grid.Column="3" Click="DotsClick">
-                ⋮
+
+            <Button Grid.Column="1" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left">
+                <Button.Background>
+                    <ImageBrush ImageSource="/menuButtonsBG/shopBG.png"/>
+                </Button.Background>
+                <StackPanel Width="100" MouseEnter="MenuButtonHoverEnter"  Background="Transparent" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
+                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Shop</Label>
+                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\cartIcon.png"></Image>
+                </StackPanel>
             </Button>
         </Grid>
+
         <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
         <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
             <FlowDocument Style="{StaticResource normalParagraph}">
