@@ -65,7 +65,9 @@ namespace reader
             {
                 mainFlowDoc.Foreground = Brushes.White;
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
-                fontImage.ImageSource = new BitmapImage(new Uri(@"..\..\..\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
+                fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconLight.png", UriKind.RelativeOrAbsolute));
+                themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\lightThemeIcon.png", UriKind.Relative));
+                DotsButton.Foreground = Brushes.White;
                 isDark = true;
                 return;
             }
@@ -73,7 +75,9 @@ namespace reader
             {
                 mainFlowDoc.Foreground = Brushes.Black;
                 Background = Brushes.White;
-
+                fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
+                themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\darkThemeIcon.png", UriKind.Relative));
+            
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
@@ -116,6 +120,11 @@ namespace reader
         {
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
+        }
+
+        private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
