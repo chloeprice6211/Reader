@@ -54,6 +54,7 @@ namespace reader
             else menuGrid.Visibility = Visibility.Collapsed;
 
             string TESTVARIABLE;
+            string testt;
 
         }
 
