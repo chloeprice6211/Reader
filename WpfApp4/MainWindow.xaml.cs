@@ -53,9 +53,6 @@ namespace reader
             if (menuGrid.Visibility == Visibility.Collapsed) { menuGrid.Visibility = Visibility.Visible; }
             else menuGrid.Visibility = Visibility.Collapsed;
 
-            string TESTVARIABLE;
-            string testt;
-
         }
 
         private void FontClick(object sender, RoutedEventArgs e)
