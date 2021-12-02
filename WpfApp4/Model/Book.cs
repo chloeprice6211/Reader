@@ -45,7 +45,10 @@ namespace reader
 
         public string Name
         {
-            get;
+            get
+            {
+                return _name;
+            }
         }
      
     }

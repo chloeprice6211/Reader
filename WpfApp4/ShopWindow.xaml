@@ -23,16 +23,13 @@
         <StackPanel>
             <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
             <Separator Background="#7FA0A0A0"/>
-            <Grid Name="MainStoreGrid" Margin="15,10,15,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+           
+            <WrapPanel Name="MainStoreWrapPanel" HorizontalAlignment="Center">
+                <WrapPanel.Resources>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="Margin" Value="15,0" />
+                    </Style>
+                </WrapPanel.Resources>
 
                 <Grid Name="MenuItemGrid" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
@@ -44,7 +41,7 @@
                     <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">Mark Tven</Label>
                     <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
                     <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}" Click="OnBuyBookButtonClick">
-                        <Grid >
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -56,7 +53,7 @@
                     </Button>
                    
                 </Grid>
-                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -78,7 +75,7 @@
                     </Button>
 
                 </Grid>
-                <Grid Grid.Column="2" HorizontalAlignment="Center">
+                <Grid HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
@@ -102,7 +99,7 @@
                 </Grid>
 
 
-            </Grid>
+            </WrapPanel>
         </StackPanel>
        
     </StackPanel>
