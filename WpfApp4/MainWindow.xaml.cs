@@ -23,7 +23,7 @@ namespace reader
     ///
 
     public partial class MainWindow : Window
-    {    string text;
+    {   string text;
         static bool isDark = false;
         public MainWindow()
         {
@@ -43,10 +43,11 @@ namespace reader
             MaxWidth = 1200;
             StoreLibrary.AddAllBooks(storeBooksPath);
 
-            StreamReader reader = new StreamReader(@"..\..\..\books\Library\book1.txt");
-            txtContent = reader.ReadToEnd();
-            myParagraph.Inlines.Add(txtContent);
-            text = txtContent;
+            Book test1 = new Book(@"..\..\..\books\Library\"+"book1.txt");
+            
+            
+            myParagraph.Inlines.Add(test1.Content);
+            text = test1.Content;
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -150,6 +151,8 @@ namespace reader
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog sf =new() ;
+            sf.ShowDialog();
             Filesave(text);
             MessageBox.Show("a");
         }
@@ -159,7 +162,7 @@ namespace reader
 
         void Filesave(string textbuf)
         {
-             string writePath = @"C:hta.txt";
+             string writePath = @"C:book.txt";
            
         
             try

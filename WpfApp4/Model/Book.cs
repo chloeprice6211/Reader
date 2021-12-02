@@ -57,6 +57,14 @@ namespace reader
                 return _price;
             }
         }
+        public string Content
+        {
+            get
+            {
+                return _content;
+            }
+         
+        }
      
     }
 }
