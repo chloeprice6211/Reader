@@ -58,7 +58,7 @@ namespace reader
             }
             return false;
         }
-        static string LibraryPath
+        public static string LibraryPath
         {
             get
             {

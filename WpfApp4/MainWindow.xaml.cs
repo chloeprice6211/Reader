@@ -25,31 +25,36 @@ namespace reader
     public partial class MainWindow : Window
     {   string text;
         static bool isDark = false;
+        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
         public MainWindow()
         {
-            string temp = "dsadasd";
-            string my;
-            string txtContent;
-            string str14;
-            string storeBooksPath = @"../../../books/StoreLibraryBooks/";
-            string libraryBooksPath = @"../../../books/Library/";
-            string str144;
-            Book bookItem;
-
             InitializeComponent();
+            #region windowCustomization
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
-            StoreLibrary.AddAllBooks(storeBooksPath);
-            Library.AddAllBooks(libraryBooksPath);
+            #endregion
+
+            StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
+            Library.AddAllBooks(Library.LibraryPath);
 
 
-            //Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+            Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+
+            SetContent(test1);
+        }
+
+        private void SetContent(Book item)
+        {
             
-            //myParagraph.Inlines.Add(test1.Content);
-           //text = test1.Content;
-            
+            myParagraph.Inlines.Add(" ");
+            myParagraph.Inlines.Add(item.Content);
+        }
+
+        private void SetContent(string cont)
+        {
+            myParagraph.Inlines.Add(cont);
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -148,8 +153,11 @@ namespace reader
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
             ShopWindow shopwin = new ShopWindow();
-            shopwin.Show();
+            shopwin.ShowDialog();
+
+            SetContent(shopwin.BookToRead.Content);
         }
+     
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -158,9 +166,6 @@ namespace reader
             Filesave(text);
             MessageBox.Show("a");
         }
-
-
-
 
         void Filesave(string textbuf)
         {

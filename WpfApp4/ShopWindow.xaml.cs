@@ -19,6 +19,7 @@ namespace reader
     /// </summary>
     public partial class ShopWindow : Window
     {
+        Book bookToRead;
         public ShopWindow()
         {
             InitializeComponent();
@@ -32,14 +33,17 @@ namespace reader
 
             currentBalance.Content = currentBalanceInt.ToString();
         }
-
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
             Button thisbutton = (sender as Button);
             Label listedlabel = ((StoreMenuElement)thisbutton.Parent).Children[1] as Label;
+            Book currentBook = ((StoreMenuElement)thisbutton.Parent).BookElement;
+
+            BookToRead = currentBook;
 
             string temporary = thisbutton.Content.ToString();
             temporary = temporary.Replace("$", "");
+
             int temp = Convert.ToInt32(currentBalance.Content);
 
             if (temp - Convert.ToInt32(temporary) < 0)
@@ -57,12 +61,14 @@ namespace reader
 
             listedlabel.Visibility = Visibility.Visible;
             thisbutton.Content = "Read";
+            BookToRead = currentBook;
 
             Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);
 
             currentBalance.Content = temp;
 
-          
+            thisbutton.Click -= new RoutedEventHandler(OnBuyBookButtonClick);
+            thisbutton.Click += new RoutedEventHandler(OnReadBookButtonClick);
         }
         private void ShopItemsInitialization()
         {
@@ -139,6 +145,7 @@ namespace reader
                 buyButton.Background = Brushes.White;
                 buyButton.FontWeight = FontWeights.Bold;
 
+
                 buyButton.Click += new RoutedEventHandler(OnBuyBookButtonClick);
                 #endregion
 
@@ -148,6 +155,8 @@ namespace reader
                 if(Library.FindIfBookListed(myGrid.BookElement))
                 {
                     buyButton.Content = "Read";
+                    buyButton.Click -= new RoutedEventHandler(OnBuyBookButtonClick);
+                    buyButton.Click += new RoutedEventHandler(OnReadBookButtonClick);
                 }
                 else buyButton.Content = "$ " + StoreLibrary.BooksToSell[a].Price.ToString();
                 myImage.Source = bi3;
@@ -169,5 +178,22 @@ namespace reader
                 MainStoreWrapPanel.Children.Add(myGrid);
             }
         }
+        private void OnReadBookButtonClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(BookToRead.Name);
+            Close();
+        }
+        public Book BookToRead
+        {
+            get
+            {
+                return bookToRead;
+            }
+            set
+            {
+                bookToRead = value;
+            }
+        }
     }
+   
 }
