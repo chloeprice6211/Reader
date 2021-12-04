@@ -21,6 +21,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="icons\achievement.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icons\books.png" />
+    <Resource Include="icons\google-docs.png" />
+    <Resource Include="icons\home.png" />
+    <Resource Include="icons\notification.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icons\search.png" />
+    <Resource Include="icons\shop.png" />
+    <Resource Include="icons\user.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -36,6 +53,10 @@
     <Resource Include="mainMenuIcons\upperMenuIcons\lightThemeIcon.png" />
     <Resource Include="menuButtonsBG\libraryBG.png" />
     <Resource Include="menuButtonsBG\shopBG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="fonts\" />
   </ItemGroup>
 
 </Project>
