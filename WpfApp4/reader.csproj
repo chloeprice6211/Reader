@@ -8,14 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="icons\achievement.png" />
-    <None Remove="icons\books.png" />
-    <None Remove="icons\google-docs.png" />
-    <None Remove="icons\home.png" />
-    <None Remove="icons\notification.png" />
-    <None Remove="icons\search.png" />
-    <None Remove="icons\shop.png" />
-    <None Remove="icons\user.png" />
+    <None Remove="books\StoreLibraryBooks\Star_Wars - Copy.txt" />
     <None Remove="images\BookImageStore.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />

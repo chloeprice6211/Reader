@@ -56,9 +56,9 @@ namespace reader.Model
             books.Add(book);
         }
 
-        public void remove()
+        public void remove(PersistentBook book)
         {
-            
+            books.Remove(book);
         }
 
         public void searchByTitle(string Title)
