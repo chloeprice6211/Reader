@@ -44,11 +44,11 @@ namespace reader
             StoreLibrary.AddAllBooks(storeBooksPath);
             Library.AddAllBooks(libraryBooksPath);
 
+
+            //Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
             
-            Book test1 = new Book(@"..\..\..\books\Library\book2.txt");
-            
-            myParagraph.Inlines.Add(test1.Content);
-            text = test1.Content;
+            //myParagraph.Inlines.Add(test1.Content);
+           //text = test1.Content;
             
         }
         private void DotsClick(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@ namespace reader
     static class Library
     {
        public static List<Book> myLibrary = new List<Book>();
-       static string _libraryPath = @"../../../books/library/";
+       static string _libraryPath = @"../../../books/Library/";
 
         static public void AddBook(Book toAdd)
         {
@@ -25,14 +25,23 @@ namespace reader
             string fileName = item.Name;
             fileName = fileName.Replace(' ', '_');
 
-            StreamWriter writer = File.AppendText(_libraryPath + fileName + ".txt");
-            writer.Write('a');
+            if (File.Exists(@"../../../books/Library/" + fileName + ".txt"))
+            
+            {
+                MessageBox.Show("yes");
+                return;
+            }
+
+            StreamWriter writer = File.CreateText(_libraryPath + fileName + ".txt");
+            
             
         }
         static public void AddAllBooks(string path)
         {
             string[] allBooks = Directory.GetFiles(path);
             Book tempItem;
+
+            MessageBox.Show(allBooks[0]);
 
             for (int a = 0; a < allBooks.Length; a++)
             {
