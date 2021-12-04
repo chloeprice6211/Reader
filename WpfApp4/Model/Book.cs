@@ -9,7 +9,7 @@ using System.Windows;
 namespace reader
 {
 
-    internal class Book
+    public class Book
     {
         string _path;
         string _name;
@@ -72,6 +72,17 @@ namespace reader
             get
             {
                 return _author;
+            }
+        }
+        public string BookPath
+        {
+            get
+            {
+                return _path;
+            }
+            set
+            {
+                _path = value;
             }
         }
 

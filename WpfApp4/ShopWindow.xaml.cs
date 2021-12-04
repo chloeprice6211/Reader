@@ -35,7 +35,8 @@ namespace reader
 
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
-            string temporary = (sender as Button).Content.ToString();
+            Button thisbutton = (sender as Button);
+            string temporary = thisbutton.Content.ToString();
             temporary = temporary.Replace("$", "");
             int temp = Convert.ToInt32(currentBalance.Content);
 
@@ -45,13 +46,17 @@ namespace reader
             }
             temp -= Convert.ToInt32(temporary);
 
+            Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);
+
             currentBalance.Content = temp;
+
+          
         }
         private void ShopItemsInitialization()
         {
             for (int a = 0; a < StoreLibrary.BooksToSell.Count; a++)
             {
-                Grid myGrid = new Grid();
+                StoreMenuElement myGrid = new StoreMenuElement();
 
                 #region gridProperties
                 myGrid.Margin = new Thickness(35, 20, 0, 20);
@@ -124,6 +129,7 @@ namespace reader
                 myGrid.Children.Add(author);
                 myGrid.Children.Add(myImage);
                 myGrid.Children.Add(buyButton);
+                myGrid.BookElement = StoreLibrary.BooksToSell[a];
 
                 MainStoreWrapPanel.Children.Add(myGrid);
             }
