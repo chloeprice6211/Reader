@@ -32,6 +32,7 @@ namespace reader
             string txtContent;
             string str14;
             string storeBooksPath = @"../../../books/StoreLibraryBooks/";
+            string libraryBooksPath = @"../../../books/Library/";
             string str144;
             Book bookItem;
 
@@ -41,12 +42,14 @@ namespace reader
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
             StoreLibrary.AddAllBooks(storeBooksPath);
+            Library.AddAllBooks(libraryBooksPath);
 
-            Book test1 = new Book(@"..\..\..\books\Library\"+"book1.txt");
             
+            Book test1 = new Book(@"..\..\..\books\Library\book2.txt");
             
             myParagraph.Inlines.Add(test1.Content);
             text = test1.Content;
+            
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {

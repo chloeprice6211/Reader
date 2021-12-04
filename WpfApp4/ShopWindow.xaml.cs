@@ -44,6 +44,14 @@ namespace reader
             {
                 return;
             }
+            foreach(Book item in Library.myLibrary)
+            {
+                if(((StoreMenuElement)thisbutton.Parent).BookElement.Name == item.Name)
+                {
+                    MessageBox.Show("this item is already in your library");
+                    return;
+                }
+            }
             temp -= Convert.ToInt32(temporary);
 
             Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);
