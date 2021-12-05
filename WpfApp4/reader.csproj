@@ -56,6 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>
 
