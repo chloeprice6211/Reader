@@ -39,8 +39,6 @@ namespace reader
             Label listedlabel = ((StoreMenuElement)thisbutton.Parent).Children[1] as Label;
             Book currentBook = ((StoreMenuElement)thisbutton.Parent).BookElement;
 
-            BookToRead = currentBook;
-
             string temporary = thisbutton.Content.ToString();
             temporary = temporary.Replace("$", "");
 
@@ -149,6 +147,9 @@ namespace reader
                 buyButton.Click += new RoutedEventHandler(OnBuyBookButtonClick);
                 #endregion
 
+
+                BookToRead = myGrid.BookElement;
+
                 bookName.Content = StoreLibrary.BooksToSell[a].Name;
                 author.Content = StoreLibrary.BooksToSell[a].Author;
                 listed.Content = "In library";
@@ -180,7 +181,8 @@ namespace reader
         }
         private void OnReadBookButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(BookToRead.Name);
+            Button thisbutton = sender as Button;
+            BookToRead = ((StoreMenuElement)thisbutton.Parent).BookElement;
             Close();
         }
         public Book BookToRead

@@ -47,13 +47,13 @@ namespace reader
 
         private void SetContent(Book item)
         {
-            
-            myParagraph.Inlines.Add(" ");
-            myParagraph.Inlines.Add(item.Content);
+            myParagraph.Inlines.Clear();
+            myParagraph.Inlines.Add(new Run(item.Content));
         }
 
         private void SetContent(string cont)
         {
+            myParagraph.Inlines.Clear();
             myParagraph.Inlines.Add(cont);
         }
         private void DotsClick(object sender, RoutedEventArgs e)
@@ -71,7 +71,6 @@ namespace reader
 
 
         }
-
         private void FontClick(object sender, RoutedEventArgs e)
         {
             FontDialogWindow newWindow = new FontDialogWindow(myParagraph);
@@ -108,7 +107,6 @@ namespace reader
 
 
         }
-
         private void MenuButtonHoverEnter(object sender, MouseEventArgs e)
         {
             foreach (object child in (sender as StackPanel).Children)
@@ -123,7 +121,6 @@ namespace reader
                 }
             }
         }
-
         private void MenuButtonHoverLeave(object sender, MouseEventArgs e)
         {
             foreach (object child in (sender as StackPanel).Children)
@@ -138,7 +135,6 @@ namespace reader
                 }
             }
         }
-
         private void FontCustomizationHoverEnter(object sender, MouseEventArgs e)
         {
             (sender as Button).BorderBrush = Brushes.Black;
@@ -147,7 +143,7 @@ namespace reader
 
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            myParagraph.Inlines.Clear();
         }
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
@@ -155,7 +151,7 @@ namespace reader
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
 
-            SetContent(shopwin.BookToRead.Content);
+            SetContent(shopwin.BookToRead);
         }
      
 
