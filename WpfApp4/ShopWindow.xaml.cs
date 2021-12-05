@@ -226,6 +226,18 @@ namespace reader
                 
             }
         }
+
+        private void SearchBoxFocused(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
+            ((TextBox)sender).Foreground = Brushes.Black;
+        }
+
+        private void TextBoxNotFocused(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "Search for book...";
+            ((TextBox)sender).Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
+        }
     }
    
 }

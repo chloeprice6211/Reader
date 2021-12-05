@@ -55,8 +55,8 @@ namespace reader
             Paragraph pg = new Paragraph(new Run(item.Content));
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
+            
             mainFlowDoc.Document = flowdoc;
-
             flowdoc.Blocks.Add(pg);
         }
         private void DotsClick(object sender, RoutedEventArgs e)
@@ -156,14 +156,16 @@ namespace reader
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
+            menuGrid.Visibility = Visibility.Collapsed;
+            mainFlowDoc.Height += 100;
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
-
-            if(shopwin.BookToRead != null)
+            
+            if (shopwin.BookToRead != null)
             {
                 SetContent(shopwin.BookToRead);
             }
-            menuGrid.Visibility = Visibility.Collapsed;
+            
         }
      
 
