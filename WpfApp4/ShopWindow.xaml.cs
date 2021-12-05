@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace reader
 {
@@ -24,6 +25,9 @@ namespace reader
         {
             InitializeComponent();
             Title = "Store";
+
+            StreamReader reader = new(@"../../../userData/balance.txt");
+            currentBalance.Content = reader.ReadLine();
             ShopItemsInitialization();
         }
 
@@ -35,6 +39,7 @@ namespace reader
         }
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
+            StreamWriter writer;
             Button thisbutton = (sender as Button);
             Label listedlabel = ((StoreMenuElement)thisbutton.Parent).Children[1] as Label;
             Book currentBook = ((StoreMenuElement)thisbutton.Parent).BookElement;
@@ -43,27 +48,26 @@ namespace reader
             temporary = temporary.Replace("$", "");
 
             int temp = Convert.ToInt32(currentBalance.Content);
+            
 
             if (temp - Convert.ToInt32(temporary) < 0)
             {
                 return;
             }
-            foreach(Book item in Library.myLibrary)
-            {
-                if(((StoreMenuElement)thisbutton.Parent).BookElement.Name == item.Name)
-                {
-                    MessageBox.Show("this item is already in your library");
-                    return;
-                }
-            }
+
+            temp -= Convert.ToInt32(temporary);
+            currentBalance.Content = temp.ToString();
+            File.WriteAllText(@"../../../userData/balance.txt", "");
+            writer = new(@"../../../userData/balance.txt");
+            writer.WriteLine(currentBalance.Content.ToString());
+            writer.Close();
+
 
             listedlabel.Visibility = Visibility.Visible;
             thisbutton.Content = "Read";
             BookToRead = currentBook;
 
-            Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);
-
-            currentBalance.Content = temp;
+            Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);   
 
             thisbutton.Click -= new RoutedEventHandler(OnBuyBookButtonClick);
             thisbutton.Click += new RoutedEventHandler(OnReadBookButtonClick);
@@ -81,6 +85,7 @@ namespace reader
 
                 myGrid.Background = (Brush)brush;
                 myGrid.Background.Opacity = 0.5;
+                myGrid.MaxWidth = 200;
 
 
                 RowDefinition rowDef1 = new RowDefinition();
@@ -125,7 +130,7 @@ namespace reader
                 listed.Margin = new Thickness(4, 0, 0, 0);
                 listed.Foreground = (Brush)new BrushConverter().ConvertFrom("#02D55E");
                 listed.Visibility = Visibility.Visible;
-                if (!exist) listed.Visibility=Visibility.Collapsed;
+                if (!exist) listed.Visibility=Visibility.Hidden;
 
                 #endregion
                 #region authorNameProperties
@@ -148,7 +153,6 @@ namespace reader
                 #endregion
 
 
-                BookToRead = myGrid.BookElement;
 
                 bookName.Content = StoreLibrary.BooksToSell[a].Name;
                 author.Content = StoreLibrary.BooksToSell[a].Author;
@@ -195,6 +199,44 @@ namespace reader
             {
                 bookToRead = value;
             }
+        }
+
+        private void TestEvent(object sender, KeyEventArgs e)
+        {
+            string bookName;
+            string searchKey = StoreItemSearchBox.Text;
+            int count = 0;
+         
+            foreach(StoreMenuElement itemGrid in MainStoreWrapPanel.Children)
+            {
+                bookName = ((Label)itemGrid.Children[0]).Content.ToString();
+                bool contains = bookName.Contains(searchKey, StringComparison.OrdinalIgnoreCase);
+
+                if (!contains)
+                {
+                    itemGrid.Visibility = Visibility.Collapsed;
+                }
+                else if(contains)
+                {
+                    itemGrid.Visibility = Visibility.Visible;
+                }
+
+                count++;
+
+                
+            }
+        }
+
+        private void SearchBoxFocused(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "";
+            ((TextBox)sender).Foreground = Brushes.Black;
+        }
+
+        private void TextBoxNotFocused(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).Text = "Search for book...";
+            ((TextBox)sender).Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
         }
     }
    

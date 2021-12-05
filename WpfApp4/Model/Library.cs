@@ -21,19 +21,23 @@ namespace reader
         }
         static void CreateBookFile(Book item)
         {
-           
             string fileName = item.Name;
             fileName = fileName.Replace(' ', '_');
 
-            if (File.Exists(@"../../../books/Library/" + fileName + ".txt"))
-            
+            if (File.Exists(LibraryPath + fileName + ".txt"))
+
             {
                 return;
             }
 
-            StreamWriter writer = File.CreateText(_libraryPath + fileName + ".txt");
-            
-            
+            StreamWriter writer = new StreamWriter(LibraryPath + fileName + ".txt");
+
+            writer.WriteLine(item.Category);
+            writer.WriteLine(item.Author);
+            writer.WriteLine(item.Price);
+            writer.Close();
+            File.AppendAllText(LibraryPath+fileName+".txt",item.Content);
+           
         }
         static public void AddAllBooks(string path)
         {

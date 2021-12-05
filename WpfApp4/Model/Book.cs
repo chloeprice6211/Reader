@@ -52,6 +52,17 @@ namespace reader
                 return _name;
             }
         }
+        public string Category
+        {
+            get
+            {
+                return _category;
+            }
+            set
+            {
+                _category = value;
+            }
+        }
         public int Price
         {
             get

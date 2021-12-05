@@ -76,7 +76,7 @@
         </Grid>
         
     
-                <FlowDocumentReader x:Name="mainFlowDoc" Height="725" IsTwoPageViewEnabled="False">
+                <FlowDocumentReader x:Name="mainFlowDoc" Height="720">
               
             </FlowDocumentReader>
        

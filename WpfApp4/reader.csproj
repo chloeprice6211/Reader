@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="books\StoreLibraryBooks\Star_Wars - Copy.txt" />
     <None Remove="images\BookImageStore.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
@@ -56,6 +55,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>
 

@@ -25,7 +25,7 @@ namespace reader
     public partial class MainWindow : Window
     {   string text;
         static bool isDark = false;
-        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
 
         public MainWindow()
         {
@@ -55,14 +55,9 @@ namespace reader
             Paragraph pg = new Paragraph(new Run(item.Content));
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
+            
             mainFlowDoc.Document = flowdoc;
-
             flowdoc.Blocks.Add(pg);
-        }
-
-        private void SetContent(string cont)
-        {
-           
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -156,15 +151,21 @@ namespace reader
 
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-            SetContent("dsadsa");
+            
          }
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
+            menuGrid.Visibility = Visibility.Collapsed;
+            mainFlowDoc.Height += 100;
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
-
-            SetContent(shopwin.BookToRead);
+            
+            if (shopwin.BookToRead != null)
+            {
+                SetContent(shopwin.BookToRead);
+            }
+            
         }
      
 
