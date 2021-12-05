@@ -48,11 +48,17 @@
                             <Setter Property="Margin" Value="15,0" />
                         </Style>
                     </WrapPanel.Resources>
+                 
 
 
                 </WrapPanel>
             </StackPanel>
-
+            <Label Name="NoFoundLabel" Visibility="Collapsed"
+                HorizontalContentAlignment="Center" 
+                Height="590" 
+                FontSize="25"
+                
+                VerticalContentAlignment="Center" Foreground="#FFAFAFAF">No items found =(</Label>
         </StackPanel>
     </ScrollViewer>
 </Window>

@@ -219,12 +219,16 @@ namespace reader
                 else if(contains)
                 {
                     itemGrid.Visibility = Visibility.Visible;
+                    count++;
                 }
 
-                count++;
+                
 
                 
             }
+
+            if (count == 0) NoFoundLabel.Visibility = Visibility.Visible;
+            else if (count > 0) NoFoundLabel.Visibility = Visibility.Collapsed;
         }
 
         private void SearchBoxFocused(object sender, RoutedEventArgs e)
