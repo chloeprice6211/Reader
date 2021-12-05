@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.Win32;
+using System.Windows.Media.Imaging;
 using System.Windows;
+using System.Net;
 namespace reader
 {
 
@@ -16,7 +18,9 @@ namespace reader
         string _content;
         string _category;
         string _author;
+        BitmapImage _cover;
         int _price;
+
         StreamReader reader;
 
         public Book(OpenFileDialog dialog)

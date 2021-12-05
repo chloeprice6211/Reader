@@ -29,6 +29,7 @@ namespace reader
             StreamReader reader = new(@"../../../userData/balance.txt");
             currentBalance.Content = reader.ReadLine();
             ShopItemsInitialization();
+            ItemPurchaseAvailability();
         }
 
         private void OnAddBalanceButtonClick(object sender, RoutedEventArgs e)
@@ -36,6 +37,7 @@ namespace reader
             int currentBalanceInt = Convert.ToInt32(currentBalance.Content) + 25;
 
             currentBalance.Content = currentBalanceInt.ToString();
+            ItemPurchaseAvailability();
         }
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)
         {
@@ -49,7 +51,6 @@ namespace reader
 
             int temp = Convert.ToInt32(currentBalance.Content);
             
-
             if (temp - Convert.ToInt32(temporary) < 0)
             {
                 return;
@@ -57,6 +58,8 @@ namespace reader
 
             temp -= Convert.ToInt32(temporary);
             currentBalance.Content = temp.ToString();
+            
+
             File.WriteAllText(@"../../../userData/balance.txt", "");
             writer = new(@"../../../userData/balance.txt");
             writer.WriteLine(currentBalance.Content.ToString());
@@ -65,6 +68,7 @@ namespace reader
 
             listedlabel.Visibility = Visibility.Visible;
             thisbutton.Content = "Read";
+            ItemPurchaseAvailability();
             BookToRead = currentBook;
 
             Library.AddBook(((StoreMenuElement)thisbutton.Parent).BookElement);   
@@ -203,32 +207,7 @@ namespace reader
 
         private void TestEvent(object sender, KeyEventArgs e)
         {
-            string bookName;
-            string searchKey = StoreItemSearchBox.Text;
-            int count = 0;
-         
-            foreach(StoreMenuElement itemGrid in MainStoreWrapPanel.Children)
-            {
-                bookName = ((Label)itemGrid.Children[0]).Content.ToString();
-                bool contains = bookName.Contains(searchKey, StringComparison.OrdinalIgnoreCase);
-
-                if (!contains)
-                {
-                    itemGrid.Visibility = Visibility.Collapsed;
-                }
-                else if(contains)
-                {
-                    itemGrid.Visibility = Visibility.Visible;
-                    count++;
-                }
-
-                
-
-                
-            }
-
-            if (count == 0) NoFoundLabel.Visibility = Visibility.Visible;
-            else if (count > 0) NoFoundLabel.Visibility = Visibility.Collapsed;
+            searching();
         }
 
         private void SearchBoxFocused(object sender, RoutedEventArgs e)
@@ -239,8 +218,79 @@ namespace reader
 
         private void TextBoxNotFocused(object sender, RoutedEventArgs e)
         {
-            ((TextBox)sender).Text = "Search for book...";
-            ((TextBox)sender).Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
+            SearchBoxUnfocus();
+        }
+        private void ItemPurchaseAvailability()
+        {
+            foreach(StoreMenuElement item in MainStoreWrapPanel.Children)
+            {
+                Button purchaseButton = (Button)item.Children[4];
+                if (purchaseButton.Content == "Read")
+                {
+                    continue;
+                }
+                string valueInString = purchaseButton.Content.ToString();
+                valueInString = valueInString.Replace("$", "");
+                int value = Convert.ToInt32(valueInString);
+
+                if (purchaseButton.Content != "Read" && value <= Convert.ToInt32(currentBalance.Content.ToString()))
+                {
+                    purchaseButton.Foreground = Brushes.Black;
+                }
+                else if(purchaseButton.Content != "Read" && value > Convert.ToInt32(currentBalance.Content.ToString()))
+                {
+                    purchaseButton.Foreground = Brushes.Red;
+                }
+                
+            }
+        }
+
+        private void OnEraseButtonClick(object sender, RoutedEventArgs e)
+        {
+            StoreItemSearchBox.Text = "";
+            searching();
+            SearchBoxUnfocus();
+        }
+        private void searching()
+        {
+            string bookName;
+            string searchKey = StoreItemSearchBox.Text;
+            int count = 0;
+
+            eraseButton.Visibility = Visibility.Visible;
+
+            foreach (StoreMenuElement itemGrid in MainStoreWrapPanel.Children)
+            {
+                bookName = ((Label)itemGrid.Children[0]).Content.ToString();
+                bool contains = bookName.Contains(searchKey, StringComparison.OrdinalIgnoreCase);
+
+                if (!contains)
+                {
+                    itemGrid.Visibility = Visibility.Collapsed;
+                }
+                else if (contains)
+                {
+                    itemGrid.Visibility = Visibility.Visible;
+                    count++;
+                }
+
+
+
+
+            }
+
+            if (count == 0) NoFoundLabel.Visibility = Visibility.Visible;
+            else if (count > 0) NoFoundLabel.Visibility = Visibility.Collapsed;
+        }
+        private void SearchBoxUnfocus()
+        {
+            if (StoreItemSearchBox.Text != "")
+            {
+                return;
+            }
+            eraseButton.Visibility = Visibility.Hidden;
+            StoreItemSearchBox.Text = "Search for book...";
+            StoreItemSearchBox.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
         }
     }
    

@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="images\BookImageStore.png" />
+    <None Remove="images\clearButton.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -42,6 +43,7 @@
 
   <ItemGroup>
     <Resource Include="images\BookImageStore.png" />
+    <Resource Include="images\clearButton.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />

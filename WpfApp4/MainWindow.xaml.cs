@@ -29,6 +29,7 @@ namespace reader
 
         public MainWindow()
         {
+            
             InitializeComponent();
             #region windowCustomization
             Title = "Reader";
