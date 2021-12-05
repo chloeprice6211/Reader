@@ -152,7 +152,6 @@ namespace reader
                 #endregion
 
 
-                BookToRead = myGrid.BookElement;
 
                 bookName.Content = StoreLibrary.BooksToSell[a].Name;
                 author.Content = StoreLibrary.BooksToSell[a].Author;

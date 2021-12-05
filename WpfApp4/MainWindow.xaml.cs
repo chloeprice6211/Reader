@@ -59,11 +59,6 @@ namespace reader
 
             flowdoc.Blocks.Add(pg);
         }
-
-        private void SetContent(string cont)
-        {
-           
-        }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
             if (menuGrid.Visibility == Visibility.Collapsed)
@@ -156,7 +151,7 @@ namespace reader
 
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-            SetContent("dsadsa");
+            
          }
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
@@ -164,7 +159,10 @@ namespace reader
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
 
-            SetContent(shopwin.BookToRead);
+            if(shopwin.BookToRead != null)
+            {
+                SetContent(shopwin.BookToRead);
+            }
         }
      
 
