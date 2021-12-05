@@ -36,9 +36,10 @@ namespace reader
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
             #endregion
+
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
             Library.AddAllBooks(Library.LibraryPath);
-
+            mainFlowDoc.IsScrollViewEnabled = true;
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
 
@@ -52,11 +53,11 @@ namespace reader
 
             FlowDocument flowdoc = new FlowDocument();
             Paragraph pg = new Paragraph(new Run(item.Content));
+            pg.FontFamily = new FontFamily("Calibri");
+            pg.FontSize = 24;
             mainFlowDoc.Document = flowdoc;
 
             flowdoc.Blocks.Add(pg);
-
-          
         }
 
         private void SetContent(string cont)
@@ -80,13 +81,17 @@ namespace reader
         }
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            Paragraph my = new();
-            FontDialogWindow newWindow = new FontDialogWindow(my);
+            FlowDocumentReaderViewingMode viewingMode;
+            Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
+            viewingMode = mainFlowDoc.ViewingMode;
+
+            FontDialogWindow newWindow = new FontDialogWindow(my,viewingMode);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
-            newStyle = new TextProperties(newWindow.exampleText);
+           newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(my);
+            mainFlowDoc.ViewingMode = newWindow.ViewMode;
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
