@@ -26,6 +26,7 @@ namespace reader
     {   string text;
         static bool isDark = false;
         Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +36,6 @@ namespace reader
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
             #endregion
-
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
             Library.AddAllBooks(Library.LibraryPath);
 
@@ -47,14 +47,21 @@ namespace reader
 
         private void SetContent(Book item)
         {
-            myParagraph.Inlines.Clear();
-            myParagraph.Inlines.Add(new Run(item.Content));
+            //myParagraph.Inlines.Clear();
+            //myParagraph.Inlines.Add(new Run(item.Content));
+
+            FlowDocument flowdoc = new FlowDocument();
+            Paragraph pg = new Paragraph(new Run(item.Content));
+            mainFlowDoc.Document = flowdoc;
+
+            flowdoc.Blocks.Add(pg);
+
+          
         }
 
         private void SetContent(string cont)
         {
-            myParagraph.Inlines.Clear();
-            myParagraph.Inlines.Add(cont);
+           
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -73,12 +80,13 @@ namespace reader
         }
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            FontDialogWindow newWindow = new FontDialogWindow(myParagraph);
+            Paragraph my = new();
+            FontDialogWindow newWindow = new FontDialogWindow(my);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
-            newStyle.SetParagraphStyle(myParagraph);
+            newStyle.SetParagraphStyle(my);
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
@@ -143,8 +151,8 @@ namespace reader
 
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-            myParagraph.Inlines.Clear();
-        }
+            SetContent("dsadsa");
+         }
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {

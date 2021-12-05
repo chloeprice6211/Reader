@@ -13,4 +13,5 @@ Important features of Effective C++ include:
 
 Expert guidance on the design of effective classes, functions, templates, and inheritance hierarchies.
 Applications of new “TR1” standard library functionality, along with comparisons to existing standard library components.
-Insights into differences between C++ and other languages (e.g., Java, C#, C) that help developers from those languages assimilate “the C++ way” of doing things.
+Insights into differences between C++ and other languages (e.g., Java, C#, C
+) that help developers from those languages assimilate “the C++ way” of doing things.

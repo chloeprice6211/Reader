@@ -74,16 +74,12 @@
                 </StackPanel>
             </Button>
         </Grid>
-
-        <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
+        
     
-                <FlowDocumentReader x:Name="mainFlowDoc" Height="725"  >
-                <FlowDocument Name="flodoc" Style="{StaticResource normalParagraph}" >
-                    <Paragraph  Name="myParagraph" FontSize="24">
-
-                    </Paragraph>
-                </FlowDocument>
+                <FlowDocumentReader x:Name="mainFlowDoc" Height="725">
+              
             </FlowDocumentReader>
+       
 
     </StackPanel>
 </Window>
