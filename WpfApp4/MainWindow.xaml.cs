@@ -25,31 +25,43 @@ namespace reader
     public partial class MainWindow : Window
     {   string text;
         static bool isDark = false;
+        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+
         public MainWindow()
         {
-            string temp = "dsadasd";
-            string my;
-            string txtContent;
-            string str14;
-            string storeBooksPath = @"../../../books/StoreLibraryBooks/";
-            string libraryBooksPath = @"../../../books/Library/";
-            string str144;
-            Book bookItem;
-
             InitializeComponent();
+            #region windowCustomization
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             MaxWidth = 1200;
-            StoreLibrary.AddAllBooks(storeBooksPath);
-            Library.AddAllBooks(libraryBooksPath);
+            #endregion
+            StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
+            Library.AddAllBooks(Library.LibraryPath);
 
 
-            //Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
-            
-            //myParagraph.Inlines.Add(test1.Content);
-           //text = test1.Content;
-            
+            Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+
+            SetContent(test1);
+        }
+
+        private void SetContent(Book item)
+        {
+            //myParagraph.Inlines.Clear();
+            //myParagraph.Inlines.Add(new Run(item.Content));
+
+            FlowDocument flowdoc = new FlowDocument();
+            Paragraph pg = new Paragraph(new Run(item.Content));
+            mainFlowDoc.Document = flowdoc;
+
+            flowdoc.Blocks.Add(pg);
+
+          
+        }
+
+        private void SetContent(string cont)
+        {
+           
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -66,15 +78,15 @@ namespace reader
 
 
         }
-
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            FontDialogWindow newWindow = new FontDialogWindow(myParagraph);
+            Paragraph my = new();
+            FontDialogWindow newWindow = new FontDialogWindow(my);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
-            newStyle.SetParagraphStyle(myParagraph);
+            newStyle.SetParagraphStyle(my);
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
@@ -103,7 +115,6 @@ namespace reader
 
 
         }
-
         private void MenuButtonHoverEnter(object sender, MouseEventArgs e)
         {
             foreach (object child in (sender as StackPanel).Children)
@@ -118,7 +129,6 @@ namespace reader
                 }
             }
         }
-
         private void MenuButtonHoverLeave(object sender, MouseEventArgs e)
         {
             foreach (object child in (sender as StackPanel).Children)
@@ -133,7 +143,6 @@ namespace reader
                 }
             }
         }
-
         private void FontCustomizationHoverEnter(object sender, MouseEventArgs e)
         {
             (sender as Button).BorderBrush = Brushes.Black;
@@ -142,14 +151,17 @@ namespace reader
 
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
-            
-        }
+            SetContent("dsadsa");
+         }
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
             ShopWindow shopwin = new ShopWindow();
-            shopwin.Show();
+            shopwin.ShowDialog();
+
+            SetContent(shopwin.BookToRead);
         }
+     
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -158,9 +170,6 @@ namespace reader
             Filesave(text);
             MessageBox.Show("a");
         }
-
-
-
 
         void Filesave(string textbuf)
         {

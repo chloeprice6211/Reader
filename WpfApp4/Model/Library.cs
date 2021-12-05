@@ -28,7 +28,6 @@ namespace reader
             if (File.Exists(@"../../../books/Library/" + fileName + ".txt"))
             
             {
-                MessageBox.Show("yes");
                 return;
             }
 
@@ -41,14 +40,30 @@ namespace reader
             string[] allBooks = Directory.GetFiles(path);
             Book tempItem;
 
-            MessageBox.Show(allBooks[0]);
-
             for (int a = 0; a < allBooks.Length; a++)
             {
                 tempItem = new(allBooks[a]);
                 AddBook(tempItem);
             }
 
+        }
+        static public bool FindIfBookListed(Book item)
+        {
+            foreach(Book book in myLibrary)
+            {
+                if(item.Name == book.Name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static string LibraryPath
+        {
+            get
+            {
+                return _libraryPath;
+            }
         }
     }
 }
