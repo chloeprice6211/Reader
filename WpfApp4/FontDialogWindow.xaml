@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="Font customization" Height="271" Width="400 ">
+        Title="Font customization" Height="317" Width="400 ">
     <StackPanel>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="320">
             <Grid.ColumnDefinitions>
@@ -45,7 +45,38 @@
                 <CheckBox Name="isItalicCheckBox" VerticalAlignment="Center" Click="ifItalicClicked"></CheckBox>
             </StackPanel>
         </Grid>
-        <Label HorizontalAlignment="Center" Margin="0,25,0,0" FontSize="9" Foreground="#FF969696" FontWeight="Normal">
+
+        <Label HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="9" Foreground="#FF969696" FontWeight="Normal">
+            VIEW MODE
+        </Label>
+        <Grid Margin="0,0,0,0" HorizontalAlignment="Center">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10,0,10,10"/>
+                    <Setter Property="Width" Value="80"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Height" Value="28"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="PageModeButton"
+                Foreground="Black"
+                BorderThickness="2"
+                Background="Transparent" Click="OnPageModeClick">
+                Page
+            </Button>
+            <Button Name="ScrollModeButton" Background="Transparent"
+                    Foreground="Black"
+                    BorderThickness="2"
+               Grid.Column="1" Click="OnScrollModeClick">
+                Scroll</Button>
+        </Grid>
+        <Label HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="9" Foreground="#FF969696" FontWeight="Normal">
             EXAMPLE
         </Label>
         <TextBlock Height="50" Width="150" Name="exampleText" HorizontalAlignment="Center" TextAlignment="Center" >
