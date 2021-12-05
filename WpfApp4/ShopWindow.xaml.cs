@@ -200,6 +200,32 @@ namespace reader
                 bookToRead = value;
             }
         }
+
+        private void TestEvent(object sender, KeyEventArgs e)
+        {
+            string bookName;
+            string searchKey = StoreItemSearchBox.Text;
+            int count = 0;
+         
+            foreach(StoreMenuElement itemGrid in MainStoreWrapPanel.Children)
+            {
+                bookName = ((Label)itemGrid.Children[0]).Content.ToString();
+                bool contains = bookName.Contains(searchKey, StringComparison.OrdinalIgnoreCase);
+
+                if (!contains)
+                {
+                    itemGrid.Visibility = Visibility.Collapsed;
+                }
+                else if(contains)
+                {
+                    itemGrid.Visibility = Visibility.Visible;
+                }
+
+                count++;
+
+                
+            }
+        }
     }
    
 }

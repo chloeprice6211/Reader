@@ -163,6 +163,7 @@ namespace reader
             {
                 SetContent(shopwin.BookToRead);
             }
+            menuGrid.Visibility = Visibility.Collapsed;
         }
      
 

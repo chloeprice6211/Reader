@@ -13,9 +13,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
-                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,15,0">
+                <TextBox Name="StoreItemSearchBox" Grid.Column="1" PreviewKeyUp="TestEvent"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
                     <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
                     <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
                     <Button Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
