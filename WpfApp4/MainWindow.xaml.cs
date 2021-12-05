@@ -24,11 +24,13 @@ namespace reader
 
     public partial class MainWindow : Window
     {   string text;
+       
         static bool isDark = false;
-        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
+        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
 
         public MainWindow()
         {
+            
             InitializeComponent();
             #region windowCustomization
             Title = "Reader";

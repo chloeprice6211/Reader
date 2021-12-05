@@ -16,7 +16,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
-                <TextBox 
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                    <TextBox 
+                        Width="150"
                     Name="StoreItemSearchBox" 
                     Grid.Column="1" 
                     PreviewKeyUp="TestEvent" 
@@ -31,6 +33,12 @@
                     Height="35"
                     
                     LostFocus="TextBoxNotFocused" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom">Seach for book...</TextBox>
+                    <Button  Visibility="Hidden" Name="eraseButton" Background="Transparent" BorderThickness="0" Click="OnEraseButtonClick">
+                    <Image Height="15" Source="/images/clearButton.png">
+                     
+                    </Image>
+                    </Button>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
                     <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
                     <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
@@ -48,7 +56,7 @@
                             <Setter Property="Margin" Value="15,0" />
                         </Style>
                     </WrapPanel.Resources>
-                 
+
 
 
                 </WrapPanel>

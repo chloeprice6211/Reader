@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bookCovers\c++.png" />
+    <None Remove="bookCovers\harry.png" />
+    <None Remove="bookCovers\journey.png" />
+    <None Remove="bookCovers\snow.png" />
+    <None Remove="bookCovers\StarWars.png" />
+    <None Remove="bookCovers\thegirl.png" />
+    <None Remove="bookCovers\time.png" />
     <None Remove="images\BookImageStore.png" />
+    <None Remove="images\clearButton.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -20,6 +28,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bookCovers\c++.png" />
+    <Resource Include="bookCovers\harry.png" />
+    <Resource Include="bookCovers\journey.png" />
+    <Resource Include="bookCovers\snow.png" />
+    <Resource Include="bookCovers\StarWars.png" />
+    <Resource Include="bookCovers\thegirl.png" />
+    <Resource Include="bookCovers\time.png" />
     <Resource Include="icons\achievement.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -42,6 +57,7 @@
 
   <ItemGroup>
     <Resource Include="images\BookImageStore.png" />
+    <Resource Include="images\clearButton.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -55,6 +71,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="books\fortest\" />
     <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>

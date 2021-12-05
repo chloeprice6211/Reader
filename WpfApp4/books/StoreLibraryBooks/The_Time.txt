@@ -1,4 +1,5 @@
-﻿Bestseller
+﻿../../../bookCovers/time.png
+Bestseller
 Audrey Niffenegger
 60
 It's hard being left behind. I wait for Henry, not knowing where he is, wondering if he's okay. It's hard to be the one who stays. I keep myself busy. Time goes faster that way.
