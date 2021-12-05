@@ -85,6 +85,7 @@ namespace reader
 
                 myGrid.Background = (Brush)brush;
                 myGrid.Background.Opacity = 0.5;
+                myGrid.MaxWidth = 200;
 
 
                 RowDefinition rowDef1 = new RowDefinition();
@@ -129,7 +130,7 @@ namespace reader
                 listed.Margin = new Thickness(4, 0, 0, 0);
                 listed.Foreground = (Brush)new BrushConverter().ConvertFrom("#02D55E");
                 listed.Visibility = Visibility.Visible;
-                if (!exist) listed.Visibility=Visibility.Collapsed;
+                if (!exist) listed.Visibility=Visibility.Hidden;
 
                 #endregion
                 #region authorNameProperties
