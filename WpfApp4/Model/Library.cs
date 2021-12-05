@@ -24,14 +24,12 @@ namespace reader
             string fileName = item.Name;
             fileName = fileName.Replace(' ', '_');
 
-
             if (File.Exists(LibraryPath + fileName + ".txt"))
 
             {
                 return;
             }
 
-            
             StreamWriter writer = new StreamWriter(LibraryPath + fileName + ".txt");
 
             writer.WriteLine(item.Category);
