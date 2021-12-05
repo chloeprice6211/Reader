@@ -89,7 +89,7 @@ namespace reader
 
                 myGrid.Background = (Brush)brush;
                 myGrid.Background.Opacity = 0.5;
-                myGrid.MaxWidth = 200;
+                myGrid.Width=200;
 
 
                 RowDefinition rowDef1 = new RowDefinition();
@@ -118,9 +118,10 @@ namespace reader
                 #region imageProperties
                 BitmapImage bi3 = new BitmapImage();
                 bi3.BeginInit();
-                bi3.UriSource = new Uri("../../../images/BookImageStore.png", UriKind.RelativeOrAbsolute);
+                bi3.UriSource = myGrid.BookElement.BookCoverUri;
                 bi3.EndInit();
-                myImage.Width = 200;
+                myImage.Width = 150;
+                myImage.Margin = new Thickness(10, 10, 10, 10);
                 myImage.Source = bi3;
                 #endregion
                 #region bookNameProperties
@@ -155,8 +156,6 @@ namespace reader
 
                 buyButton.Click += new RoutedEventHandler(OnBuyBookButtonClick);
                 #endregion
-
-
 
                 bookName.Content = StoreLibrary.BooksToSell[a].Name;
                 author.Content = StoreLibrary.BooksToSell[a].Author;

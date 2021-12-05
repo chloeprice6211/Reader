@@ -8,6 +8,8 @@ using Microsoft.Win32;
 using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Net;
+using System.Drawing;
+using System.Windows.Controls;
 namespace reader
 {
 
@@ -18,7 +20,7 @@ namespace reader
         string _content;
         string _category;
         string _author;
-        BitmapImage _cover;
+        Uri _coverUri;
         int _price;
 
         StreamReader reader;
@@ -38,6 +40,7 @@ namespace reader
             _path = path;
             reader = new(_path);
 
+            _coverUri = new Uri(reader.ReadLine(),UriKind.RelativeOrAbsolute);
             _category = reader.ReadLine();
             _author = reader.ReadLine();
             _price = Convert.ToInt32(reader.ReadLine());
@@ -98,6 +101,17 @@ namespace reader
             set
             {
                 _path = value;
+            }
+        }
+        public Uri BookCoverUri
+        {
+            get
+            {
+                return _coverUri;
+            }
+            set
+            {
+                _coverUri = value;
             }
         }
 
