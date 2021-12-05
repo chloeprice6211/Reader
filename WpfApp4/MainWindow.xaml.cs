@@ -52,6 +52,8 @@ namespace reader
 
             FlowDocument flowdoc = new FlowDocument();
             Paragraph pg = new Paragraph(new Run(item.Content));
+            pg.FontFamily = new FontFamily("Calibri");
+            pg.FontSize = 24;
             mainFlowDoc.Document = flowdoc;
 
             flowdoc.Blocks.Add(pg);
@@ -80,12 +82,16 @@ namespace reader
         }
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            Paragraph my = new();
+
+            Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
+
+            MessageBox.Show(my.ToString());
+
             FontDialogWindow newWindow = new FontDialogWindow(my);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
-            newStyle = new TextProperties(newWindow.exampleText);
+           newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(my);
         }
 
