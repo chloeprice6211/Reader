@@ -15,8 +15,10 @@
     <None Remove="bookCovers\StarWars.png" />
     <None Remove="bookCovers\thegirl.png" />
     <None Remove="bookCovers\time.png" />
-    <None Remove="images\BookImageStore.png" />
     <None Remove="images\clearButton.png" />
+    <None Remove="images\home.png" />
+    <None Remove="images\progress.png" />
+    <None Remove="images\store.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -56,8 +58,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\BookImageStore.png" />
     <Resource Include="images\clearButton.png" />
+    <Resource Include="images\home.png" />
+    <Resource Include="images\progress.png" />
+    <Resource Include="images\store.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />

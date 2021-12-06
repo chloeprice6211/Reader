@@ -30,7 +30,7 @@ namespace reader
             _thisStyle = myText.FontStyle;
             _fontSize = myText.FontSize;
             _currentFont = myText.FontFamily;
-
+            MessageBox.Show(this.ToString());
         }
         public void SetParagraphStyle(Paragraph my)
         {
