@@ -26,7 +26,6 @@ namespace reader
     {   string text;
        
         static bool isDark = false;
-        Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
 
         public MainWindow()
         {
@@ -43,7 +42,7 @@ namespace reader
             AddLibraryBooksToComboBox();
             mainFlowDoc.IsScrollViewEnabled = true;
 
-            Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
+            Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
             
             SetContent(test1);
         }
@@ -60,6 +59,8 @@ namespace reader
             
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
+
+            LibraryBooksComboBox.Text = item.Name;
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
