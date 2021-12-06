@@ -41,6 +41,8 @@ namespace reader
             Library.AddAllBooks(Library.LibraryPath);
             AddLibraryBooksToComboBox();
             mainFlowDoc.IsScrollViewEnabled = true;
+            LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
+            LibraryBooksComboBox.FontSize = 20;
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
             
@@ -60,22 +62,36 @@ namespace reader
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
+            CurrentBookName.Content = item.Name;
             LibraryBooksComboBox.Text = item.Name;
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
+            HideControlElements();
+        }
+        private void HideControlElements()
+        {
             if (menuGrid.Visibility == Visibility.Collapsed)
-            { menuGrid.Visibility = Visibility.Visible;
+            {
+                menuGrid.Visibility = Visibility.Visible;
+                LibraryBooksComboBox.Visibility = Visibility.Visible;
+                CurrentBookName.Visibility = Visibility.Collapsed;
+                themeImage.Visibility = Visibility.Visible;
+                fontImage.Visibility = Visibility.Visible;
+                UpperMenu.Visibility = Visibility.Visible;
                 mainFlowDoc.Height -= 100;
             }
             else
             {
                 mainFlowDoc.Height += 100;
                 menuGrid.Visibility = Visibility.Collapsed;
+                LibraryBooksComboBox.Visibility = Visibility.Collapsed;
+                UpperMenu.Visibility = Visibility.Collapsed;
+                themeImage.Visibility = Visibility.Hidden;
+                fontImage.Visibility = Visibility.Hidden;
+                CurrentBookName.Visibility = Visibility.Visible;
+
             }
-            
-
-
         }
         private void FontClick(object sender, RoutedEventArgs e)
         {
@@ -154,6 +170,7 @@ namespace reader
         private void AddLibraryBooksToComboBox()
         {
             BookComboBoxItem bookItem;
+            
             bool IsListed;
 
             if (LibraryBooksComboBox.Items.Count == 0)
@@ -161,6 +178,8 @@ namespace reader
                 for (int a = 0; a < Library.myLibrary.Count; a++)
                 {
                     bookItem = new BookComboBoxItem();
+                    bookItem.FontFamily = new FontFamily("Calibri");
+                    bookItem.FontSize = 17;
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
@@ -213,8 +232,6 @@ namespace reader
             AddLibraryBooksToComboBox();
             
         }
-     
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog sf =new() ;
@@ -222,7 +239,6 @@ namespace reader
             Filesave(text);
             MessageBox.Show("a");
         }
-
         void Filesave(string textbuf)
         {
              string writePath = @"C:book.txt";
@@ -248,18 +264,15 @@ namespace reader
                }
             
         }
-
         private void BookChanging(object sender, EventArgs e)
         {
             Book toSet;
-            //BookComboBoxItem selectedBook = sender as BookComboBoxItem;
+
             toSet = ((BookComboBoxItem)((ComboBox)sender).Items[((ComboBox)sender).SelectedIndex]).BindedBook;
-
             SetContent(toSet);
-            
-            //MessageBox.Show(selectedBook.BindedBook.Name);
 
-            //SetContent(selectedBook.BindedBook);
+            HideControlElements();
+          
         }
     }
 }
