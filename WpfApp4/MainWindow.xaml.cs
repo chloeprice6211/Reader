@@ -30,7 +30,6 @@ namespace reader
 
         public MainWindow()
         {
-            
             InitializeComponent();
             #region windowCustomization
             Title = "Reader";
@@ -41,10 +40,11 @@ namespace reader
 
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
             Library.AddAllBooks(Library.LibraryPath);
+            AddLibraryBooksToComboBox();
             mainFlowDoc.IsScrollViewEnabled = true;
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\C++.txt");
-
+            
             SetContent(test1);
         }
 
@@ -150,7 +150,44 @@ namespace reader
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
         }
+        private void AddLibraryBooksToComboBox()
+        {
+            BookComboBoxItem bookItem;
+            bool IsListed;
 
+            if (LibraryBooksComboBox.Items.Count == 0)
+            {
+                for (int a = 0; a < Library.myLibrary.Count; a++)
+                {
+                    bookItem = new BookComboBoxItem();
+                    bookItem.Content = Library.myLibrary[a].Name;
+                    LibraryBooksComboBox.Items.Add(bookItem);
+                }
+            }
+            else
+            {
+                foreach (Book item in Library.myLibrary)
+                {
+                    IsListed = false;
+               
+                    foreach(BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
+                        {
+                            if(bookItem1.Content == item.Name)
+                            {
+                                IsListed = true;
+                            }
+                        }
+                    
+                    if (IsListed == false)
+                    {
+                        bookItem = new();
+                        bookItem.Content = item.Name;
+                        LibraryBooksComboBox.Items.Add(bookItem);
+                    }
+                }
+
+            }
+        }
         private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
         {
             
@@ -167,6 +204,7 @@ namespace reader
             {
                 SetContent(shopwin.BookToRead);
             }
+            AddLibraryBooksToComboBox();
             
         }
      

@@ -25,6 +25,7 @@ namespace reader
 
         StreamReader reader;
 
+        public Book() { }
         public Book(OpenFileDialog dialog)
         {
             StreamReader reader;
@@ -57,6 +58,10 @@ namespace reader
             get
             {
                 return _name;
+            }
+            set
+            {
+                _name = value;
             }
         }
         public string Category

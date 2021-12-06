@@ -37,6 +37,7 @@ namespace reader
             int currentBalanceInt = Convert.ToInt32(currentBalance.Content) + 25;
 
             currentBalance.Content = currentBalanceInt.ToString();
+            
             ItemPurchaseAvailability();
         }
         private void OnBuyBookButtonClick(object sender, RoutedEventArgs e)

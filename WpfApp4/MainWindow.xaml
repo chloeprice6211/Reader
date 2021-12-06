@@ -9,43 +9,47 @@
     <StackPanel>
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="File">
-                
-         <MenuItem Header="Save File" Click="MenuItem_Click"></MenuItem>
-               <Separator />
-      
+
+                <MenuItem Header="Save File" Click="MenuItem_Click"></MenuItem>
+                <Separator />
+
 
                 <MenuItem Header="Exit" ></MenuItem>
             </MenuItem>
-          
+
         </Menu>
         <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" Cursor="Hand">
-                    
-                        <Image Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
-                    
+                <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" Cursor="Hand">
+
+                    <Image Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
+
                 </Button>
-            <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
-                    
-                        <Image Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
-                 
-            </Button>
+                <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
 
-            
-        </Grid>
-        <Button Grid.Column="1" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
+                    <Image Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
+
+                </Button>
+
+
+            </Grid>
+
+            <ComboBox Name="LibraryBooksComboBox" Grid.Column="1"></ComboBox>
+   
+            <Button Grid.Column="2" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
                 ⋮
             </Button>
-            
+
         </Grid>
 
         <Grid Visibility="Collapsed" x:Name="menuGrid" Style="{StaticResource 3DotsStackPanel}" Margin="0,0,10,0" HorizontalAlignment="Left">
@@ -74,12 +78,12 @@
                 </StackPanel>
             </Button>
         </Grid>
-        
-    
-                <FlowDocumentReader x:Name="mainFlowDoc" Height="720">
-              
-            </FlowDocumentReader>
-       
+
+
+        <FlowDocumentReader x:Name="mainFlowDoc" Height="720">
+
+        </FlowDocumentReader>
+
 
     </StackPanel>
 </Window>
