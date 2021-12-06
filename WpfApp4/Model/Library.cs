@@ -32,6 +32,7 @@ namespace reader
 
             StreamWriter writer = new StreamWriter(LibraryPath + fileName + ".txt");
 
+            writer.WriteLine(item.BookCoverUri);
             writer.WriteLine(item.Category);
             writer.WriteLine(item.Author);
             writer.WriteLine(item.Price);
