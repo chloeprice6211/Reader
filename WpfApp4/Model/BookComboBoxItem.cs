@@ -19,7 +19,7 @@ namespace reader
             }
             set
             {
-                BindedBook = value;
+                bindedBook = value;
             }
         }
 

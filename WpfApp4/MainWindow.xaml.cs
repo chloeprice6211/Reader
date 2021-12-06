@@ -160,7 +160,8 @@ namespace reader
                 for (int a = 0; a < Library.myLibrary.Count; a++)
                 {
                     bookItem = new BookComboBoxItem();
-                    bookItem.Content = Library.myLibrary[a].Name;
+                    bookItem.BindedBook = Library.myLibrary[a];
+                    bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
                 }
             }
@@ -172,7 +173,7 @@ namespace reader
                
                     foreach(BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
                         {
-                            if(bookItem1.Content == item.Name)
+                            if(bookItem1.BindedBook.Name == item.Name)
                             {
                                 IsListed = true;
                             }
@@ -181,7 +182,8 @@ namespace reader
                     if (IsListed == false)
                     {
                         bookItem = new();
-                        bookItem.Content = item.Name;
+                        bookItem.BindedBook = item;
+                        bookItem.Content = bookItem.BindedBook.Name;
                         LibraryBooksComboBox.Items.Add(bookItem);
                     }
                 }
