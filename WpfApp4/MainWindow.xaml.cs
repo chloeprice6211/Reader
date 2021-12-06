@@ -79,11 +79,11 @@ namespace reader
                 themeImage.Visibility = Visibility.Visible;
                 fontImage.Visibility = Visibility.Visible;
                 UpperMenu.Visibility = Visibility.Visible;
-                mainFlowDoc.Height -= 100;
+                mainFlowDoc.Height -= 125;
             }
             else
             {
-                mainFlowDoc.Height += 100;
+                mainFlowDoc.Height += 125;
                 menuGrid.Visibility = Visibility.Collapsed;
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
                 UpperMenu.Visibility = Visibility.Collapsed;
@@ -220,8 +220,8 @@ namespace reader
 
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
-            menuGrid.Visibility = Visibility.Collapsed;
-            mainFlowDoc.Height += 100;
+            HideControlElements();
+            //mainFlowDoc.Height += 100;
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
             
