@@ -9,7 +9,7 @@ namespace reader
 {
     class BookComboBoxItem:ComboBoxItem
     {
-        Book bindedBook = new Book();
+        Book bindedBook;
 
         public Book BindedBook
         {

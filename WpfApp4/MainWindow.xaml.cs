@@ -164,6 +164,9 @@ namespace reader
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
+                  
+
+                   
                 }
             }
             else
@@ -244,6 +247,19 @@ namespace reader
               Console.WriteLine(e.Message);
                }
             
+        }
+
+        private void BookChanging(object sender, EventArgs e)
+        {
+            Book toSet;
+            //BookComboBoxItem selectedBook = sender as BookComboBoxItem;
+            toSet = ((BookComboBoxItem)((ComboBox)sender).Items[((ComboBox)sender).SelectedIndex]).BindedBook;
+
+            SetContent(toSet);
+            
+            //MessageBox.Show(selectedBook.BindedBook.Name);
+
+            //SetContent(selectedBook.BindedBook);
         }
     }
 }

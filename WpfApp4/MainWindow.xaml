@@ -44,7 +44,7 @@
 
             </Grid>
 
-            <ComboBox Name="LibraryBooksComboBox" Grid.Column="1"></ComboBox>
+            <ComboBox Name="LibraryBooksComboBox" Grid.Column="1" DropDownClosed="BookChanging"></ComboBox>
    
             <Button Grid.Column="2" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
                 ⋮
