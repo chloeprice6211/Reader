@@ -115,20 +115,16 @@ namespace reader
         }
         private void FontClick(object sender, RoutedEventArgs e)
         {
-            FlowDocumentReaderViewingMode viewingMode;
-            Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
-            viewingMode = mainFlowDoc.ViewingMode;
-
-            FontDialogWindow newWindow = new FontDialogWindow(my,viewingMode);
-            TextProperties newStyle;
-
-            newWindow.ShowDialog();
-           newStyle = new TextProperties(newWindow.exampleText);
-            newStyle.SetParagraphStyle(my);
-            mainFlowDoc.ViewingMode = newWindow.ViewMode;
+            FontWindowShow();
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
+        {
+
+
+            ThemeChange();
+        }
+        private void ThemeChange()
         {
             if (isDark == false)
             {
@@ -155,10 +151,8 @@ namespace reader
 
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
-                
+
             }
-
-
 
         }
         private void MenuButtonHoverEnter(object sender, MouseEventArgs e)
@@ -240,24 +234,44 @@ namespace reader
 
             }
         }
-        private void OnLIbraryButtonClick(object sender, RoutedEventArgs e)
+        private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            HomeWindowShow();   
          }
+        private void HomeWindowShow()
+        {
+        }
 
+        private void FontWindowShow()
+        {
+            FlowDocumentReaderViewingMode viewingMode;
+            Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
+            viewingMode = mainFlowDoc.ViewingMode;
+
+            FontDialogWindow newWindow = new FontDialogWindow(my, viewingMode);
+            TextProperties newStyle;
+
+            newWindow.ShowDialog();
+            newStyle = new TextProperties(newWindow.exampleText);
+            newStyle.SetParagraphStyle(my);
+            mainFlowDoc.ViewingMode = newWindow.ViewMode;
+        }
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
             HideControlElements();
+            ShopWindowShow();
+        }
+        private void ShopWindowShow()
+        {
             //mainFlowDoc.Height += 100;
             ShopWindow shopwin = new ShopWindow();
             shopwin.ShowDialog();
-            
+
             if (shopwin.BookToRead != null)
             {
                 SetContent(shopwin.BookToRead);
             }
             AddLibraryBooksToComboBox();
-            
         }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -313,6 +327,19 @@ namespace reader
             else
             {
                 mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.Page;
+            }
+        }
+
+        private void MainWindowKeyDown(object sender, KeyEventArgs e)
+        {
+            
+            switch(e.Key)
+            {
+                case Key.F:FontWindowShow(); break;
+                case Key.Enter: HideControlElements(); break;
+                case Key.S: ShopWindowShow();  break;
+                case Key.Space: HomeWindowShow(); break;
+                case Key.T: ThemeChange(); break;
             }
         }
     }
