@@ -147,13 +147,14 @@
 
         <Grid 
             Height="125"
-            Visibility="Collapsed" 
+            Visibility="Visible" 
             x:Name="menuGrid" 
             Style="{StaticResource 3DotsStackPanel}" 
-            Margin="0,0,10,0" 
+            Margin="0,0,0,0" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -161,7 +162,7 @@
             <Button 
                 Style="{StaticResource menuIconButtons}" 
                 HorizontalAlignment="Left" 
-                Margin="15,0,10,0" Width="100" Height="100">
+                Margin="0,0,5,0" Width="100" Height="100">
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
@@ -320,6 +321,59 @@
                 <Image RenderOptions.BitmapScalingMode="HighQuality" 
                         Name="ProgressImage" Source="/mainMenuButtons/lightTheme/progress.png"/>
                 
+            </Button>
+
+            <Button Grid.Column="3" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
+
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Name="SettingsImage" Source="/mainMenuButtons/lightTheme/settings.png"/>
+
             </Button>
 
         </Grid>
