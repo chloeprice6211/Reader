@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="books\fortest\**" />
+    <EmbeddedResource Remove="books\fortest\**" />
+    <None Remove="books\fortest\**" />
+    <Page Remove="books\fortest\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="bookCovers\c++.png" />
     <None Remove="bookCovers\harry.png" />
     <None Remove="bookCovers\journey.png" />
@@ -87,7 +94,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="books\fortest\" />
     <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>

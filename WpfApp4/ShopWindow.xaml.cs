@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Windows.Media.Animation;
 
 namespace reader
 {
@@ -154,7 +155,7 @@ namespace reader
                 buyButton.Background = Brushes.White;
                 buyButton.FontWeight = FontWeights.Bold;
 
-
+                buyButton.MouseEnter += new MouseEventHandler(MouseOnBuyButton);
                 buyButton.Click += new RoutedEventHandler(OnBuyBookButtonClick);
                 #endregion
 
@@ -250,6 +251,17 @@ namespace reader
             StoreItemSearchBox.Text = "";
             searching();
             SearchBoxUnfocus();
+        }
+        private void MouseOnBuyButton(object sender, MouseEventArgs e)
+        {
+            //Button thisButton = (Button)sender;
+           // DoubleAnimation buttonHoverAnimation = new(50, 60,TimeSpan.FromSeconds(0.1d));
+            //ColorAnimation buttonHoverColorAnimation = new(Colors.White,Colors.Black, TimeSpan.FromSeconds(0.1d));
+
+
+            //thisButton.Background = new SolidColorBrush(Colors.Transparent);
+            //thisButton.Background.BeginAnimation(SolidColorBrush.ColorProperty, buttonHoverColorAnimation);
+            //thisButton.BeginAnimation(Button.HeightProperty, buttonHoverAnimation);
         }
         private void searching()
         {
