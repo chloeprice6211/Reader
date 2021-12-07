@@ -53,7 +53,7 @@
 
         <Grid 
             Height="125"
-            Visibility="Visible" 
+            Visibility="Collapsed" 
             x:Name="menuGrid" 
             Style="{StaticResource 3DotsStackPanel}" 
             Margin="0,0,10,0" 
@@ -140,14 +140,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    From="Transparent"
-                                    To="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                                
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -169,14 +162,7 @@
                                     >
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    To="Transparent"
-                                    From="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                             
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -207,15 +193,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    From="Transparent"
-                                    To="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
-                            </Storyboard>
+                                </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                     <EventTrigger RoutedEvent="MouseLeave">
@@ -236,14 +214,7 @@
                                     >
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    To="Transparent"
-                                    From="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                              
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
