@@ -19,6 +19,12 @@
     <None Remove="images\home.png" />
     <None Remove="images\progress.png" />
     <None Remove="images\store.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeHome.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeProgress.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeStore.png" />
+    <None Remove="mainMenuButtons\lightTheme\home.png" />
+    <None Remove="mainMenuButtons\lightTheme\progress.png" />
+    <None Remove="mainMenuButtons\lightTheme\store.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -62,6 +68,12 @@
     <Resource Include="images\home.png" />
     <Resource Include="images\progress.png" />
     <Resource Include="images\store.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeHome.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeProgress.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeStore.png" />
+    <Resource Include="mainMenuButtons\lightTheme\home.png" />
+    <Resource Include="mainMenuButtons\lightTheme\progress.png" />
+    <Resource Include="mainMenuButtons\lightTheme\store.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
