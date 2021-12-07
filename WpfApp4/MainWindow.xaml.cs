@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 using System.IO;
 using Microsoft.Win32;
 
@@ -24,7 +25,8 @@ namespace reader
 
     public partial class MainWindow : Window
     {   string text;
-       
+
+        static bool isHidden = true;
         static bool isDark = false;
 
         public MainWindow()
@@ -34,7 +36,7 @@ namespace reader
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
-            MaxWidth = 1200;
+            
             #endregion
 
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
@@ -43,6 +45,10 @@ namespace reader
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
+            mainFlowDoc.IsTwoPageViewEnabled = true;
+            mainFlowDoc.MaxWidth = 1400;
+            mainFlowDoc.Height = 900;
+            mainFlowDoc.HorizontalAlignment = HorizontalAlignment.Center;
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
             
@@ -71,26 +77,40 @@ namespace reader
         }
         private void HideControlElements()
         {
-            if (menuGrid.Visibility == Visibility.Collapsed)
+
+            if (isHidden == true)
             {
                 menuGrid.Visibility = Visibility.Visible;
                 LibraryBooksComboBox.Visibility = Visibility.Visible;
-                CurrentBookName.Visibility = Visibility.Collapsed;
-                themeImage.Visibility = Visibility.Visible;
-                fontImage.Visibility = Visibility.Visible;
+               CurrentBookName.Visibility = Visibility.Collapsed;
+               themeImage.Visibility = Visibility.Visible;
+               fontImage.Visibility = Visibility.Visible;
                 UpperMenu.Visibility = Visibility.Visible;
                 mainFlowDoc.Height -= 125;
+
+                DoubleAnimation navMenuAnimation = new(0, 70, TimeSpan.FromSeconds(0.5d));
+                DoubleAnimation buttMenuAnimation = new(0, 125, TimeSpan.FromSeconds(0.5d));
+                UpperNavigationMenu.BeginAnimation(HeightProperty, navMenuAnimation);
+                menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
+
+                isHidden = false;
+                return;
             }
             else
             {
                 mainFlowDoc.Height += 125;
-                menuGrid.Visibility = Visibility.Collapsed;
+                
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
                 UpperMenu.Visibility = Visibility.Collapsed;
                 themeImage.Visibility = Visibility.Hidden;
                 fontImage.Visibility = Visibility.Hidden;
                 CurrentBookName.Visibility = Visibility.Visible;
 
+                DoubleAnimation buttMenuAnimation = new(125, 0, TimeSpan.FromSeconds(0.5d));
+                
+                menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
+
+                isHidden = true;
             }
         }
         private void FontClick(object sender, RoutedEventArgs e)
@@ -135,6 +155,7 @@ namespace reader
 
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
+                
             }
 
 
@@ -279,6 +300,20 @@ namespace reader
 
             HideControlElements();
           
+        }
+
+        private void MainWindowSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Window thisWindow = (Window)sender;
+
+            if(thisWindow.ActualWidth > 700)
+            {
+                mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.TwoPage;
+            }
+            else
+            {
+                mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.Page;
+            }
         }
     }
 }

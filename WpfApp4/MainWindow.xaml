@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500">
+        Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500" SizeChanged="MainWindowSizeChanged" ResizeMode="CanResizeWithGrip">
     <StackPanel>
         <Menu Height="25" VerticalAlignment="Top" Name="UpperMenu" Visibility="Collapsed">
             <MenuItem Header="File">
@@ -17,7 +17,7 @@
             </MenuItem>
 
         </Menu>
-        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10" Height="70">
+        <Grid Name="UpperNavigationMenu" HorizontalAlignment="Stretch" Margin="0,0,0,10" Height="70">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -29,7 +29,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" Cursor="Hand">
+                <Button  Name="FontButton" 
+                         Style="{StaticResource CustomizationKeys}" 
+                         Click="FontClick" Height="22" Width="25" Cursor="Hand">
 
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="MouseEnter">
