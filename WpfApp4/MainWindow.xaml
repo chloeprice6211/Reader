@@ -17,7 +17,7 @@
             </MenuItem>
 
         </Menu>
-        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10">
+        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10" Height="70">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -31,12 +31,104 @@
 
                 <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" Cursor="Hand">
 
-                    <Image Visibility="Hidden" Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="22"
+                                    To="28"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="24"
+                                    To="30"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="30"
+                                    To="24"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="28"
+                                    To="22"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Visibility="Hidden" Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
 
                 </Button>
                 <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
 
-                    <Image Visibility="Hidden" Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="22"
+                                    To="28"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="24"
+                                    To="30"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="30"
+                                    To="24"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="28"
+                                    To="22"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality"
+                        Visibility="Hidden" Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
 
                 </Button>
 
@@ -114,9 +206,10 @@
                         </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
-                
-             
-                <Image Source="/images/home.png"/>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality"
+                    Name="HomeImage"  Source="/mainMenuButtons/lightTheme/home.png"/>
                
             </Button>
 
@@ -140,14 +233,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    From="Transparent"
-                                    To="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                                
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -169,22 +255,16 @@
                                     >
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    To="Transparent"
-                                    From="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                             
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
 
-                <Button.Background>
-                    <ImageBrush ImageSource="/images/store.png"/>
-                </Button.Background>
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality"
+                        Name="StoreImage" Source="/mainMenuButtons/lightTheme/store.png"/>
+                
             </Button>
 
             <Button Grid.Column="2" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
@@ -207,15 +287,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    From="Transparent"
-                                    To="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
-                            </Storyboard>
+                                </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                     <EventTrigger RoutedEvent="MouseLeave">
@@ -236,22 +308,16 @@
                                     >
 
                                 </DoubleAnimation>
-                                <ColorAnimation
-                                    To="Transparent"
-                                    From="#dbdbdb"
-                                    Duration="0:0:0.25"
-                                    FillBehavior="HoldEnd"
-                                    Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" >
-
-                                </ColorAnimation>
+                              
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                 </Button.Triggers>
 
-                <Button.Background>
-                    <ImageBrush ImageSource="/images/progress.png"/>
-                </Button.Background>
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Name="ProgressImage" Source="/mainMenuButtons/lightTheme/progress.png"/>
+                
             </Button>
 
         </Grid>

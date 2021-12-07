@@ -116,6 +116,9 @@ namespace reader
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconLight.png", UriKind.RelativeOrAbsolute));
                 themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\lightThemeIcon.png", UriKind.Relative));
+                HomeImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\darkTheme\darkThemeHome.png", UriKind.Relative));
+                StoreImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\darkTheme\darkThemeStore.png", UriKind.Relative));
+                ProgressImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\darkTheme\darkThemeProgress.png", UriKind.Relative));
                 DotsButton.Foreground = Brushes.White;
                 isDark = true;
                 return;
@@ -126,7 +129,10 @@ namespace reader
                 Background = Brushes.White;
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
                 themeImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\darkThemeIcon.png", UriKind.Relative));
-            
+                HomeImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\lightTheme\home.png", UriKind.Relative));
+                StoreImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\lightTheme\store.png", UriKind.Relative));
+                ProgressImage.Source = new BitmapImage(new Uri(@"\mainMenuButtons\lightTheme\progress.png", UriKind.Relative));
+
                 DotsButton.Foreground = Brushes.Black;
                 isDark = false;
             }
