@@ -232,7 +232,13 @@ namespace reader
             AddLibraryBooksToComboBox();
             
         }
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void OnProgresButtonClick(object sender, RoutedEventArgs e)
+        {
+            HideControlElements();
+            Achievement ach = new Achievement();
+            ach.ShowDialog();
+        }
+            private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog sf =new() ;
             sf.ShowDialog();

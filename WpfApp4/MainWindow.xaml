@@ -187,7 +187,7 @@
                 </Button.Background>
             </Button>
 
-            <Button Grid.Column="2" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
+            <Button Grid.Column="2" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnProgresButtonClick">
 
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">
