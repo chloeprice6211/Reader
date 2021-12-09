@@ -147,7 +147,7 @@
 
         <Grid 
             Height="125"
-            Visibility="Visible" 
+            Visibility="Collapsed" 
             x:Name="menuGrid" 
             Style="{StaticResource 3DotsStackPanel}" 
             Margin="0,0,0,0" 

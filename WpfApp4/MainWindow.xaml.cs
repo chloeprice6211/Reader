@@ -36,6 +36,7 @@ namespace reader
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
+            WindowState = WindowState.Maximized;
             
             #endregion
 
@@ -45,6 +46,7 @@ namespace reader
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
+            
             mainFlowDoc.IsTwoPageViewEnabled = true;
             mainFlowDoc.MaxWidth = 1400;
             mainFlowDoc.Height = 900;
