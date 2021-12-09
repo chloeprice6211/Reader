@@ -319,6 +319,7 @@ namespace reader
         {
             if(theme == "dark")
             {
+                
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
                  panelColorCode = "#2e2e2e";
                  labelColorCode = "#ffffff";
