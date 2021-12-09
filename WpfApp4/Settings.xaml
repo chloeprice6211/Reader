@@ -1,0 +1,50 @@
+﻿<Window x:Class="reader.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:reader"
+        mc:Ignorable="d"
+        Title="Settings" Height="300" Width="500">
+    <StackPanel>
+        <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
+        <Separator/>
+        <Grid HorizontalAlignment="Center" Width="371">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Style="{StaticResource shortcutsNames}">Theme</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="1">Store</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="2">Fullscreen</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="3">Hide UI</TextBlock>
+
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2">Progress</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2" Grid.Row="1">Home</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2" Grid.Row="2">Settings</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2" Grid.Row="3">Font</TextBlock>
+
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1">T</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="3">SPACE</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="1">S</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="2">F11</TextBlock>
+
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3">P</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="1">H</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="2">E</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="3">F</TextBlock>
+            
+         
+        </Grid>
+    </StackPanel>
+</Window>
