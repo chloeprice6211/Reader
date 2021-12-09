@@ -22,15 +22,21 @@ namespace reader
     public partial class ShopWindow : Window
     {
         Book bookToRead;
-        public ShopWindow()
+        string panelColorCode;
+        string labelColorCode;
+        public ShopWindow(string theme)
         {
             InitializeComponent();
             Title = "Store";
 
             StreamReader reader = new(@"../../../userData/balance.txt");
             currentBalance.Content = reader.ReadLine();
+
+            ThemeChange(theme);
             ShopItemsInitialization();
             ItemPurchaseAvailability();
+            
+            WindowState = WindowState.Maximized;
         }
 
         private void OnAddBalanceButtonClick(object sender, RoutedEventArgs e)
@@ -91,7 +97,7 @@ namespace reader
                 #region gridProperties
                 myGrid.Margin = new Thickness(35, 20, 0, 20);
                 var converter = new System.Windows.Media.BrushConverter();
-                var brush = (Brush)converter.ConvertFromString("#F1F1F1");
+                var brush = (Brush)converter.ConvertFromString(panelColorCode);
 
                 myGrid.Background = (Brush)brush;
                 myGrid.Background.Opacity = 0.5;
@@ -134,12 +140,13 @@ namespace reader
                 bookName.FontFamily = new FontFamily("Calibri");
                 bookName.FontSize = 30;
                 bookName.Margin = new Thickness(4, 4, 0, 0);
+                bookName.Foreground = (Brush)new BrushConverter().ConvertFrom(labelColorCode);
                 #endregion
                 #region listedProperties
                 listed.FontFamily = new FontFamily("Calibri");
                 listed.FontSize = 20;
                 listed.Margin = new Thickness(4, 0, 0, 0);
-                listed.Foreground = (Brush)new BrushConverter().ConvertFrom("#02D55E");
+                listed.Foreground = (Brush)new BrushConverter().ConvertFrom("#169400");
                 listed.Visibility = Visibility.Visible;
                 if (!exist) listed.Visibility=Visibility.Hidden;
 
@@ -156,7 +163,7 @@ namespace reader
                 buyButton.Height = 50;
                 buyButton.FontFamily = new FontFamily("Calibri");
                 buyButton.FontSize = 20;
-                buyButton.Background = Brushes.White;
+                buyButton.Foreground = (Brush)new BrushConverter().ConvertFrom(labelColorCode);
                 buyButton.FontWeight = FontWeights.Bold;
 
                 buyButton.MouseEnter += new MouseEventHandler(MouseOnBuyButton);
@@ -218,7 +225,7 @@ namespace reader
         private void SearchBoxFocused(object sender, RoutedEventArgs e)
         {
             ((TextBox)sender).Text = "";
-            ((TextBox)sender).Foreground = Brushes.Black;
+            ((TextBox)sender).Foreground = (Brush)new BrushConverter().ConvertFrom(labelColorCode);
         }
 
         private void TextBoxNotFocused(object sender, RoutedEventArgs e)
@@ -240,7 +247,7 @@ namespace reader
 
                 if (purchaseButton.Content != "Read" && value <= Convert.ToInt32(currentBalance.Content.ToString()))
                 {
-                    purchaseButton.Foreground = Brushes.Black;
+                    purchaseButton.Foreground = (Brush)new BrushConverter().ConvertFrom(labelColorCode);
                 }
                 else if(purchaseButton.Content != "Read" && value > Convert.ToInt32(currentBalance.Content.ToString()))
                 {
@@ -308,6 +315,26 @@ namespace reader
             StoreItemSearchBox.Text = "Search for book...";
             StoreItemSearchBox.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
         }
+        private void ThemeChange(string theme)
+        {
+            if(theme == "dark")
+            {
+                Background = (Brush)new BrushConverter().ConvertFrom("#171717");
+                 panelColorCode = "#2e2e2e";
+                 labelColorCode = "#ffffff";
+                mainLabel.Foreground = Brushes.White;
+                addBalanceButton.Foreground = Brushes.White;
+            }
+            else if(theme == "light")
+            {
+                Background = Brushes.White;
+                panelColorCode = "#e6e6e6";
+                labelColorCode = "#000000";
+                mainLabel.Foreground = Brushes.Black;
+                addBalanceButton.Foreground = Brushes.Black;
+            }
+        }
+        
     }
    
 }

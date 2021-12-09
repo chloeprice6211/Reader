@@ -147,7 +147,7 @@
 
         <Grid 
             Height="125"
-            Visibility="Visible" 
+            Visibility="Collapsed" 
             x:Name="menuGrid" 
             Style="{StaticResource 3DotsStackPanel}" 
             Margin="0,0,0,0" 
@@ -323,7 +323,7 @@
                 
             </Button>
 
-            <Button Grid.Column="3" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
+            <Button Grid.Column="3" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnSettingsClick">
 
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">

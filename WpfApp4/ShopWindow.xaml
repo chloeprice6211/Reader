@@ -15,7 +15,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
+                <Label Name="mainLabel"  Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
                     <TextBox 
                         Width="150"
@@ -31,6 +31,7 @@
                     GotFocus="SearchBoxFocused"
                     Foreground="#FFCACACA"
                     Height="35"
+                        Background="Transparent"
                     
                     LostFocus="TextBoxNotFocused" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom">Seach for book...</TextBox>
                     <Button  Visibility="Hidden" Name="eraseButton" Background="Transparent" BorderThickness="0" Click="OnEraseButtonClick">
@@ -42,7 +43,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
                     <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
                     <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
-                    <Button Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
+                    <Button  Name="addBalanceButton" Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
                 </StackPanel>
             </Grid>
 
