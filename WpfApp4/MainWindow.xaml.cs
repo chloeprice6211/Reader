@@ -28,6 +28,7 @@ namespace reader
 
         static bool isHidden = true;
         static bool isDark = false;
+        string currentTheme = "light";
 
         public MainWindow()
         {
@@ -130,6 +131,7 @@ namespace reader
         {
             if (isDark == false)
             {
+                currentTheme = "dark";
                 mainFlowDoc.Foreground = Brushes.White;
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconLight.png", UriKind.RelativeOrAbsolute));
@@ -144,6 +146,7 @@ namespace reader
             }
             else
             {
+                currentTheme = "light";
                 mainFlowDoc.Foreground = Brushes.Black;
                 Background = Brushes.White;
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
@@ -268,7 +271,7 @@ namespace reader
         private void ShopWindowShow()
         {
             //mainFlowDoc.Height += 100;
-            ShopWindow shopwin = new ShopWindow();
+            ShopWindow shopwin = new ShopWindow(currentTheme);
             shopwin.ShowDialog();
 
             if (shopwin.BookToRead != null)
