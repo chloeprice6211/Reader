@@ -261,6 +261,7 @@ namespace reader
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(my);
+            HideControlElements();
             mainFlowDoc.ViewingMode = newWindow.ViewMode;
         }
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
@@ -369,11 +370,14 @@ namespace reader
         }
         private void Fullscreen()
         {
-            if (WindowState == WindowState.Maximized)
+            if (IsFocused == true)
             {
-                WindowState = WindowState.Normal;
+                if (WindowState == WindowState.Maximized)
+                {
+                    WindowState = WindowState.Normal;
+                }
+                else WindowState = WindowState.Maximized;
             }
-            else WindowState = WindowState.Maximized;
         }
     }
 }
