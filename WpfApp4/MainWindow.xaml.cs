@@ -349,11 +349,31 @@ namespace reader
             switch(e.Key)
             {
                 case Key.F:FontWindowShow(); break;
-                case Key.Enter: HideControlElements(); break;
+                case Key.Space: HideControlElements(); break;
                 case Key.S: ShopWindowShow();  break;
-                case Key.Space: HomeWindowShow(); break;
+                case Key.H: HomeWindowShow(); break;
                 case Key.T: ThemeChange(); break;
+                case Key.E: SettingsShow(); break;
+                case Key.F11: Fullscreen(); break;
             }
+        }
+
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            SettingsShow();
+        }
+        private void SettingsShow()
+        {
+            Settings settWindow = new Settings();
+            settWindow.Show();
+        }
+        private void Fullscreen()
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else WindowState = WindowState.Maximized;
         }
     }
 }
