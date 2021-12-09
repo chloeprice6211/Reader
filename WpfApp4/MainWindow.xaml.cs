@@ -52,6 +52,7 @@ namespace reader
             mainFlowDoc.MaxWidth = 1400;
             mainFlowDoc.Height = 900;
             mainFlowDoc.HorizontalAlignment = HorizontalAlignment.Center;
+            
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
             
@@ -247,8 +248,9 @@ namespace reader
          }
         private void HomeWindowShow()
         {
+            
         }
-
+       
         private void FontWindowShow()
         {
             FlowDocumentReaderViewingMode viewingMode;
