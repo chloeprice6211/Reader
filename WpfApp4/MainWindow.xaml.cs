@@ -90,10 +90,10 @@ namespace reader
                themeImage.Visibility = Visibility.Visible;
                fontImage.Visibility = Visibility.Visible;
                 UpperMenu.Visibility = Visibility.Visible;
-                mainFlowDoc.Height -= 125;
+                mainFlowDoc.Height -= 135;
 
                 DoubleAnimation navMenuAnimation = new(0, 70, TimeSpan.FromSeconds(0.5d));
-                DoubleAnimation buttMenuAnimation = new(0, 125, TimeSpan.FromSeconds(0.5d));
+                DoubleAnimation buttMenuAnimation = new(0, 135, TimeSpan.FromSeconds(0.5d));
                 UpperNavigationMenu.BeginAnimation(HeightProperty, navMenuAnimation);
                 menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
 
@@ -102,7 +102,7 @@ namespace reader
             }
             else
             {
-                mainFlowDoc.Height += 125;
+                mainFlowDoc.Height += 135;
                 
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
                 UpperMenu.Visibility = Visibility.Collapsed;
@@ -110,7 +110,7 @@ namespace reader
                 fontImage.Visibility = Visibility.Hidden;
                 CurrentBookName.Visibility = Visibility.Visible;
 
-                DoubleAnimation buttMenuAnimation = new(125, 0, TimeSpan.FromSeconds(0.5d));
+                DoubleAnimation buttMenuAnimation = new(135, 0, TimeSpan.FromSeconds(0.5d));
                 
                 menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
 
@@ -352,7 +352,7 @@ namespace reader
             switch(e.Key)
             {
                 case Key.F:FontWindowShow(); break;
-                case Key.Space: HideControlElements(); break;
+                case Key.G: HideControlElements(); break;
                 case Key.S: ShopWindowShow();  break;
                 case Key.H: HomeWindowShow(); break;
                 case Key.T: ThemeChange(); break;
@@ -372,14 +372,14 @@ namespace reader
         }
         private void Fullscreen()
         {
-            if (IsFocused == true)
-            {
+            
+            
                 if (WindowState == WindowState.Maximized)
                 {
                     WindowState = WindowState.Normal;
                 }
                 else WindowState = WindowState.Maximized;
             }
-        }
+        
     }
 }
