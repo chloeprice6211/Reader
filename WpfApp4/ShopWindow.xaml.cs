@@ -36,8 +36,12 @@ namespace reader
         private void OnAddBalanceButtonClick(object sender, RoutedEventArgs e)
         {
             int currentBalanceInt = Convert.ToInt32(currentBalance.Content) + 25;
-
+               StreamWriter Sw = new(@"../../../userData/balance.txt");
             currentBalance.Content = currentBalanceInt.ToString();
+      
+       
+            Sw.WriteLine(currentBalanceInt.ToString());
+            Sw.Close();
             
             ItemPurchaseAvailability();
         }
