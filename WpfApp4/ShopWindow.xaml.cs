@@ -243,7 +243,7 @@ namespace reader
 
                 if (purchaseButton.Content != "Read" && value <= Convert.ToInt32(currentBalance.Content.ToString()))
                 {
-                    purchaseButton.Foreground = Brushes.Black;
+                    purchaseButton.Foreground = (Brush)new BrushConverter().ConvertFrom(labelColorCode);
                 }
                 else if(purchaseButton.Content != "Read" && value > Convert.ToInt32(currentBalance.Content.ToString()))
                 {
