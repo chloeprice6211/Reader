@@ -96,10 +96,11 @@ namespace reader
             {
                 menuGrid.Visibility = Visibility.Visible;
                 LibraryBooksComboBox.Visibility = Visibility.Visible;
-                CurrentBookName.Visibility = Visibility.Collapsed;
-                themeImage.Visibility = Visibility.Visible;
-                fontImage.Visibility = Visibility.Visible;
-                UpperMenu.Visibility = Visibility.Visible;
+               CurrentBookName.Visibility = Visibility.Collapsed;
+               themeImage.Visibility = Visibility.Visible;
+               fontImage.Visibility = Visibility.Visible;
+                //UpperMenu.Visibility = Visibility.Visible;
+
                 mainFlowDoc.Height -= 135;
 
                 DoubleAnimation navMenuAnimation = new(0, 70, TimeSpan.FromSeconds(0.5d));
@@ -115,7 +116,7 @@ namespace reader
                 mainFlowDoc.Height += 135;
 
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
-                UpperMenu.Visibility = Visibility.Collapsed;
+                //UpperMenu.Visibility = Visibility.Collapsed;
                 themeImage.Visibility = Visibility.Hidden;
                 fontImage.Visibility = Visibility.Hidden;
                 CurrentBookName.Visibility = Visibility.Visible;
@@ -355,7 +356,6 @@ namespace reader
                 mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.Page;
             }
         }
-
         private void MainWindowKeyDown(object sender, KeyEventArgs e)
         {
 

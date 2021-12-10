@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="Settings" Height="300" Width="500">
-    <StackPanel>
+        Title="Settings" Height="500" Width="600">
+    <StackPanel Margin="10,10,10,10">
+        <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Profile</Label>
+        <WrapPanel>
+
+            <StackPanel>
+                <Image Name="pfpPic" Source="/userData/profile/profilePicture.png" Height="100">
+                </Image>
+                <Button Click="OnChangePfpClick">Change</Button>
+            </StackPanel>
+            
+            <Grid Margin="40,0,0,0" Height="100" Name="profileDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+
+
+                <TextBlock>Name</TextBlock>
+                <TextBlock Margin="0,10,0,0" Grid.Row="2" >Email</TextBlock>
+                <TextBlock Margin="20,0,0,0" Grid.Row="0" Grid.Column="1">Phone Number</TextBlock>
+                <TextBlock Margin="20,10,0,0" Grid.Row="2" Grid.Column="1">Country</TextBlock>
+
+                <TextBox Style="{StaticResource settingsTextBox}" Name="nameTxtBox" Grid.Column="0" Grid.Row="1" PreviewKeyUp="NameChanged"></TextBox>
+                <TextBox Style="{StaticResource settingsTextBox}" Name="emailTxtBox" Grid.Row="3" Grid.Column="0" PreviewKeyUp="EmailChanged"></TextBox>
+                <TextBox Margin="20,0,0,0" Style="{StaticResource settingsTextBox}" Name="numberTxtBox" Grid.Row="1" Grid.Column="1" PreviewKeyUp="NumberChanged"></TextBox>
+                <TextBox Margin="20,0,0,0" Style="{StaticResource settingsTextBox}"  Name="countryTxtBox" Grid.Column="1" Grid.Row="3" PreviewKeyUp="CountryChanged"></TextBox>
+
+
+
+            </Grid>
+        </WrapPanel>
+        <Button 
+            Name="saveUserDataButton" 
+            IsEnabled="False"
+            Width="100"
+            Height="30"
+            Margin="0,20,0,0"
+            Background="Green"
+            Foreground="White" Click="OnSaveButtonClick"
+            >Save</Button>
         <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
         <Separator/>
         <Grid HorizontalAlignment="Center" Width="371">
@@ -43,8 +90,8 @@
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="1">H</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="2">E</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="3">F</TextBlock>
-            
-         
+
+
         </Grid>
     </StackPanel>
 </Window>
