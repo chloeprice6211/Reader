@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.IO;
 using Microsoft.Win32;
-
+using System.Windows.Threading;
 namespace reader
 {
     /// <summary>
@@ -24,11 +24,13 @@ namespace reader
     ///
 
     public partial class MainWindow : Window
-    {   string text;
+    { string text;
 
         static bool isHidden = true;
         static bool isDark = false;
         string currentTheme = "light";
+        DispatcherTimer timer;
+
 
         public MainWindow()
         {
@@ -38,7 +40,7 @@ namespace reader
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
             WindowState = WindowState.Maximized;
-            
+
             #endregion
 
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
@@ -47,16 +49,24 @@ namespace reader
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
-            
+
             mainFlowDoc.IsTwoPageViewEnabled = true;
             mainFlowDoc.MaxWidth = 1400;
             mainFlowDoc.Height = 900;
             mainFlowDoc.HorizontalAlignment = HorizontalAlignment.Center;
-            
+
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
-            
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
             SetContent(test1);
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            proverkacountbook();
+
         }
 
         private void SetContent(Book item)
@@ -68,7 +78,7 @@ namespace reader
             Paragraph pg = new Paragraph(new Run(item.Content));
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
-            
+
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
@@ -86,9 +96,9 @@ namespace reader
             {
                 menuGrid.Visibility = Visibility.Visible;
                 LibraryBooksComboBox.Visibility = Visibility.Visible;
-               CurrentBookName.Visibility = Visibility.Collapsed;
-               themeImage.Visibility = Visibility.Visible;
-               fontImage.Visibility = Visibility.Visible;
+                CurrentBookName.Visibility = Visibility.Collapsed;
+                themeImage.Visibility = Visibility.Visible;
+                fontImage.Visibility = Visibility.Visible;
                 UpperMenu.Visibility = Visibility.Visible;
                 mainFlowDoc.Height -= 135;
 
@@ -103,7 +113,7 @@ namespace reader
             else
             {
                 mainFlowDoc.Height += 135;
-                
+
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
                 UpperMenu.Visibility = Visibility.Collapsed;
                 themeImage.Visibility = Visibility.Hidden;
@@ -111,7 +121,7 @@ namespace reader
                 CurrentBookName.Visibility = Visibility.Visible;
 
                 DoubleAnimation buttMenuAnimation = new(135, 0, TimeSpan.FromSeconds(0.5d));
-                
+
                 menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
 
                 isHidden = true;
@@ -199,7 +209,7 @@ namespace reader
         private void AddLibraryBooksToComboBox()
         {
             BookComboBoxItem bookItem;
-            
+
             bool IsListed;
 
             if (LibraryBooksComboBox.Items.Count == 0)
@@ -212,9 +222,9 @@ namespace reader
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
-                  
 
-                   
+
+
                 }
             }
             else
@@ -222,15 +232,15 @@ namespace reader
                 foreach (Book item in Library.myLibrary)
                 {
                     IsListed = false;
-               
-                    foreach(BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
+
+                    foreach (BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
+                    {
+                        if (bookItem1.BindedBook.Name == item.Name)
                         {
-                            if(bookItem1.BindedBook.Name == item.Name)
-                            {
-                                IsListed = true;
-                            }
+                            IsListed = true;
                         }
-                    
+                    }
+
                     if (IsListed == false)
                     {
                         bookItem = new();
@@ -244,13 +254,13 @@ namespace reader
         }
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
-            HomeWindowShow();   
-         }
+            HomeWindowShow();
+        }
         private void HomeWindowShow()
         {
-            
+
         }
-       
+
         private void FontWindowShow()
         {
             FlowDocumentReaderViewingMode viewingMode;
@@ -289,37 +299,37 @@ namespace reader
             Achievement ach = new Achievement();
             ach.ShowDialog();
         }
-            private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog sf =new() ;
+            SaveFileDialog sf = new();
             sf.ShowDialog();
             Filesave(text);
             MessageBox.Show("a");
         }
         void Filesave(string textbuf)
         {
-             string writePath = @"C:book.txt";
-           
-        
+            string writePath = @"C:book.txt";
+
+
             try
             {
                 using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(textbuf);
                 }
- 
+
                 using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
                 {
                     sw.WriteLine("Дозапись");
                     sw.Write(4.5);
                 }
-               MessageBox.Show("Запись выполнена");
+                MessageBox.Show("Запись выполнена");
             }
             catch (Exception e)
-               {
-              Console.WriteLine(e.Message);
-               }
-            
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
         private void BookChanging(object sender, EventArgs e)
         {
@@ -329,14 +339,14 @@ namespace reader
             SetContent(toSet);
 
             HideControlElements();
-          
+
         }
 
         private void MainWindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             Window thisWindow = (Window)sender;
 
-            if(thisWindow.ActualWidth > 700)
+            if (thisWindow.ActualWidth > 700)
             {
                 mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.TwoPage;
             }
@@ -348,12 +358,12 @@ namespace reader
 
         private void MainWindowKeyDown(object sender, KeyEventArgs e)
         {
-            
-            switch(e.Key)
+
+            switch (e.Key)
             {
-                case Key.F:FontWindowShow(); break;
+                case Key.F: FontWindowShow(); break;
                 case Key.G: HideControlElements(); break;
-                case Key.S: ShopWindowShow();  break;
+                case Key.S: ShopWindowShow(); break;
                 case Key.H: HomeWindowShow(); break;
                 case Key.T: ThemeChange(); break;
                 case Key.E: SettingsShow(); break;
@@ -372,14 +382,34 @@ namespace reader
         }
         private void Fullscreen()
         {
-            
-            
-                if (WindowState == WindowState.Maximized)
-                {
-                    WindowState = WindowState.Normal;
-                }
-                else WindowState = WindowState.Maximized;
+
+
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
             }
-        
-    }
+            else WindowState = WindowState.Maximized;
+        }
+
+        private void proverkacountbook()
+        {
+            if (mainFlowDoc.PageNumber==mainFlowDoc.PageCount)
+            {
+                StreamReader sr = new(@"..\..\..\userData\countbook.txt");
+               
+                int a = System.Convert.ToInt32(sr.Read());
+                a++;
+               
+                sr.Close();
+               StreamWriter sw = new(@"..\..\..\userData\countbook.txt");
+                  sw.WriteLine(System.Convert.ToString(a));
+                   sw.Close();
+
+
+            }
+        }
+
+    } 
+
 }
+

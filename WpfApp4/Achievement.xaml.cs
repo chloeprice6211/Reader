@@ -14,7 +14,7 @@ namespace reader
         delegate void moneyf();
 
         event moneyf dmoney;
-
+        DispatcherTimer timer;
         int countbook;
         int money;
         int countbuy;
@@ -97,29 +97,42 @@ namespace reader
             SR = new(@"../../../userData/visite.txt");
             visite = System.Convert.ToInt32(SR.Read());
             kesh1.Content = money;
-            DispatcherTimer timer = new DispatcherTimer();
+              timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
-            moneyf dmoney = proverka;
+            moneyf dmoney = proverka1;
           
 
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            proverka();
+            proverka1();
 
         }
-       void proverka()
+       void proverka1()
         {
             if (System.Convert.ToInt64(kesh1.Content) >= System.Convert.ToInt64(kesh2.Content))
             {
-                MessageBox.Show("da");
+                kesh1.Content = 250;
 
             }
 
         }
-            
+        void proverka2()
+        {
+            if (System.Convert.ToInt64(start1.Content) >= System.Convert.ToInt64(start2.Content))
+            {
+                start2.Content = 3;
+
+
+            }
+
+        }
+        ~Achievement()
+        {
+            timer.Stop();
+        }
 
 
     }

@@ -6,7 +6,23 @@
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
         Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500" SizeChanged="MainWindowSizeChanged" ResizeMode="CanResizeWithGrip" KeyDown="MainWindowKeyDown">
+    <Window.Resources>
+        <Style x:Key="FancyButtonStyle">
+            <Setter Property="Button.FontSize" Value="22" />
+            <Setter Property="Button.Foreground" Value="White" />
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="LightCyan" />
+                        <GradientStop Offset="0.14" Color="Cyan" />
+                        <GradientStop Offset="0.7" Color="DarkCyan" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <StackPanel>
+        
         <Menu Height="25" VerticalAlignment="Top" Name="UpperMenu" Visibility="Collapsed">
             <MenuItem Header="File">
 
@@ -18,17 +34,20 @@
 
         </Menu>
         <Grid Name="UpperNavigationMenu" HorizontalAlignment="Stretch" Margin="0,0,0,10" Height="70">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                
                 <Button  Name="FontButton" 
                          Style="{StaticResource CustomizationKeys}" 
                          Click="FontClick" Height="22" Width="25" Cursor="Hand">
@@ -138,6 +157,7 @@
             </Grid>
 
             <ComboBox Visibility="Collapsed" Name="LibraryBooksComboBox" Grid.Column="1" DropDownClosed="BookChanging" VerticalAlignment="Center" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+            
             <Label FontSize="25" FontFamily="Calibri" Grid.Column="1" Visibility="Visible" Name="CurrentBookName" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA4A4A4">current book</Label>
             <Button Grid.Column="2" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
                 ⋮
@@ -182,7 +202,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                         
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -204,7 +224,7 @@
                                     >
 
                                 </DoubleAnimation>
-                                
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -213,7 +233,7 @@
 
                 <Image RenderOptions.BitmapScalingMode="HighQuality"
                     Name="HomeImage"  Source="/mainMenuButtons/lightTheme/home.png"/>
-               
+
             </Button>
 
             <Button Grid.Column="1" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
@@ -236,7 +256,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -258,7 +278,7 @@
                                     >
 
                                 </DoubleAnimation>
-                             
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -267,7 +287,7 @@
 
                 <Image RenderOptions.BitmapScalingMode="HighQuality"
                         Name="StoreImage" Source="/mainMenuButtons/lightTheme/store.png"/>
-                
+
             </Button>
 
             <Button Grid.Column="2" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnProgresButtonClick">
@@ -290,7 +310,7 @@
                                     Storyboard.TargetProperty="Width">
 
                                 </DoubleAnimation>
-                                </Storyboard>
+                            </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
                     <EventTrigger RoutedEvent="MouseLeave">
@@ -311,7 +331,7 @@
                                     >
 
                                 </DoubleAnimation>
-                              
+
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
@@ -320,7 +340,7 @@
 
                 <Image RenderOptions.BitmapScalingMode="HighQuality" 
                         Name="ProgressImage" Source="/mainMenuButtons/lightTheme/progress.png"/>
-                
+
             </Button>
 
             <Button Grid.Column="3" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnSettingsClick">
@@ -379,9 +399,10 @@
         </Grid>
 
 
-        <FlowDocumentReader x:Name="mainFlowDoc" Height="720">
+        <FlowDocumentReader x:Name="mainFlowDoc" Height="720" >
 
         </FlowDocumentReader>
+
 
 
     </StackPanel>
