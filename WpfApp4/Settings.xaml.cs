@@ -35,6 +35,50 @@ namespace reader
             numberTxtBox.Text = reader.ReadLine();
             countryTxtBox.Text = reader.ReadLine();
 
+            reader.Close();
+
+        }
+
+        private void NameChanged(object sender, KeyEventArgs e)
+        {
+            SaveUserDataButtonEnable();
+        }
+        private void NumberChanged(object sender, KeyEventArgs e)
+        {
+            SaveUserDataButtonEnable();
+        }
+
+        private void EmailChanged(object sender, KeyEventArgs e)
+        {
+            SaveUserDataButtonEnable();
+        }
+
+        private void CountryChanged(object sender, KeyEventArgs e)
+        {
+            SaveUserDataButtonEnable();
+        }
+        private void SaveUserDataButtonEnable()
+        {
+            saveUserDataButton.IsEnabled = true;
+        }
+
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            Button thisbutton = (Button)sender;
+            File.WriteAllText(userDataPath, String.Empty);
+            
+            StreamWriter writer = new StreamWriter(userDataPath);
+
+            
+
+            writer.WriteLine(emailTxtBox.Text);
+            writer.WriteLine(nameTxtBox.Text);
+            writer.WriteLine(numberTxtBox.Text);
+            writer.WriteLine(countryTxtBox.Text);
+
+            writer.Close();
+
+            thisbutton.IsEnabled = false;
         }
     }
 }
