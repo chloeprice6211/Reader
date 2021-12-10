@@ -137,7 +137,7 @@
 
             </Grid>
 
-            <ComboBox Visibility="Collapsed" Name="LibraryBooksComboBox" Grid.Column="1" DropDownClosed="BookChanging" VerticalAlignment="Center" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+            <ComboBox Width="200" Visibility="Collapsed" Name="LibraryBooksComboBox" Grid.Column="1" DropDownClosed="BookChanging" VerticalAlignment="Center" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
             <Label FontSize="25" FontFamily="Calibri" Grid.Column="1" Visibility="Visible" Name="CurrentBookName" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA4A4A4">current book</Label>
             <Button Grid.Column="2" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
                 ⋮
