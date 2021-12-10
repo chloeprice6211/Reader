@@ -47,6 +47,7 @@
     <None Remove="mainMenuIcons\upperMenuIcons\lightThemeIcon.png" />
     <None Remove="menuButtonsBG\libraryBG.png" />
     <None Remove="menuButtonsBG\shopBG.png" />
+    <None Remove="userData\profile\profilePicture.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,6 +106,7 @@
     <Resource Include="mainMenuIcons\upperMenuIcons\lightThemeIcon.png" />
     <Resource Include="menuButtonsBG\libraryBG.png" />
     <Resource Include="menuButtonsBG\shopBG.png" />
+    <Resource Include="userData\profile\profilePicture.png" />
   </ItemGroup>
 
   <ItemGroup>

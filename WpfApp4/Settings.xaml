@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="Settings" Height="300" Width="500">
-    <StackPanel>
+        Title="Settings" Height="500" Width="700">
+    <StackPanel Margin="10,10,10,10">
+        <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Profile</Label>
+        <WrapPanel>
+            <Ellipse Width="100" Height="100">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="userData/profile/profilePicture.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Grid Width="600" Margin="10,0,0,0" Height="65" Name="profileDataGrid" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock>Name</TextBlock>
+                <TextBlock Grid.Row="2">Email</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1">Phone Number</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1">Country</TextBlock>
+
+                <TextBox Style="{StaticResource settingsTextBox}" Name="nameTxtBox" Grid.Column="0" Grid.Row="1"></TextBox>
+                <TextBox Style="{StaticResource settingsTextBox}" Name="emailTxtBox" Grid.Row="3" Grid.Column="0"></TextBox>
+                <TextBox Style="{StaticResource settingsTextBox}" Name="numberTxtBox" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox Style="{StaticResource settingsTextBox}"  Name="countryTxtBox" Grid.Column="1" Grid.Row="3"></TextBox>
+                
+                
+
+            </Grid>
+        </WrapPanel>
         <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
         <Separator/>
         <Grid HorizontalAlignment="Center" Width="371">
@@ -43,8 +77,8 @@
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="1">H</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="2">E</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="3" Grid.Row="3">F</TextBlock>
-            
-         
+
+
         </Grid>
     </StackPanel>
 </Window>
