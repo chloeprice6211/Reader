@@ -124,7 +124,7 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Margin="10,0,10,3" Height="Auto" Width="Auto" Grid.Column="0" Grid.Row="1">
 
-                    <Image HorizontalAlignment="Left" Height="48" VerticalAlignment="Center" Width="49" Grid.Column="0" Grid.Row="1" Source="images/emerald.png" Margin="-1,0,0,0"/>
+                    <Image  HorizontalAlignment="Left" Height="48" VerticalAlignment="Center" Width="49" Grid.Column="0" Grid.Row="1" Source="images/emerald.png" Margin="-1,0,0,0" x:Name="gem"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Margin="10,0,10,5" Height="Auto" Width="Auto" Grid.Column="0" Grid.Row="2">
 
