@@ -11,6 +11,7 @@ namespace reader
     static class StoreLibrary
     {
         public static List<Book> BooksToSell = new List<Book>();
+        static string _storePath =@"../../../books/StoreLibraryBooks/";
         
         static public void AddBook(Book item)
         {
@@ -24,8 +25,16 @@ namespace reader
            for(int a = 0;a<allBooks.Length;a++)
             {
                 tempItem = new(allBooks[a]);
+                AddBook(tempItem);
             }
 
+        }
+        public static string StorePath
+        {
+            get
+            {
+                return _storePath;
+            }
         }
     }
 }

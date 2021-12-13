@@ -5,74 +5,406 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500">
+        Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500" SizeChanged="MainWindowSizeChanged" ResizeMode="CanResizeWithGrip" KeyDown="MainWindowKeyDown">
+    <Window.Resources>
+        <Style x:Key="FancyButtonStyle">
+            <Setter Property="Button.FontSize" Value="22" />
+            <Setter Property="Button.Foreground" Value="White" />
+            <Setter Property="Button.Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="LightCyan" />
+                        <GradientStop Offset="0.14" Color="Cyan" />
+                        <GradientStop Offset="0.7" Color="DarkCyan" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <StackPanel>
-        <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-        <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                 <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        
+        <Menu Height="25" VerticalAlignment="Top" Name="UpperMenu" Visibility="Collapsed">
+            <MenuItem Header="File">
 
-            <Button  Name="FontButton" Style="{StaticResource CustomizationKeys}" Click="FontClick" Height="22" Width="25" Cursor="Hand">
-                    
-                        <Image Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
-                    
-                </Button>
-            <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
-                    
-                        <Image Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
-                 
-            </Button>
+                <MenuItem Header="Save File" Click="MenuItem_Click"></MenuItem>
+                <Separator />
 
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+
+        </Menu>
+        <Grid Name="UpperNavigationMenu" HorizontalAlignment="Stretch" Margin="0,0,0,10" Height="70">
             
-        </Grid>
-        <Button Grid.Column="1" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="custoimizeGrid" Style="{StaticResource 3DotsStackPanel}" Margin="20,20,20,0" Width="112" HorizontalAlignment="Left">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                
+                <Button  Name="FontButton" 
+                         Style="{StaticResource CustomizationKeys}" 
+                         Click="FontClick" Height="22" Width="25" Cursor="Hand">
+
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="22"
+                                    To="28"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="24"
+                                    To="30"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="30"
+                                    To="24"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="28"
+                                    To="22"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Visibility="Hidden" Name="fontImage" Source="/mainMenuIcons/upperMenuIcons/fontCustomizationIconDark.png"/>
+
+                </Button>
+                <Button  Grid.Column="1" Name="ThemeButton" Style="{StaticResource CustomizationKeys}" Click="ThemeClick" Width="22" Height="25" Cursor="Hand">
+
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="22"
+                                    To="28"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="24"
+                                    To="30"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                    From="30"
+                                    To="24"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                    </DoubleAnimation>
+                                    <DoubleAnimation
+                                    From="28"
+                                    To="22"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                    </DoubleAnimation>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality"
+                        Visibility="Hidden" Name="themeImage" Source="/mainMenuIcons/upperMenuIcons/darkThemeIcon.png"/>
+
+                </Button>
+
+
+            </Grid>
+
+
+            <ComboBox Width="200" Visibility="Collapsed" Name="LibraryBooksComboBox" Grid.Column="1" DropDownClosed="BookChanging" VerticalAlignment="Center" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+
+            <Label FontSize="25" FontFamily="Calibri" Grid.Column="1" Visibility="Visible" Name="CurrentBookName" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA4A4A4">current book</Label>
+            <Button Grid.Column="2" Name="DotsButton" HorizontalContentAlignment="Center"  HorizontalAlignment="Right" Width="50" Height="50" Background="Transparent" BorderThickness="0" FontFamily="Calibri" FontSize="36" FontWeight="Bold"  Click="DotsClick" VerticalAlignment="Bottom">
                 ⋮
             </Button>
-            
+
         </Grid>
 
-        <Grid Visibility="Collapsed" x:Name="menuGrid" Style="{StaticResource 3DotsStackPanel}" Margin="0,0,10,0" HorizontalAlignment="Left">
+        <Grid 
+            
+            Visibility="Collapsed" 
+            x:Name="menuGrid" 
+            Style="{StaticResource 3DotsStackPanel}" 
+            Margin="0,0,0,0" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Style="{StaticResource menuIconButtons}" HorizontalAlignment="Left" Margin="15,0,10,0" Click="OnLIbraryButtonClick">
-                <Button.Background>
-                    <ImageBrush ImageSource="/menuButtonsBG/libraryBG.png"/>
-                </Button.Background>
-                <StackPanel Width="100"  Background="Transparent" MouseEnter="MenuButtonHoverEnter" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
-                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Library</Label>
-                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\booksIcon.png"></Image>
-                </StackPanel>
+            <Button 
+                Style="{StaticResource menuIconButtons}" 
+                HorizontalAlignment="Left" 
+                Margin="0,0,5,0" Width="100" Height="100">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    FillBehavior="HoldEnd"
+                                    Storyboard.TargetProperty="Height">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality"
+                    Name="HomeImage"  Source="/mainMenuButtons/lightTheme/home.png"/>
+
             </Button>
 
             <Button Grid.Column="1" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnShopButtonClick">
-                <Button.Background>
-                    <ImageBrush ImageSource="/menuButtonsBG/shopBG.png"/>
-                </Button.Background>
-                <StackPanel Width="100" MouseEnter="MenuButtonHoverEnter"  Background="Transparent" MouseLeave="MenuButtonHoverLeave" Height="100" Margin="0,10,0,-10">
-                    <Label Style="{StaticResource menuIconsLabelStyle}" HorizontalAlignment="Center">Shop</Label>
-                    <Image Style="{StaticResource menuIconStyle}" Source="\mainMenuIcons\cartIcon.png"></Image>
-                </StackPanel>
+
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality"
+                        Name="StoreImage" Source="/mainMenuButtons/lightTheme/store.png"/>
+
             </Button>
+
+            <Button Grid.Column="2" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnProgresButtonClick">
+
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Name="ProgressImage" Source="/mainMenuButtons/lightTheme/progress.png"/>
+
+            </Button>
+
+            <Button Grid.Column="3" Style="{StaticResource menuIconButtons}" Width="100" HorizontalAlignment="Left" Click="OnSettingsClick">
+
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="100"
+                                    To="125"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Width">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                    From="125"
+                                    To="100"
+                                    Duration="0:0:0.25"
+                                    Storyboard.TargetProperty="Height"
+                                    >
+
+                                </DoubleAnimation>
+
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+
+
+                <Image RenderOptions.BitmapScalingMode="HighQuality" 
+                        Name="SettingsImage" Source="/mainMenuButtons/lightTheme/settings.png"/>
+
+            </Button>
+
         </Grid>
 
-        <Button Name="TempButton" Visibility="Collapsed">asdasd</Button>
-    
-                <FlowDocumentReader x:Name="mainFlowDoc" Height="724">
-                <FlowDocument Style="{StaticResource normalParagraph}" >
-                    <Paragraph  Name="myParagraph" FontSize="24">
 
-                    </Paragraph>
-                </FlowDocument>
-            </FlowDocumentReader>
+        <FlowDocumentReader x:Name="mainFlowDoc" Height="720" >
+
+        </FlowDocumentReader>
+
+
 
     </StackPanel>
 </Window>

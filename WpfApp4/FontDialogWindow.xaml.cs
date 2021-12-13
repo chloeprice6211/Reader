@@ -19,16 +19,23 @@ namespace reader
     /// </summary>
     public partial class FontDialogWindow : Window
     {
-        public FontDialogWindow(Paragraph main)
+        FlowDocumentReaderViewingMode viewMode;
+        public FontDialogWindow(Paragraph main, FlowDocumentReaderViewingMode incomingViewMode)
         {
             Title = "Font customization";
             Uri FontDialogWindowIcon = new(@"..\..\..\icons\fontDialogWindowIcon.ico",UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(FontDialogWindowIcon);
-            
-
             InitializeComponent();
+            if (incomingViewMode == FlowDocumentReaderViewingMode.Page)
+            {
+                SetPageView();
+            }
+            else SetScrollView();
+
+            
             FontChanging(main.FontFamily);
             TextProperties newStyle = new TextProperties(main);
+           
             SetCurrentTextProperties(newStyle);
         }
         private void changingValue(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -58,7 +65,6 @@ namespace reader
             }
             else exampleText.FontStyle = FontStyles.Normal;
         }
-
         private void ApplyButtonClick(object sender, RoutedEventArgs e)
         {
             TextProperties newProperty = new TextProperties(exampleText);
@@ -101,6 +107,55 @@ namespace reader
                 case "Comic sans MS": FontComboBox.SelectedIndex = 3; break;
             }
 
+        }
+
+        private void OnPageModeClick(object sender, RoutedEventArgs e)
+        {
+            SetPageView();
+
+        }
+
+        private void OnScrollModeClick(object sender, RoutedEventArgs e)
+        {
+            SetScrollView();
+        }
+
+        private void SetScrollView()
+        {
+            Button thisbutton = ScrollModeButton;
+
+            thisbutton.BorderBrush = Brushes.Green;
+            thisbutton.FontWeight = FontWeights.Bold;
+            thisbutton.Foreground = Brushes.Black;
+
+            PageModeButton.BorderBrush = Brushes.Gray;
+            PageModeButton.Foreground = Brushes.Gray;
+
+            ViewMode = FlowDocumentReaderViewingMode.Scroll;
+        }
+        private void SetPageView()
+        {
+            Button thisbutton = PageModeButton;
+
+            thisbutton.BorderBrush = Brushes.Green;
+            thisbutton.FontWeight = FontWeights.Bold;
+            thisbutton.Foreground = Brushes.Black;
+
+            ScrollModeButton.BorderBrush = Brushes.Gray;
+            ScrollModeButton.Foreground = Brushes.Gray;
+
+            ViewMode = FlowDocumentReaderViewingMode.Page;
+        }
+        public FlowDocumentReaderViewingMode ViewMode
+        {
+            get
+            {
+                return viewMode;
+            }
+            set
+            {
+                viewMode = value;
+            }
         }
     }
 }

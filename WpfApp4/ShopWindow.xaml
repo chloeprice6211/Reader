@@ -5,105 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="ShopWindow" Height="800" Width="550" WindowStartupLocation="CenterOwner">
-    <StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
-            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,15,0">
-                <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
-                <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center">132</Label>
-                <Button Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
-            </StackPanel>
-        </Grid>
+        Title="ShopWindow" Height="800" Width="525" WindowStartupLocation="CenterOwner">
 
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <StackPanel>
-            <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
-            <Separator Background="#7FA0A0A0"/>
-            <Grid Name="MainStoreGrid" Margin="15,10,15,0">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Grid Name="MenuItemGrid" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">Mark Tven</Label>
-                    <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
-                    <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}" Click="OnBuyBookButtonClick">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">25</Label>
-
-                        </Grid>
-                    </Button>
-                   
-                </Grid>
-                <Grid Grid.Column="1" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">C++</Label>
-                    <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
-                    <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">50</Label>
-
-                        </Grid>
-                    </Button>
-
-                </Grid>
-                <Grid Grid.Column="2" HorizontalAlignment="Center">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-
-                    <Label Style="{StaticResource BookItemHeader}" HorizontalAlignment="Center">Star Wars</Label>
-                    <Image Grid.Row="1" Style="{StaticResource BookImageStore}" Source="\images\BookImageStore.png"></Image>
-                    <Button Grid.Row="2" Style="{StaticResource BuyButtonStore}">
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}">$</Label>
-                            <Label Style="{StaticResource ShopBuyButtonLabel}" Grid.Column="1">24</Label>
-
-                        </Grid>
-                    </Button>
-
-                </Grid>
-
-
+                <Label Name="mainLabel"  Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
+              
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
+                    <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
+                    <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
+                    <Button  Name="addBalanceButton" Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
+                </StackPanel>
             </Grid>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
+                    
+
+                    <StackPanel Margin="60,0,0,0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBox 
+                        Width="150"
+                    Name="StoreItemSearchBox" 
+                    Grid.Column="1" 
+                    PreviewKeyUp="TestEvent" 
+                    HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Center" 
+                    FontFamily="Calibri" 
+                    FontSize="18"
+                    BorderThickness="0 0 0 2"
+                    BorderBrush="#FFB5B5B5"
+                    GotFocus="SearchBoxFocused"
+                    Foreground="#FFCACACA"
+                    Height="35"
+                        Background="Transparent"
+                    
+                    LostFocus="TextBoxNotFocused" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom">Seach for book...</TextBox>
+                        <Button  Visibility="Hidden" Name="eraseButton" Background="Transparent" BorderThickness="0" Click="OnEraseButtonClick">
+                            <Image Height="15" Source="/images/clearButton.png">
+
+                            </Image>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <Separator Background="#7FA0A0A0"/>
+                <WrapPanel Name="MainStoreWrapPanel" HorizontalAlignment="Left">
+                    <WrapPanel.Resources>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Margin" Value="15,0" />
+                        </Style>
+                    </WrapPanel.Resources>
+
+
+
+                </WrapPanel>
+            </StackPanel>
+            <Label Name="NoFoundLabel" Visibility="Collapsed"
+                HorizontalContentAlignment="Center" 
+                Height="590" 
+                FontSize="25"
+                
+                VerticalContentAlignment="Center" Foreground="#FFAFAFAF">No items found =(</Label>
         </StackPanel>
-       
-    </StackPanel>
+    </ScrollViewer>
 </Window>
