@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.IO;
 using Microsoft.Win32;
-
+using System.Windows.Threading;
 namespace reader
 {
     /// <summary>
@@ -25,10 +25,13 @@ namespace reader
 
 
     public partial class MainWindow : Window
-    {   string text;
+    { string text;
 
         static bool isHidden = true;
         static bool isDark = false;
+        string currentTheme = "light";
+        DispatcherTimer timer;
+
 
         public MainWindow()
         {
@@ -37,7 +40,8 @@ namespace reader
             Title = "Reader";
             Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
-            
+            WindowState = WindowState.Maximized;
+
             #endregion
 
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
@@ -46,14 +50,24 @@ namespace reader
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
+
             mainFlowDoc.IsTwoPageViewEnabled = true;
             mainFlowDoc.MaxWidth = 1400;
             mainFlowDoc.Height = 900;
             mainFlowDoc.HorizontalAlignment = HorizontalAlignment.Center;
 
+
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
-            
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
             SetContent(test1);
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            proverkacountbook();
+
         }
 
         private void SetContent(Book item)
@@ -65,7 +79,7 @@ namespace reader
             Paragraph pg = new Paragraph(new Run(item.Content));
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
-            
+
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
@@ -86,11 +100,12 @@ namespace reader
                CurrentBookName.Visibility = Visibility.Collapsed;
                themeImage.Visibility = Visibility.Visible;
                fontImage.Visibility = Visibility.Visible;
-                UpperMenu.Visibility = Visibility.Visible;
-                mainFlowDoc.Height -= 125;
+                //UpperMenu.Visibility = Visibility.Visible;
+
+                mainFlowDoc.Height -= 135;
 
                 DoubleAnimation navMenuAnimation = new(0, 70, TimeSpan.FromSeconds(0.5d));
-                DoubleAnimation buttMenuAnimation = new(0, 125, TimeSpan.FromSeconds(0.5d));
+                DoubleAnimation buttMenuAnimation = new(0, 135, TimeSpan.FromSeconds(0.5d));
                 UpperNavigationMenu.BeginAnimation(HeightProperty, navMenuAnimation);
                 menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
 
@@ -99,16 +114,16 @@ namespace reader
             }
             else
             {
-                mainFlowDoc.Height += 125;
-                
+                mainFlowDoc.Height += 135;
+
                 LibraryBooksComboBox.Visibility = Visibility.Collapsed;
-                UpperMenu.Visibility = Visibility.Collapsed;
+                //UpperMenu.Visibility = Visibility.Collapsed;
                 themeImage.Visibility = Visibility.Hidden;
                 fontImage.Visibility = Visibility.Hidden;
                 CurrentBookName.Visibility = Visibility.Visible;
 
-                DoubleAnimation buttMenuAnimation = new(125, 0, TimeSpan.FromSeconds(0.5d));
-                
+                DoubleAnimation buttMenuAnimation = new(135, 0, TimeSpan.FromSeconds(0.5d));
+
                 menuGrid.BeginAnimation(HeightProperty, buttMenuAnimation);
 
                 isHidden = true;
@@ -129,6 +144,7 @@ namespace reader
         {
             if (isDark == false)
             {
+                currentTheme = "dark";
                 mainFlowDoc.Foreground = Brushes.White;
                 Background = (Brush)new BrushConverter().ConvertFrom("#171717");
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconLight.png", UriKind.RelativeOrAbsolute));
@@ -143,6 +159,7 @@ namespace reader
             }
             else
             {
+                currentTheme = "light";
                 mainFlowDoc.Foreground = Brushes.Black;
                 Background = Brushes.White;
                 fontImage.Source = new BitmapImage(new Uri(@"\mainMenuIcons\upperMenuIcons\fontCustomizationIconDark.png", UriKind.RelativeOrAbsolute));
@@ -194,7 +211,7 @@ namespace reader
         private void AddLibraryBooksToComboBox()
         {
             BookComboBoxItem bookItem;
-            
+
             bool IsListed;
 
             if (LibraryBooksComboBox.Items.Count == 0)
@@ -207,9 +224,9 @@ namespace reader
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
-                  
 
-                   
+
+
                 }
             }
             else
@@ -217,15 +234,15 @@ namespace reader
                 foreach (Book item in Library.myLibrary)
                 {
                     IsListed = false;
-               
-                    foreach(BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
+
+                    foreach (BookComboBoxItem bookItem1 in LibraryBooksComboBox.Items)
+                    {
+                        if (bookItem1.BindedBook.Name == item.Name)
                         {
-                            if(bookItem1.BindedBook.Name == item.Name)
-                            {
-                                IsListed = true;
-                            }
+                            IsListed = true;
                         }
-                    
+                    }
+
                     if (IsListed == false)
                     {
                         bookItem = new();
@@ -239,19 +256,11 @@ namespace reader
         }
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
-            HomeWindowShow();   
-         }
+            HomeWindowShow();
+        }
         private void HomeWindowShow()
         {
-        }
-        private void FullScreen()
-        {
-            if (WindowStyle == WindowStyle.None)
-            {
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                WindowState = WindowState.Normal;
-            }
-            else WindowState = WindowState.Maximized;  WindowStyle = WindowStyle.None; 
+
         }
         private void FontWindowShow()
         {
@@ -265,6 +274,7 @@ namespace reader
             newWindow.ShowDialog();
             newStyle = new TextProperties(newWindow.exampleText);
             newStyle.SetParagraphStyle(my);
+            HideControlElements();
             mainFlowDoc.ViewingMode = newWindow.ViewMode;
         }
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
@@ -275,7 +285,7 @@ namespace reader
         private void ShopWindowShow()
         {
             //mainFlowDoc.Height += 100;
-            ShopWindow shopwin = new ShopWindow();
+            ShopWindow shopwin = new ShopWindow(currentTheme);
             shopwin.ShowDialog();
 
             if (shopwin.BookToRead != null)
@@ -284,37 +294,43 @@ namespace reader
             }
             AddLibraryBooksToComboBox();
         }
+        private void OnProgresButtonClick(object sender, RoutedEventArgs e)
+        {
+            HideControlElements();
+            Achievement ach = new Achievement();
+            ach.ShowDialog();
+        }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog sf =new() ;
+            SaveFileDialog sf = new();
             sf.ShowDialog();
             Filesave(text);
             MessageBox.Show("a");
         }
         void Filesave(string textbuf)
         {
-             string writePath = @"C:book.txt";
-           
-        
+            string writePath = @"C:book.txt";
+
+
             try
             {
                 using (StreamWriter sw = new StreamWriter(writePath, false, System.Text.Encoding.Default))
                 {
                     sw.WriteLine(textbuf);
                 }
- 
+
                 using (StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default))
                 {
                     sw.WriteLine("Дозапись");
                     sw.Write(4.5);
                 }
-               MessageBox.Show("Запись выполнена");
+                MessageBox.Show("Запись выполнена");
             }
             catch (Exception e)
-               {
-              Console.WriteLine(e.Message);
-               }
-            
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
         private void BookChanging(object sender, EventArgs e)
         {
@@ -324,14 +340,14 @@ namespace reader
             SetContent(toSet);
 
             HideControlElements();
-          
+
         }
 
         private void MainWindowSizeChanged(object sender, SizeChangedEventArgs e)
         {
             Window thisWindow = (Window)sender;
 
-            if(thisWindow.ActualWidth > 700)
+            if (thisWindow.ActualWidth > 700)
             {
                 mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.TwoPage;
             }
@@ -340,19 +356,20 @@ namespace reader
                 mainFlowDoc.ViewingMode = FlowDocumentReaderViewingMode.Page;
             }
         }
-
         private void MainWindowKeyDown(object sender, KeyEventArgs e)
         {
-            
-            switch(e.Key)
+
+            switch (e.Key)
             {
-                case Key.F:FontWindowShow(); break;
-                case Key.Enter: HideControlElements(); break;
-                case Key.S: ShopWindowShow();  break;
-                case Key.Space: HomeWindowShow(); break;
+                case Key.F: FontWindowShow(); break;
+                case Key.G: HideControlElements(); break;
+                case Key.S: ShopWindowShow(); break;
+                case Key.H: HomeWindowShow(); break;
                 case Key.T: ThemeChange(); break;
-                case Key.F11: FullScreen();break;
             }
         }
-    }
+
+    } 
+
 }
+

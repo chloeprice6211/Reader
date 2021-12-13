@@ -15,9 +15,22 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBox 
+                <Label Name="mainLabel"  Margin="10,10,10,10" FontSize="50" FontWeight="Bold" FontFamily="Calibri">Store</Label>
+              
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
+                    <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
+                    <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
+                    <Button  Name="addBalanceButton" Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
+                    
+
+                    <StackPanel Margin="60,0,0,0" Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBox 
                         Width="150"
                     Name="StoreItemSearchBox" 
                     Grid.Column="1" 
@@ -31,25 +44,17 @@
                     GotFocus="SearchBoxFocused"
                     Foreground="#FFCACACA"
                     Height="35"
+                        Background="Transparent"
                     
                     LostFocus="TextBoxNotFocused" HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom">Seach for book...</TextBox>
-                    <Button  Visibility="Hidden" Name="eraseButton" Background="Transparent" BorderThickness="0" Click="OnEraseButtonClick">
-                    <Image Height="15" Source="/images/clearButton.png">
-                     
-                    </Image>
-                    </Button>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,15,0">
-                    <Label FontSize="10"  Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">BALANCE</Label>
-                    <Label  FontSize="25"  Foreground="#FF26C326" Name="currentBalance" VerticalAlignment="Center"></Label>
-                    <Button Background="Transparent" FontFamily="Calibri" FontWeight="Bold" FontSize="25"  Foreground="Black" VerticalAlignment="Center" Width="32" Height="32" Click="OnAddBalanceButtonClick" HorizontalContentAlignment="Center">+</Button>
-                </StackPanel>
-            </Grid>
+                        <Button  Visibility="Hidden" Name="eraseButton" Background="Transparent" BorderThickness="0" Click="OnEraseButtonClick">
+                            <Image Height="15" Source="/images/clearButton.png">
 
-            <StackPanel>
-                <Label Style="{StaticResource StoreHeader}">Best Sellers</Label>
+                            </Image>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
                 <Separator Background="#7FA0A0A0"/>
-
                 <WrapPanel Name="MainStoreWrapPanel" HorizontalAlignment="Left">
                     <WrapPanel.Resources>
                         <Style TargetType="{x:Type Grid}">
