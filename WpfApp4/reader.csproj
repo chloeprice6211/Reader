@@ -58,16 +58,32 @@
     <Resource Include="bookCovers\StarWars.png" />
     <Resource Include="bookCovers\thegirl.png" />
     <Resource Include="bookCovers\time.png" />
+    <Resource Include="content\book1.txt" />
+    <Resource Include="content\book2.txt" />
+    <Resource Include="content\book3.txt" />
+    <Resource Include="content\book4.txt" />
+    <Resource Include="content\book5.txt" />
+    <Resource Include="content\book6.txt" />
+    <Resource Include="covers\cover1.jpg" />
+    <Resource Include="covers\cover2.jpg" />
+    <Resource Include="covers\cover3.jpg" />
+    <Resource Include="covers\cover4.jpg" />
+    <Resource Include="covers\cover5.jpg" />
+    <Resource Include="covers\cover6.jpg" />
     <Resource Include="icons\achievement.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\books.png" />
+    <Resource Include="icons\eye.png" />
+    <Resource Include="icons\eyeover.png" />
     <Resource Include="icons\google-docs.png" />
     <Resource Include="icons\home.png" />
+    <Resource Include="icons\next.png" />
     <Resource Include="icons\notification.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\search.png" />
+    <Resource Include="icons\settings.png" />
     <Resource Include="icons\shop.png" />
     <Resource Include="icons\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
