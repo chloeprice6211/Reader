@@ -9,6 +9,22 @@
 
   <ItemGroup>
     <None Remove="books\StoreLibraryBooks\Star_Wars - Copy.txt" />
+    <None Remove="content\book1.txt" />
+    <None Remove="content\book2.txt" />
+    <None Remove="content\book3.txt" />
+    <None Remove="content\book4.txt" />
+    <None Remove="content\book5.txt" />
+    <None Remove="content\book6.txt" />
+    <None Remove="covers\cover1.jpg" />
+    <None Remove="covers\cover2.jpg" />
+    <None Remove="covers\cover3.jpg" />
+    <None Remove="covers\cover4.jpg" />
+    <None Remove="covers\cover5.jpg" />
+    <None Remove="covers\cover6.jpg" />
+    <None Remove="icons\eye.png" />
+    <None Remove="icons\eyeover.png" />
+    <None Remove="icons\next.png" />
+    <None Remove="icons\settings.png" />
     <None Remove="images\BookImageStore.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
@@ -21,16 +37,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="content\book1.txt" />
+    <Resource Include="content\book2.txt" />
+    <Resource Include="content\book3.txt" />
+    <Resource Include="content\book4.txt" />
+    <Resource Include="content\book5.txt" />
+    <Resource Include="content\book6.txt" />
+    <Resource Include="covers\cover1.jpg" />
+    <Resource Include="covers\cover2.jpg" />
+    <Resource Include="covers\cover3.jpg" />
+    <Resource Include="covers\cover4.jpg" />
+    <Resource Include="covers\cover5.jpg" />
+    <Resource Include="covers\cover6.jpg" />
     <Resource Include="icons\achievement.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\books.png" />
+    <Resource Include="icons\eye.png" />
+    <Resource Include="icons\eyeover.png" />
     <Resource Include="icons\google-docs.png" />
     <Resource Include="icons\home.png" />
+    <Resource Include="icons\next.png" />
     <Resource Include="icons\notification.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\search.png" />
+    <Resource Include="icons\settings.png" />
     <Resource Include="icons\shop.png" />
     <Resource Include="icons\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

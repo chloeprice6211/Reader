@@ -34,6 +34,7 @@ namespace reader.Model
                 Console.WriteLine(book.Author);
                 Console.WriteLine(book.ContentPath);
                 Console.WriteLine(book.CoverPath);
+                Console.WriteLine(book.Description);
             }
         }
         public void save()

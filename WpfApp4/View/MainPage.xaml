@@ -9,7 +9,7 @@
         Top="0" Left="0"
         Title="Reader" Height="1080" Width="1920">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style TargetType="{x:Type TabControl}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -75,7 +75,7 @@
                                             </ObjectAnimationUsingKeyFrames>
 
                                             <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
-                                                <EasingColorKeyFrame KeyTime="0" Value="#FF0000FF" />
+                                                <EasingColorKeyFrame KeyTime="0" Value="Black" />
                                             </ColorAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </VisualState>
@@ -101,19 +101,19 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
+    </Window.Resources>-->
 
-
-    <Grid>
-        <StackPanel Orientation="Vertical">
-
-            <StackPanel Orientation="Horizontal">
+    <!--меню-->
+    <!--
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Ellipse Margin="24, 24, 16, 16"  
                          Width="50" 
                          Height="50" 
                          Stroke="LightGray">
                     <Ellipse.Fill>
-                        <!--<SolidColorBrush Color="White"></SolidColorBrush>-->
+                        -->
+    <!--<SolidColorBrush Color="White"></SolidColorBrush>-->
+    <!--
                         <ImageBrush ImageSource="/icons/user.png"></ImageBrush>
                     </Ellipse.Fill>
                 </Ellipse>
@@ -135,7 +135,7 @@
                         BorderThickness="0" 
                         Width="24px" 
                         Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
-                    <Image Source="/icons/notification.png"/>
+                    <Image Source="/icons/settings.png"/>
                 </Button>
                 <Button 
                         x:Name ="buttonAchievement"
@@ -148,45 +148,143 @@
 
             </StackPanel>
 
-            <TabControl
-                    Width="611"
-                    Height="548"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top" Margin="0,0,0,0">
-
-                <TabItem Header="Home">
-                    <Grid Background="#FFF5E5E5">
-                        <TextBlock Margin="55,107,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Text="TextBlock 1"
-                               TextWrapping="Wrap" />
-                    </Grid>
-                </TabItem>
-
-                <TabItem Header="My Books">
-                    <Grid Background="#FFE5E5F5">
-                        <TextBlock Margin="54,98,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Text="TextBlock 2"
-                               TextWrapping="Wrap" />
-                    </Grid>
-                </TabItem>
-
-                <TabItem Header="Shop">
-                    <Grid Background="#FFE5E5F5">
-                        <TextBlock Margin="54,98,0,0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               Text="TextBlock 2"
-                               TextWrapping="Wrap" />
-                    </Grid>
-                </TabItem>
+        
+        -->
 
 
+    <ScrollViewer>
+        <StackPanel Height="2000">
+            <WrapPanel Orientation="Horizontal">
+                <Label FontFamily="Calibri"
+                           FontSize="30"
+                           Margin="50, 0, 0, 0">Browse Collection</Label>
+                <Border Width="500"
+                            Height="30"
+                            Background="#EAEAEA"
+                            CornerRadius="15"
+                            Margin="50, 0, 0, 0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/icons/search.png" 
+                                           Margin="16, 0, 0, 0"
+                                           Width="20"></Image>
+                        <TextBox
+                                             Margin="16, 0, 0, 0"
+                                             Width="400"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             BorderBrush="Transparent"
+                                             FontFamily="Calibri"
+                                             VerticalAlignment="Center"></TextBox>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
 
-            </TabControl>
+            
+            <ItemsControl Name="listBooks" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"></UniformGrid>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                            <StackPanel Margin="30, 30, 0, 0"
+                                                    Width="284">
+                                <Grid>
+                                    <WrapPanel Name ="container" Width="284" Height="364">
+                                        <Image Source="{Binding Cover}"/>
+                                        <WrapPanel.OpacityMask>
+                                            <VisualBrush >
+                                                <VisualBrush.Visual>
+                                                    <Border Height="{Binding ElementName=container, Path=ActualHeight}" 
+                                                                                     Width="{Binding ElementName=container, Path=ActualWidth}"
+                                                                                     Background="White" CornerRadius="15" />
+                                                </VisualBrush.Visual>
+                                            </VisualBrush>
+                                        </WrapPanel.OpacityMask>
+                                    </WrapPanel>
+                                </Grid>
+                                <TextBlock Text="{Binding persistentBook.Title}" FontSize="18" FontFamily="Calibri" FontWeight="DemiBold" TextWrapping="Wrap"  />
+                                <TextBlock Text="{Binding persistentBook.Author}" FontSize="14" FontFamily="Calibri" Foreground="#868686"  />
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                    <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Padding="5">
+                                    <Button x:Name ="buttonView"
+                                          Cursor="Hand" 
+                                          BorderThickness="0" 
+                                          Width="24px" 
+                                          Click="buttonView_Click"
+                                          Tag="{Binding}"
+                                          >
+                                        <Button.Style>
+                                                <Style>
+                                                    <Setter Property="Button.Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="Transparent">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image>
+                                                <Image.Style>
+                                                    <Style>
+                                                        <Setter Property="Image.Source" Value="/icons/eye.png"/>
+                                                        <Style.Triggers>
+                                                            <Trigger  Property="Image.IsMouseOver" Value="True">
+                                                                <Setter Property="Image.Source" Value="/icons/eyeover.png" />
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+                                        </Button>
+                                    </Border>
+                                    <Border Margin="5,0,0,0" BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8" Padding="3">
+                                        <Button x:Name="buttonRead"
+                                        Content="Read"
+                                        Background="Transparent"
+                                        FontFamily="Calibri"
+                                        FontSize="18"
+                                        BorderBrush="Transparent"
+                                        Cursor="Hand" >
+                                            <Button.Style>
+                                                <Style>
+                                                    <Setter Property="Button.Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Button.IsMouseOver" Value="True">
+                                                            <Setter Property="TextBlock.FontWeight" Value="DemiBold"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+
+                                        </Button>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+
+
+                </ItemsControl>
+
+
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
+
+
+
 </Window>
