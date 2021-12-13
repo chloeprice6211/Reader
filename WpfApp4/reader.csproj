@@ -8,24 +8,37 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="books\StoreLibraryBooks\Star_Wars - Copy.txt" />
-    <None Remove="content\book1.txt" />
-    <None Remove="content\book2.txt" />
-    <None Remove="content\book3.txt" />
-    <None Remove="content\book4.txt" />
-    <None Remove="content\book5.txt" />
-    <None Remove="content\book6.txt" />
-    <None Remove="covers\cover1.jpg" />
-    <None Remove="covers\cover2.jpg" />
-    <None Remove="covers\cover3.jpg" />
-    <None Remove="covers\cover4.jpg" />
-    <None Remove="covers\cover5.jpg" />
-    <None Remove="covers\cover6.jpg" />
-    <None Remove="icons\eye.png" />
-    <None Remove="icons\eyeover.png" />
-    <None Remove="icons\next.png" />
-    <None Remove="icons\settings.png" />
-    <None Remove="images\BookImageStore.png" />
+    <Compile Remove="books\fortest\**" />
+    <EmbeddedResource Remove="books\fortest\**" />
+    <None Remove="books\fortest\**" />
+    <Page Remove="books\fortest\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="bookCovers\c++.png" />
+    <None Remove="bookCovers\harry.png" />
+    <None Remove="bookCovers\journey.png" />
+    <None Remove="bookCovers\snow.png" />
+    <None Remove="bookCovers\StarWars.png" />
+    <None Remove="bookCovers\thegirl.png" />
+    <None Remove="bookCovers\time.png" />
+    <None Remove="images\chasi-glav.png" />
+    <None Remove="images\clearButton.png" />
+    <None Remove="images\emerald.png" />
+    <None Remove="images\home.png" />
+    <None Remove="images\Plains.png" />
+    <None Remove="images\progress.png" />
+    <None Remove="images\start.png" />
+    <None Remove="images\store.png" />
+    <None Remove="images\stupen.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeHome.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeProgress.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeSettings.png" />
+    <None Remove="mainMenuButtons\darkTheme\darkThemeStore.png" />
+    <None Remove="mainMenuButtons\lightTheme\home.png" />
+    <None Remove="mainMenuButtons\lightTheme\progress.png" />
+    <None Remove="mainMenuButtons\lightTheme\settings.png" />
+    <None Remove="mainMenuButtons\lightTheme\store.png" />
     <None Remove="mainMenuIcons\booksIcon.png" />
     <None Remove="mainMenuIcons\cartIcon.png" />
     <None Remove="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -34,9 +47,17 @@
     <None Remove="mainMenuIcons\upperMenuIcons\lightThemeIcon.png" />
     <None Remove="menuButtonsBG\libraryBG.png" />
     <None Remove="menuButtonsBG\shopBG.png" />
+    <None Remove="userData\profile\profilePicture.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="bookCovers\c++.png" />
+    <Resource Include="bookCovers\harry.png" />
+    <Resource Include="bookCovers\journey.png" />
+    <Resource Include="bookCovers\snow.png" />
+    <Resource Include="bookCovers\StarWars.png" />
+    <Resource Include="bookCovers\thegirl.png" />
+    <Resource Include="bookCovers\time.png" />
     <Resource Include="content\book1.txt" />
     <Resource Include="content\book2.txt" />
     <Resource Include="content\book3.txt" />
@@ -74,7 +95,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\BookImageStore.png" />
+    <Resource Include="images\chasi-glav.png" />
+    <Resource Include="images\clearButton.png" />
+    <Resource Include="images\emerald.png" />
+    <Resource Include="images\home.png" />
+    <Resource Include="images\Plains.png" />
+    <Resource Include="images\progress.png" />
+    <Resource Include="images\start.png" />
+    <Resource Include="images\store.png" />
+    <Resource Include="images\stupen.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeHome.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeProgress.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeSettings.png" />
+    <Resource Include="mainMenuButtons\darkTheme\darkThemeStore.png" />
+    <Resource Include="mainMenuButtons\lightTheme\home.png" />
+    <Resource Include="mainMenuButtons\lightTheme\progress.png" />
+    <Resource Include="mainMenuButtons\lightTheme\settings.png" />
+    <Resource Include="mainMenuButtons\lightTheme\store.png" />
     <Resource Include="mainMenuIcons\booksIcon.png" />
     <Resource Include="mainMenuIcons\cartIcon.png" />
     <Resource Include="mainMenuIcons\upperMenuIcons\darkThemeIcon.png" />
@@ -85,9 +122,11 @@
     <Resource Include="mainMenuIcons\upperMenuIcons\lightThemeIcon.png" />
     <Resource Include="menuButtonsBG\libraryBG.png" />
     <Resource Include="menuButtonsBG\shopBG.png" />
+    <Resource Include="userData\profile\profilePicture.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>
 
