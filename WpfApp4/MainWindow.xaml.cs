@@ -23,6 +23,7 @@ namespace reader
     /// </summary>
     ///
 
+
     public partial class MainWindow : Window
     {   string text;
 
@@ -243,7 +244,15 @@ namespace reader
         private void HomeWindowShow()
         {
         }
-
+        private void FullScreen()
+        {
+            if (WindowStyle == WindowStyle.None)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+            }
+            else WindowState = WindowState.Maximized;  WindowStyle = WindowStyle.None; 
+        }
         private void FontWindowShow()
         {
             FlowDocumentReaderViewingMode viewingMode;
@@ -342,6 +351,7 @@ namespace reader
                 case Key.S: ShopWindowShow();  break;
                 case Key.Space: HomeWindowShow(); break;
                 case Key.T: ThemeChange(); break;
+                case Key.F11: FullScreen();break;
             }
         }
     }

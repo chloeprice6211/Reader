@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="642" Width="550" MinHeight="860" MinWidth="500" SizeChanged="MainWindowSizeChanged" ResizeMode="CanResizeWithGrip" KeyDown="MainWindowKeyDown">
+        Title="MainWindow" WindowState="Maximized"   WindowStyle="None" MinHeight="860" MinWidth="500" SizeChanged="MainWindowSizeChanged" ResizeMode="CanResizeWithGrip" KeyDown="MainWindowKeyDown">
     <StackPanel>
         <Menu Height="25" VerticalAlignment="Top" Name="UpperMenu" Visibility="Collapsed">
             <MenuItem Header="File">
