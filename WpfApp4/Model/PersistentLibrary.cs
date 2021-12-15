@@ -14,7 +14,7 @@ namespace reader.Model
     // -- не изменять !!
     public class PersistentLibrary
     {
-        const string FileName = "library.json";
+        const string FileName = "../../../library.json";
 
         List<PersistentBook> books = new List<PersistentBook>();
         public List<PersistentBook> Books
