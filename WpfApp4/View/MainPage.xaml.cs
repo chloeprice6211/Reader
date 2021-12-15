@@ -1,4 +1,5 @@
-﻿using reader.Controller;
+﻿using Microsoft.Win32;
+using reader.Controller;
 using reader.Model;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,38 @@ namespace reader.View
 
             pw.Show();
 
+        }
+
+        private void buttonOpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            PersistentBook book;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == true)
+            {
+                book = new PersistentBook()
+                {
+                    Title = openFileDialog.FileName,
+                    CoverPath = "../icons/google-docs.png"
+                };
+                visualLibrary.VisualBooks.Add(new VisualBook
+                {
+                    persistentBook = book,
+                    Cover = visualLibrary.createCover(book.CoverPath),
+                });
+                listBooks.ItemsSource = visualLibrary.VisualBooks;
+            }                 
+        }
+
+        private void buttonOpenShop_Click(object sender, RoutedEventArgs e)
+        {
+            ShopWindow shopWindow = new ShopWindow("light");
+            shopWindow.Show();
+
+        }
+
+        private void buttonRead_Click(object sender, RoutedEventArgs e)
+        {
+           // MainWindow reader = new MainWindow(); 
         }
     }
 }
