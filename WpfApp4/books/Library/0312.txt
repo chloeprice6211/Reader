@@ -1,5 +1,0 @@
-../../../bookCovers/c++.png
-cat
-
-50
-https://colab.research.google.com/drive/1pOrzgwuciDOIxp9W8IFVxNfQOyEA9Zxi?usp=sharing
