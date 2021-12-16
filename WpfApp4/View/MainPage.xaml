@@ -199,7 +199,7 @@
                                     </Setter>
                                 </Style>
                             </Button.Style>
-                            <Image>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" >
                                 <Image.Style>
                                     <Style>
                                         <Setter Property="Image.Source" Value="/icons/add.png"/>
@@ -233,7 +233,7 @@
                                     </Setter>
                                 </Style>
                             </Button.Style>
-                            <Image>
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" >
                                 <Image.Style>
                                     <Style>
                                         <Setter Property="Image.Source" Value="/icons/shop.png"/>
