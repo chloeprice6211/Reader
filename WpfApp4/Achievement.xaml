@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:reader"
         mc:Ignorable="d"
-        Title="Achievement" Height="365" Width="360" ResizeMode="NoResize">
-    <ScrollViewer VerticalScrollBarVisibility="Disabled" >
+        Title="Achievement" Height="610" Width="360">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
 
         <StackPanel Height="577" Background="AliceBlue">
             <Label Margin="10,10,10,10" FontSize="40" FontWeight="Bold" FontFamily="Calibri" Width="340" Height="51" Content="Achievement"/>
@@ -50,63 +50,29 @@
 
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="0" Width="Auto" Margin="0,5,11,1" Height="Auto" Grid.Column="1">
                     <Grid>
-                        <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="Читатель"  Foreground="Orange" Margin="-1,-6,1,5" />
-                        <Label FontSize="12"  FontFamily="Calibri" Content="Прочитать 1 книгу"  Foreground="Orange" Margin="12,11,-1,13"/>
+                        <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="Начало"  Foreground="Orange" Margin="-1,-6,1,5" />
+                        <Label FontSize="12"  FontFamily="Calibri" Content="Прочитать 1 книгу"  Foreground="Orange" Margin="10,10,1,0"/>
                     </Grid>
 
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Width="Auto" Margin="0,5,11,1" Height="Auto" Grid.Column="1">
                     <Grid>
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="Кеш"  Foreground="Orange" Margin="-1,-8,1,0" />
-                        <Label FontSize="12"  FontFamily="Calibri" Content="Заработать "  Foreground="Orange" HorizontalContentAlignment="Left" VerticalAlignment="Top" Margin="12,10,-12,0"/>
-                        <Grid Margin="80,0,65,0" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30*"/>
-                                <ColumnDefinition Width="19*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="100"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Center" Width="29" Height="24" x:Name="kesh0"/>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="$"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="16" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
-                        </Grid>
+                        <Label FontSize="12"  FontFamily="Calibri" Content="Заработать 100$"  Foreground="Orange" Margin="9,10,2,-4"/>
                     </Grid>
 
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="2" Width="Auto" Margin="0,3,11,1" Height="Auto" Grid.Column="1">
                     <Grid Margin="0,0,0,2">
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="Покупатель"  Foreground="Orange" Margin="-1,-6,1,5" />
-                        <Label FontSize="12"  FontFamily="Calibri" Content="Потратить"  Foreground="Orange" Margin="12,12,-1,-2"/>
-                        <Grid Margin="80,2,65,-2" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30*"/>
-                                <ColumnDefinition Width="19*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="30"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Center" Width="29" Height="24" x:Name="buy0"/>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="$"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="16" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
-                        </Grid>
+                        <Label FontSize="12"  FontFamily="Calibri" Content="Потратить 30$"  Foreground="Orange" Margin="10,10,1,0"/>
                     </Grid>
 
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1" Grid.Row="3" Width="Auto" Margin="0,4,11,1" Height="Auto" Grid.Column="1">
                     <Grid>
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="Время"  Foreground="Orange" Margin="-1,-7,2,6" />
-                        <Label FontSize="12"  FontFamily="Calibri" Content="Потратить"  Foreground="Orange" Margin="12,12,-1,-2"/>
-                        <Grid Margin="80,2,42,-2" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="37*"/>
-                                <ColumnDefinition Width="35*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="30"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Center" Width="29" Height="24" x:Name="timme0"/>
-                            <Label FontSize="12"  FontFamily="Calibri" Content="минут"  Foreground="Orange" VerticalAlignment="Top" HorizontalAlignment="Left" Height="24" Width="92" Margin="23,8,0,0" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
-                                <Label.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform AngleY="0.203"/>
-                                        <RotateTransform/>
-                                        <TranslateTransform Y="0.163"/>
-                                    </TransformGroup>
-                                </Label.RenderTransform>
-                            </Label>
-                        </Grid>
-
+                        <Label FontSize="12"  FontFamily="Calibri" Content="Почитать 10 минут"  Foreground="Orange" Margin="10,13,1,-3"/>
                     </Grid>
 
                 </Border>
@@ -202,7 +168,7 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1"  Width="Auto" Margin="0,0,11,3" Height="Auto" Grid.Column="2" Grid.Row="1">
                     <Grid>
-                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content=""  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="kesh1" VerticalContentAlignment="Center"        />
+                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content="250"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="kesh1" VerticalContentAlignment="Center"        />
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="/"  Foreground="Orange" VerticalAlignment="Center" HorizontalAlignment="Center"   />
                         <Label FontSize="14"  FontFamily="Calibri" Content="100"  Foreground="Orange"   VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="kesh2" />
                     </Grid>
@@ -210,17 +176,17 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1"  Width="Auto" Margin="0,0,11,5" Height="Auto" Grid.Column="2" Grid.Row="2">
                     <Grid>
-                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content="0"  Foreground="Orange"   VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="buy1"/>
+                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content="0"  Foreground="Orange"   VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="/"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Center"   />
-                        <Label FontSize="14"  FontFamily="Calibri" Content="30"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="buy2" />
+                        <Label FontSize="14"  FontFamily="Calibri" Content="30"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Right" />
                     </Grid>
 
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="1"  Width="Auto" Margin="0,0,11,5" Height="Auto" Grid.Column="2" Grid.Row="3">
                     <Grid>
-                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content="0"  Foreground="Orange"   VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="timme1"/>
+                        <Label FontSize="14" FontWeight="Bold" FontFamily="Calibri" Content="0"  Foreground="Orange"   VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <Label FontSize="20" FontWeight="Bold" FontFamily="Calibri" Content="/"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Center"   />
-                        <Label FontSize="14"  FontFamily="Calibri" Content="30"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="timme2" />
+                        <Label FontSize="14"  FontFamily="Calibri" Content="30"  Foreground="Orange"  VerticalAlignment="Center" HorizontalAlignment="Right" />
                     </Grid>
 
                 </Border>
