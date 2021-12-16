@@ -12,12 +12,13 @@ namespace reader
     public partial class Achievement : Window
     {
         delegate void moneyf();
-
+        int second;
         event moneyf dmoney;
         DispatcherTimer timer;
         int countbook;
         int money;
         int countbuy;
+        int countmoney;
         int time;
         int visite;
         
@@ -85,41 +86,73 @@ namespace reader
         {        InitializeComponent();
             StreamReader SR = new(@"../../../userData/balance.txt");
 
-     
-            money = System.Convert.ToInt32(SR.Read());
-            money = 101;
+        
+            money = int.Parse(SR.ReadLine());
+          
             SR = new(@"../../../userData/countbook.txt");
-            countbook = System.Convert.ToInt32(SR.Read());
+            countbook = int.Parse((SR.ReadLine()));
             SR = new(@"../../../userData/countbuy.txt");
             countbuy = System.Convert.ToInt32(SR.Read());
             SR = new(@"../../../userData/time.txt");
-            time = System.Convert.ToInt32(SR.Read());
+            time = int.Parse(SR.ReadLine());
             SR = new(@"../../../userData/visite.txt");
             visite = System.Convert.ToInt32(SR.Read());
-            kesh1.Content = money;
+
+            SR = new(@"../../../userData/countmoney.txt");
+            countmoney = int.Parse(SR.ReadLine());
+
+            timme1.Content = converter(System.Convert.ToString(time));
+            kesh1.Content = countmoney.ToString();
+            start1.Content = converter(countbook.ToString());
               timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
             moneyf dmoney = proverka1;
+            second = 0;
           
 
+        }
+        private string converter(string numbers)
+        {
+            string text = "";
+            for (int i = numbers.Length - 1; i > -1; i--)
+            {
+                text = text + numbers[i];
+
+            }
+            return text;
         }
         void timer_Tick(object sender, EventArgs e)
         {
             proverka1();
-
+            proverka2();
+           
+            second++; 
+            proverka4();
         }
-       void proverka1()
+       void proverka2()
         {
-            if (System.Convert.ToInt64(kesh1.Content) >= System.Convert.ToInt64(kesh2.Content))
+            if (int.Parse(kesh1.Content.ToString())>=int.Parse(kesh2.Content.ToString()))
             {
-                kesh1.Content = 250;
+              ///  MessageBox.Show(money.ToString());
+                kesh2.Content = System.Convert.ToString(System.Convert.ToInt32( int.Parse(kesh2.Content.ToString())* 1.7) );
+                kesh0.Content = kesh2.Content;
 
             }
 
         }
-        void proverka2()
+        void proverka1()
+        {
+            if (int.Parse(start1.Content.ToString()) >= int.Parse(start2.Content.ToString()))
+            {
+                start2.Content = System.Convert.ToString(System.Convert.ToInt32(int.Parse(start2.Content.ToString()) * 2));
+
+
+            }
+
+        }
+        void proverka3()
         {
             if (System.Convert.ToInt64(start1.Content) >= System.Convert.ToInt64(start2.Content))
             {
@@ -128,6 +161,27 @@ namespace reader
 
             }
 
+        }
+        void proverka4()
+        {
+            if(second==10)
+            { second = 0;
+                time++;
+               // MessageBox.Show(time.ToString());
+                
+               // MessageBox.Show(time.ToString()); 
+               StreamReader SR=new(@"../../../userData/time.txt");
+
+                int buf = int.Parse(SR.ReadLine());
+                SR.Close();
+
+                buf++;
+            timme1.Content = converter(System.Convert.ToString( buf));
+                StreamWriter SW = new(@"../../../userData/time.txt");
+                SW.Write(System.Convert.ToString(buf));
+                SW.Close();
+            }
+           
         }
         ~Achievement()
         {
