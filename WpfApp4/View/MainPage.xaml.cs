@@ -29,9 +29,16 @@ namespace reader.View
         {
             InitializeComponent();
 
+            if (StoreLibrary.BooksToSell.Count == 0)
+            {
+            
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
-            Library.AddAllBooks(Library.LibraryPath);
+            }
 
+            if (Library.myLibrary.Count == 0)
+            {
+                Library.AddAllBooks(Library.LibraryPath);
+            }
             visualLibrary = new VisualLibrary();
             visualLibrary.init();
 
@@ -88,9 +95,11 @@ namespace reader.View
             MainWindow reader = new MainWindow(visualLibrary.selectedBook);
            // MainWindow reader = new MainWindow();
 
+            
             reader.addBookToLibrary(visualLibrary.selectedBook);
             reader.Show();
 
+            Close();
             //mainWindow.Show();
         }
     }
