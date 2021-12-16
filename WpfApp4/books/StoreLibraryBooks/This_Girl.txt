@@ -1,4 +1,4 @@
-﻿../../../bookCovers/thegirl.png
+../../../bookCovers/thegirl.png
 Bestseller
 Jacqueline Wilson
 35

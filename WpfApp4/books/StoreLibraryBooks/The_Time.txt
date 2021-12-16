@@ -1,4 +1,4 @@
-﻿../../../bookCovers/time.png
+../../../bookCovers/time.png
 Bestseller
 Audrey Niffenegger
 60

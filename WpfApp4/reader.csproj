@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <Compile Remove="books\fortest\**" />
+    <Compile Remove="fonts\**" />
     <EmbeddedResource Remove="books\fortest\**" />
+    <EmbeddedResource Remove="fonts\**" />
     <None Remove="books\fortest\**" />
+    <None Remove="fonts\**" />
     <Page Remove="books\fortest\**" />
+    <Page Remove="fonts\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +26,15 @@
     <None Remove="bookCovers\StarWars.png" />
     <None Remove="bookCovers\thegirl.png" />
     <None Remove="bookCovers\time.png" />
+    <None Remove="content\book1.txt" />
+    <None Remove="content\book2.txt" />
+    <None Remove="content\book3.txt" />
+    <None Remove="content\book4.txt" />
+    <None Remove="content\book6.txt" />
+    <None Remove="content\book7.txt" />
+    <None Remove="icons\add.png" />
+    <None Remove="icons\addover.png" />
+    <None Remove="icons\shopover.png" />
     <None Remove="images\chasi-glav.png" />
     <None Remove="images\clearButton.png" />
     <None Remove="images\emerald.png" />
@@ -58,6 +71,12 @@
     <Resource Include="bookCovers\StarWars.png" />
     <Resource Include="bookCovers\thegirl.png" />
     <Resource Include="bookCovers\time.png" />
+    <Resource Include="content\book1.txt" />
+    <Resource Include="content\book2.txt" />
+    <Resource Include="content\book3.txt" />
+    <Resource Include="content\book4.txt" />
+    <Resource Include="content\book6.txt" />
+    <Resource Include="content\book7.txt" />
     <Resource Include="covers\cover1.jpg" />
     <Resource Include="covers\cover2.jpg" />
     <Resource Include="covers\cover3.jpg" />
@@ -67,6 +86,8 @@
     <Resource Include="icons\achievement.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="icons\add.png" />
+    <Resource Include="icons\addover.png" />
     <Resource Include="icons\books.png" />
     <Resource Include="icons\eye.png" />
     <Resource Include="icons\eyeover.png" />
@@ -78,6 +99,7 @@
     </Resource>
     <Resource Include="icons\search.png" />
     <Resource Include="icons\shop.png" />
+    <Resource Include="icons\shopover.png" />
     <Resource Include="icons\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -120,7 +142,6 @@
 
   <ItemGroup>
     <Folder Include="books\Library\" />
-    <Folder Include="fonts\" />
   </ItemGroup>
 
 </Project>

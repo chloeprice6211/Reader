@@ -1,0 +1,5 @@
+../../../bookCovers/c++.png
+cat
+by J.R.R. Tolkien (1954)
+50
+../../../content/book2.txt

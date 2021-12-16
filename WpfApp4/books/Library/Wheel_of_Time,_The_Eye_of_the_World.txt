@@ -1,0 +1,5 @@
+../../../bookCovers/c++.png
+cat
+by Robert Jordan (1990)
+50
+../../../content/book4.txt

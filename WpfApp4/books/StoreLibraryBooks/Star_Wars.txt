@@ -1,4 +1,4 @@
-﻿../../../bookCovers/StarWars.png
+../../../bookCovers/StarWars.png
 Bestseller
 George Lucas
 50

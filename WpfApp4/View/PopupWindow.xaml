@@ -111,12 +111,13 @@
                         CornerRadius="0,0,35,35">
 
                     <WrapPanel Margin="25,25,25,0">
-                        <Label FontFamily="Calibri"
+                        <TextBlock FontFamily="Calibri"
                        Foreground="#262435"
                        FontSize="20"
-                       FontWeight="DemiBold">
+                       FontWeight="DemiBold"
+                        TextWrapping="WrapWithOverflow">
                             What's it about?
-                        </Label>
+                        </TextBlock>
 
                         <TextBlock x:Name="textBlockDescription"
                            TextWrapping="Wrap"
