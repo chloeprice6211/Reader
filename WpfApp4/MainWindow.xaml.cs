@@ -143,13 +143,18 @@ namespace reader
 
         public void addBookToLibrary(VisualBook book)
         {
+            
             if(!Library.Exists(book.persistentBook.Title))
             {
-                
+
                 Library.AddBook(new Book
                 {
                     Name = book.persistentBook.Title,
                     Content = book.Content,
+                    Author = book.persistentBook.Author,
+                    Price = 35,
+                    Category = "Bestseller",
+                    
 
                 });
             }

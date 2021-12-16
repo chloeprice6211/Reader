@@ -1,4 +1,6 @@
-../../../bookCovers/c++.png
-cat
-
-50
+../../../bookCovers/thegirl.png
+Bestseller
+Jacqueline Wilson
+35
+ An Empty Road
+ zaszdsadzs
