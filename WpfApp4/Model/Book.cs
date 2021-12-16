@@ -39,12 +39,12 @@ namespace reader
         public Book(string path)
         {
             _path = path;
-            reader = new(_path);
+            reader = new(_path, Encoding.UTF8);
 
             _coverUri = new Uri(reader.ReadLine(),UriKind.RelativeOrAbsolute);
             _category = reader.ReadLine();
             _author = reader.ReadLine();
-            _price = Convert.ToInt32(reader.ReadLine());
+           _price = Convert.ToInt32(reader.ReadLine());
 
 
             _name = Path.GetFileNameWithoutExtension(path);
@@ -81,12 +81,20 @@ namespace reader
             {
                 return _price;
             }
+            set
+            {
+                _price = value;
+            }
         }
         public string Content
         {
             get
             {
                 return _content;
+            }
+            set
+            {
+                _content = value;
             }
 
         }
@@ -95,6 +103,10 @@ namespace reader
             get
             {
                 return _author;
+            }
+            set
+            {
+                _author = value;
             }
         }
         public string BookPath

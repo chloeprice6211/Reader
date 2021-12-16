@@ -29,6 +29,9 @@ namespace reader.View
         {
             InitializeComponent();
 
+            StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
+            Library.AddAllBooks(Library.LibraryPath);
+
             visualLibrary = new VisualLibrary();
             visualLibrary.init();
 
@@ -74,12 +77,20 @@ namespace reader.View
         {
             ShopWindow shopWindow = new ShopWindow("light");
             shopWindow.Show();
-
         }
 
         private void buttonRead_Click(object sender, RoutedEventArgs e)
         {
-           // MainWindow reader = new MainWindow(); 
+            visualLibrary.selectedBook = ((Button)sender).Tag as VisualBook;
+
+            MainWindow reader = new MainWindow(visualLibrary.selectedBook.persistentBook);
+           // MainWindow reader = new MainWindow();
+
+            reader.addBookToLibrary(visualLibrary.selectedBook);
+            reader.Show();
+
+            
+            //mainWindow.Show();
         }
     }
 }

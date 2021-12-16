@@ -1,4 +1,4 @@
-﻿../../../bookCovers/journey.png
+../../../bookCovers/journey.png
 Bestseller
 Louis-Ferdinand Céline
 85
