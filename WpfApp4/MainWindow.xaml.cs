@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using reader.View;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -349,7 +350,10 @@ namespace reader
         }
         private void HomeWindowShow()
         {
+            MainPage mp = new();
+            mp.Show();
 
+            Close();
         }
         private void FontWindowShow()
         {
@@ -470,6 +474,11 @@ namespace reader
         {
             Settings settingsWindow = new();
             settingsWindow.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     } 
 
