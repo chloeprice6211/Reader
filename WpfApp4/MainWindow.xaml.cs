@@ -143,13 +143,18 @@ namespace reader
 
         public void addBookToLibrary(VisualBook book)
         {
+            
             if(!Library.Exists(book.persistentBook.Title))
             {
-                
+
                 Library.AddBook(new Book
                 {
                     Name = book.persistentBook.Title,
                     Content = book.Content,
+                    Author = book.persistentBook.Author,
+                    Price = 35,
+                    Category = "Bestseller",
+                    
 
                 });
             }
@@ -391,8 +396,10 @@ namespace reader
 
                 SetContent(shopwin.BookToRead);
             }
-            LibraryBooksComboBox.Text = shopwin.BookToRead.Name;
-           
+            if(shopwin.BookToRead != null)
+                LibraryBooksComboBox.Text = shopwin.BookToRead.Name;
+
+
         }
         private void OnProgresButtonClick(object sender, RoutedEventArgs e)
         {
@@ -462,6 +469,7 @@ namespace reader
             switch (e.Key)
             {
                 case Key.F: FontWindowShow(); break;
+                case Key.E: SettingsShow(); break;
                 case Key.G: HideControlElements(); break;
                 case Key.S: ShopWindowShow(); break;
                 case Key.H: HomeWindowShow(); break;
@@ -473,11 +481,14 @@ namespace reader
         {
 
         }
-
+        private void SettingsShow()
+        {
+            Settings settingsWindow = new(currentTheme);
+            settingsWindow.Show();
+        }
         private void OnSettingsClick(object sender, RoutedEventArgs e)
         {
-            Settings settingsWindow = new();
-            settingsWindow.Show();
+            SettingsShow();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

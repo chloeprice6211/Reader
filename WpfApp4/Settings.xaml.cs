@@ -25,12 +25,14 @@ namespace reader
     public partial class Settings : Window
     {
         string userDataPath = @"../../../userData/profile/userData.txt";
-        public Settings()
+        public Settings(string theme)
         {
             InitializeComponent();
             UserDataInput();
             Uri iconUri = new Uri(@"..\..\..\icons\settings.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
+            
+            if(theme =="dark") ThemeChange();
 
         }
         private void UserDataInput()
@@ -48,25 +50,30 @@ namespace reader
 
         private void NameChanged(object sender, KeyEventArgs e)
         {
-            SaveUserDataButtonEnable();
+            saveUserDataButton.IsEnabled = true;
+            saveUserDataButton.Opacity = 1f;
         }
         private void NumberChanged(object sender, KeyEventArgs e)
         {
-            SaveUserDataButtonEnable();
+            saveUserDataButton.IsEnabled = true;
+            saveUserDataButton.Opacity = 1f;
         }
       
         private void EmailChanged(object sender, KeyEventArgs e)
         {
-            SaveUserDataButtonEnable();
+            saveUserDataButton.IsEnabled = true;
+            saveUserDataButton.Opacity = 1f;
         }
 
         private void CountryChanged(object sender, KeyEventArgs e)
         {
-            SaveUserDataButtonEnable();
+            saveUserDataButton.IsEnabled = true;
+            saveUserDataButton.Opacity = 1f;
         }
         private void SaveUserDataButtonEnable()
         {
             saveUserDataButton.IsEnabled = true;
+            saveUserDataButton.Opacity = 1f;
         }
 
         private void OnSaveButtonClick(object sender, RoutedEventArgs e)
@@ -85,13 +92,46 @@ namespace reader
 
             writer.Close();
 
-            thisbutton.IsEnabled = false;
+            saveUserDataButton.IsEnabled = false;
+            saveUserDataButton.Opacity = 0.05f;
         }
 
-        private void OnPfpEnter(object sender, MouseEventArgs e)
+        private void ThemeChange()
         {
-            MessageBox.Show("!!");
+            Background = (Brush)new BrushConverter().ConvertFrom("#171717");
+            foreach(object temp in profileDataGrid.Children)
+            {
+                if(temp is TextBlock)
+                {
+                    ((TextBlock)temp).Foreground = Brushes.White;
+                    
+                }
+                
+                else if(temp is TextBox)
+                {
+                    ((TextBox)temp).Foreground = Brushes.White;
+                    ((TextBox)temp).Background = Brushes.Transparent;
+                    ((TextBox)temp).BorderBrush = Brushes.LightBlue;
+                }
+            }
+
+            saveUserDataButton.BorderBrush = Brushes.White;
+            saveUserDataButton.Foreground = Brushes.White;
+
+            ProfileLabel.Foreground = Brushes.White;
+            ShortCutLabel.Foreground = Brushes.White;
+
+            foreach(TextBlock item in SCgrid.Children)
+            {
+                item.Foreground = Brushes.White;
+            }
+       
+            
         }
 
+        private void test(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
