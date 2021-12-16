@@ -20,6 +20,7 @@ namespace reader.View
     /// </summary>
     public partial class PopupWindow : Window
     {
+        VisualBook book;
         public PopupWindow()
         {
             InitializeComponent();
@@ -32,11 +33,21 @@ namespace reader.View
            labelTitle.Content = visualBook.persistentBook.Title;
            labelAuthor.Content = visualBook.persistentBook.Author;
            textBlockDescription.Text = visualBook.persistentBook.Description;
+
+            book = visualBook;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void buttonRead_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow reader = new MainWindow(book);
+
+            reader.addBookToLibrary(book);
+            reader.Show();
         }
     }
 }

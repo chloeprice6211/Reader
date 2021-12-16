@@ -35,7 +35,7 @@ namespace reader
         string currentTheme = "light";
         DispatcherTimer timer;
 
-        public MainWindow(PersistentBook bookItem)
+        public MainWindow(VisualBook bookItem)
         {
             InitializeComponent();
             #region windowCustomization
@@ -50,10 +50,10 @@ namespace reader
 
             Book converted = new();
 
-            converted.Name = bookItem.Title;
-            converted.Content = bookItem.ContentPath;
+            converted.Name = bookItem.persistentBook.Title;
+            converted.Content = bookItem.Content;
             converted.Category = "cat";
-            converted.Author = bookItem.Author;
+            converted.Author = bookItem.persistentBook.Author;
             converted.Price = 50;
             converted.BookCoverUri = new Uri("../../../bookCovers/c++.png", UriKind.Relative);
 
