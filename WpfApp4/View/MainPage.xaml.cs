@@ -86,6 +86,7 @@ namespace reader.View
             MainWindow reader = new MainWindow(visualLibrary.selectedBook.persistentBook);
            // MainWindow reader = new MainWindow();
 
+            
             reader.addBookToLibrary(visualLibrary.selectedBook);
             reader.Show();
 

@@ -56,7 +56,10 @@ namespace reader
             converted.Price = 50;
             converted.BookCoverUri = new Uri("../../../bookCovers/c++.png", UriKind.Relative);
 
-            Library.AddBook(converted);
+            if (!Library.Exists(converted.Name))
+            {
+                Library.AddBook(converted);
+            }
 
            
             AddLibraryBooksToComboBox();
@@ -94,7 +97,7 @@ namespace reader
             #endregion
 
             
-            AddLibraryBooksToComboBox();
+            
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
@@ -139,11 +142,18 @@ namespace reader
 
         public void addBookToLibrary(VisualBook book)
         {
-            Library.AddBook(new Book
+            if(!Library.Exists(book.persistentBook.Title))
             {
-                Name = book.persistentBook.Title,
-                Content = book.Content,
-            });
+                
+                Library.AddBook(new Book
+                {
+                    Name = book.persistentBook.Title,
+                    Content = book.Content,
+
+                });
+            }
+            
+          
 
         }
 
@@ -271,14 +281,33 @@ namespace reader
         }
         private void AddLibraryBooksToComboBox()
         {
+
+            LibraryBooksComboBox.Items.Clear();
+           
+
+            BookComboBoxItem toAdd;
+
+            for(int a = 0;a<Library.myLibrary.Count;a++)
+            {
+                
+                toAdd = new();
+                toAdd.BindedBook = Library.myLibrary[a];
+                toAdd.Content = toAdd.BindedBook.Name;
+
+                LibraryBooksComboBox.Items.Add(toAdd);
+            }
+            /*
             BookComboBoxItem bookItem;
 
             bool IsListed;
+
+            
 
             if (LibraryBooksComboBox.Items.Count == 0)
             {
                 for (int a = 0; a < Library.myLibrary.Count; a++)
                 {
+                    MessageBox.Show(Library.myLibrary.Count.ToString());
                     bookItem = new BookComboBoxItem();
                     bookItem.FontFamily = new FontFamily("Calibri");
                     bookItem.FontSize = 17;
@@ -298,6 +327,7 @@ namespace reader
                         if (bookItem1.BindedBook.Name == item.Name)
                         {
                             IsListed = true;
+                            MessageBox.Show(bookItem1.BindedBook.Name);
                         }
                     }
 
@@ -311,6 +341,7 @@ namespace reader
                 }
 
             }
+            */
         }
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
