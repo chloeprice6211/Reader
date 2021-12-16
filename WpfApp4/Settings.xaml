@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Settings" Height="500" Width="600">
     <StackPanel Margin="10,10,10,10">
-        <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Profile</Label>
+        <Label Name="ProfileLabel" FontFamily="Calibri" FontSize="30" FontWeight="Bold">Profile</Label>
         <WrapPanel>
 
             <Ellipse Width="100" Height="100">
@@ -16,7 +16,7 @@
                 </Ellipse.Fill>
             </Ellipse>
 
-            <Grid Margin="40,0,0,0" Height="100" Name="profileDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid  Margin="40,0,0,0" Height="100" Name="profileDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
                     <RowDefinition/>
@@ -47,16 +47,21 @@
         </WrapPanel>
         <Button 
             Name="saveUserDataButton" 
+            Opacity="0.05"
             IsEnabled="False"
-            Width="100"
-            Height="30"
-            Margin="0,20,0,0"
-            Background="Green"
-            Foreground="White" Click="OnSaveButtonClick"
-            >Save</Button>
-        <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
+            Width="120"
+            Height="40"
+            Margin="0,30,0,0"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Background="Transparent"
+            Foreground="Black" Click="OnSaveButtonClick" IsEnabledChanged="test"
+            >
+         
+            Save</Button>
+        <Label Name="ShortCutLabel" FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
         <Separator/>
-        <Grid HorizontalAlignment="Center" Width="371" Margin="0,30,0,0">
+        <Grid  Name="SCgrid" HorizontalAlignment="Center" Width="371" Margin="0,30,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -74,7 +79,7 @@
             <TextBlock Style="{StaticResource shortcutsNames}">Theme</TextBlock>
             <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="1">Store</TextBlock>
             <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="2">Fullscreen</TextBlock>
-            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="3">Hide UI</TextBlock>
+            <TextBlock Style="{StaticResource shortcutsNames}" Grid.Row="3">Sh/H UI</TextBlock>
 
             <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2">Progress</TextBlock>
             <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2" Grid.Row="1">Home</TextBlock>
@@ -82,7 +87,7 @@
             <TextBlock Style="{StaticResource shortcutsNames}" Grid.Column="2" Grid.Row="3">Font</TextBlock>
 
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1">T</TextBlock>
-            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="3">SPACE</TextBlock>
+            <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="3">U</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="1">S</TextBlock>
             <TextBlock Style="{StaticResource shortcutKeys}" Grid.Column="1" Grid.Row="2">F11</TextBlock>
 
