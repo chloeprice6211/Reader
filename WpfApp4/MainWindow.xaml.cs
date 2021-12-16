@@ -204,6 +204,7 @@ namespace reader
         private void FontClick(object sender, RoutedEventArgs e)
         {
             FontWindowShow();
+         
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
@@ -361,7 +362,7 @@ namespace reader
             Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
             viewingMode = mainFlowDoc.ViewingMode;
 
-            FontDialogWindow newWindow = new FontDialogWindow(my, viewingMode);
+            FontDialogWindow newWindow = new FontDialogWindow(my, viewingMode, this.ActualWidth);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
@@ -369,6 +370,8 @@ namespace reader
             newStyle.SetParagraphStyle(my);
             HideControlElements();
             mainFlowDoc.ViewingMode = newWindow.ViewMode;
+
+
         }
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
