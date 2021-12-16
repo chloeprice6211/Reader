@@ -27,12 +27,12 @@ namespace reader
 
 
     public partial class MainWindow : Window
-    {
+    { string text;
+
         static bool isHidden = true;
         static bool isDark = false;
         string currentTheme = "light";
         DispatcherTimer timer;
-
 
         public MainWindow(PersistentBook bookItem)
         {
@@ -82,7 +82,6 @@ namespace reader
         }
 
 
-
         public MainWindow()
         {
             InitializeComponent();
@@ -94,9 +93,7 @@ namespace reader
 
             #endregion
 
-
             
-
             AddLibraryBooksToComboBox();
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
@@ -109,21 +106,15 @@ namespace reader
 
 
             Book test1 = new Book(@"..\..\..\books\StoreLibraryBooks\Harry_Potter.txt");
-           namebook =test1.Name;
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
             SetContent(test1);
-          
-            
-
-
-
         }
         void timer_Tick(object sender, EventArgs e)
         {
-
+            // proverkacountbook();
 
         }
 
@@ -136,7 +127,7 @@ namespace reader
             Paragraph pg = new Paragraph(new Run(item.Content));
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
-         
+
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
@@ -436,57 +427,9 @@ namespace reader
                 case Key.T: ThemeChange(); break;
             }
         }
-        private void LibraryBooksComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-
-
-            checkcountbook();
-          
-
-
-        }
-
-        private void checkcountbook()
-        {
-
-            if (LibraryBooksComboBox.Text != namebook &&mainFlowDoc.PageCount==mainFlowDoc.PageNumber)
-            {
-                StreamReader sr = new(@"..\..\..\userData\countbook.txt");
-
-               
-                int a = int.Parse(sr.ReadLine());
-                a++;
-                string numbers = a.ToString();
-                string text = "";
-                for (int i = numbers.Length - 1; i > -1; i--)
-                {
-                    text = text + numbers[i];
-                    text = text + Environment.NewLine;
-                }
-                
-                MessageBox.Show(numbers);
-                sr.Close();
-
-                StreamWriter sw = new(@"..\..\..\userData\countbook.txt");
-                sw.WriteLine(numbers);
-                sw.Close();
-
-
-            }
-            else
-            {
-
-            }
-
-
-        }
-      
-      
-        private void OnSettingsClick(object sender, RoutedEventArgs e)
-        {
-            Settings w = new();
-            w.Show();
 
         }
     } 
