@@ -281,7 +281,7 @@ namespace reader
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
         }
-        private void AddLibraryBooksToComboBox()
+        public void AddLibraryBooksToComboBox()
         {
 
             LibraryBooksComboBox.Items.Clear();
