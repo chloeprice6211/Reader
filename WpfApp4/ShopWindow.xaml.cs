@@ -205,9 +205,10 @@ namespace reader
             BookToRead = ((StoreMenuElement)thisbutton.Parent).BookElement;
             
             
-           // MainWindow mainWindow = new MainWindow();
-           // mainWindow.SetContent(BookToRead);
-           //// mainWindow.Show();
+           MainWindow mainWindow = new MainWindow();
+            mainWindow.AddLibraryBooksToComboBox();
+           mainWindow.SetContent(BookToRead);
+           mainWindow.Show();
 
             Close();
         }
