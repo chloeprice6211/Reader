@@ -1,0 +1,4 @@
+../../../bookCovers/c++.png
+cat
+
+50
