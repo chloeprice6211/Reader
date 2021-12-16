@@ -1,5 +1,0 @@
-../../../bookCovers/c++.png
-cat
-by Andrzej Sapkowski (1993)
-50
-../../../content/book6.txt

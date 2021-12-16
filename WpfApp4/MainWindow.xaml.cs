@@ -131,6 +131,8 @@ namespace reader
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
+            
+
             CurrentBookName.Content = item.Name; //тайтл книги на главном экране
             LibraryBooksComboBox.Text = item.Name; //добавления имя в бокс для переключения по книгам
         }
@@ -283,9 +285,6 @@ namespace reader
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
-
-
-
                 }
             }
             else
@@ -347,11 +346,14 @@ namespace reader
             ShopWindow shopwin = new ShopWindow(currentTheme);
             shopwin.ShowDialog();
 
+            AddLibraryBooksToComboBox();
+
             if (shopwin.BookToRead != null)
             {
+
                 SetContent(shopwin.BookToRead);
             }
-            AddLibraryBooksToComboBox();
+           
         }
         private void OnProgresButtonClick(object sender, RoutedEventArgs e)
         {

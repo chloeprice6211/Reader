@@ -56,7 +56,7 @@
             >Save</Button>
         <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Shortcuts</Label>
         <Separator/>
-        <Grid HorizontalAlignment="Center" Width="371">
+        <Grid HorizontalAlignment="Center" Width="371" Margin="0,30,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>

@@ -1,5 +1,0 @@
-../../../bookCovers/c++.png
-cat
-by JK Rowling (2000)
-50
-../../../content/book1.txt

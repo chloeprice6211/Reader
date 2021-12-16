@@ -1,5 +1,0 @@
-../../../bookCovers/c++.png
-cat
-james
-50
-dsadsaddxasdsadsasda

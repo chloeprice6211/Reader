@@ -32,6 +32,7 @@ namespace reader
 
             Uri iconUri = new Uri(@"..\..\..\icons\settings.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
+
         }
         private void UserDataInput()
         {
@@ -54,7 +55,7 @@ namespace reader
         {
             SaveUserDataButtonEnable();
         }
-
+      
         private void EmailChanged(object sender, KeyEventArgs e)
         {
             SaveUserDataButtonEnable();

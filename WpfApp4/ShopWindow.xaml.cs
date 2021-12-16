@@ -204,6 +204,7 @@ namespace reader
             Button thisbutton = sender as Button;
             BookToRead = ((StoreMenuElement)thisbutton.Parent).BookElement;
             
+            
            // MainWindow mainWindow = new MainWindow();
            // mainWindow.SetContent(BookToRead);
            //// mainWindow.Show();
