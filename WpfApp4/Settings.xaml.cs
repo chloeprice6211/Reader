@@ -29,7 +29,6 @@ namespace reader
         {
             InitializeComponent();
             UserDataInput();
-
             Uri iconUri = new Uri(@"..\..\..\icons\settings.ico", UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(iconUri);
 
