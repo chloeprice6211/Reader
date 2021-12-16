@@ -28,7 +28,7 @@ namespace reader
             Uri FontDialogWindowIcon = new(@"..\..\..\icons\fontDialogWindowIcon.ico",UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(FontDialogWindowIcon);
             InitializeComponent();
-            if (incomingViewMode == FlowDocumentReaderViewingMode.Page)
+            if (incomingViewMode == FlowDocumentReaderViewingMode.Page || incomingViewMode == FlowDocumentReaderViewingMode.TwoPage)
             {
                 SetPageView();
             }
