@@ -391,6 +391,7 @@ namespace reader
 
                 SetContent(shopwin.BookToRead);
             }
+            LibraryBooksComboBox.Text = shopwin.BookToRead.Name;
            
         }
         private void OnProgresButtonClick(object sender, RoutedEventArgs e)
