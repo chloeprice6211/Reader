@@ -22,6 +22,7 @@
     <None Remove="bookCovers\StarWars.png" />
     <None Remove="bookCovers\thegirl.png" />
     <None Remove="bookCovers\time.png" />
+    <None Remove="content\book7.txt" />
     <None Remove="images\chasi-glav.png" />
     <None Remove="images\clearButton.png" />
     <None Remove="images\emerald.png" />
@@ -83,7 +84,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="icons\search.png" />
-    <Resource Include="icons\settings.png" />
     <Resource Include="icons\shop.png" />
     <Resource Include="icons\user.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -126,7 +126,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="books\Library\" />
     <Folder Include="fonts\" />
   </ItemGroup>
 
