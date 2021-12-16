@@ -1,4 +1,4 @@
-﻿../../../bookCovers/c++.png
+../../../bookCovers/c++.png
 Bestseller
 Lewis Arton
 35

@@ -16,6 +16,8 @@ using System.Windows.Media.Animation;
 using System.IO;
 using Microsoft.Win32;
 using System.Windows.Threading;
+using reader.Model;
+
 namespace reader
 {
     /// <summary>
@@ -30,8 +32,57 @@ namespace reader
         static bool isDark = false;
         string currentTheme = "light";
         DispatcherTimer timer;
-        string namebook;
-        string text;
+
+
+        public MainWindow(PersistentBook bookItem)
+        {
+            InitializeComponent();
+            #region windowCustomization
+            Title = "Reader";
+            Uri iconUri = new Uri(@"..\..\..\icons\mainWindowIcon.ico", UriKind.RelativeOrAbsolute);
+            Icon = BitmapFrame.Create(iconUri);
+            WindowState = WindowState.Maximized;
+
+            #endregion
+
+
+
+            Book converted = new();
+
+            converted.Name = bookItem.Title;
+            converted.Content = bookItem.ContentPath;
+            converted.Category = "cat";
+            converted.Author = bookItem.Author;
+            converted.Price = 50;
+            converted.BookCoverUri = new Uri("../../../bookCovers/c++.png", UriKind.Relative);
+
+            Library.AddBook(converted);
+
+           
+            AddLibraryBooksToComboBox();
+            mainFlowDoc.IsScrollViewEnabled = true;
+            LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
+            LibraryBooksComboBox.FontSize = 20;
+
+            mainFlowDoc.IsTwoPageViewEnabled = true;
+            mainFlowDoc.MaxWidth = 1400;
+            mainFlowDoc.Height = 900;
+            mainFlowDoc.HorizontalAlignment = HorizontalAlignment.Center;
+
+           
+
+            SetContent(converted);
+
+
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+
+        }
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,9 +93,10 @@ namespace reader
             WindowState = WindowState.Maximized;
 
             #endregion
- 
-            StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
-            Library.AddAllBooks(Library.LibraryPath);
+
+
+            
+
             AddLibraryBooksToComboBox();
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
@@ -71,12 +123,11 @@ namespace reader
         }
         void timer_Tick(object sender, EventArgs e)
         {
-           
 
 
         }
 
-        private void SetContent(Book item)
+        public void SetContent(Book item)
         {
             //myParagraph.Inlines.Clear();
             //myParagraph.Inlines.Add(new Run(item.Content));
@@ -92,6 +143,17 @@ namespace reader
             CurrentBookName.Content = item.Name;
             LibraryBooksComboBox.Text = item.Name;
         }
+
+        public void addBookToLibrary(VisualBook book)
+        {
+            Library.AddBook(new Book
+            {
+                Name = book.persistentBook.Title,
+                Content = book.Content,
+            });
+
+        }
+
         private void DotsClick(object sender, RoutedEventArgs e)
         {
             HideControlElements();
@@ -417,6 +479,7 @@ namespace reader
 
             }
 
+
         }
       
       
@@ -424,6 +487,7 @@ namespace reader
         {
             Settings w = new();
             w.Show();
+
         }
     } 
 

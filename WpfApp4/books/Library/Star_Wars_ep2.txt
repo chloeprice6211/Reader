@@ -1,5 +1,5 @@
 ../../../bookCovers/c++.png
 cat
-author
-9
-ggggggg
+james
+50
+dsadsaddxasdsadsasda

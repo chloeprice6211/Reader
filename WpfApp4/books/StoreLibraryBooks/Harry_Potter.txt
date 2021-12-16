@@ -1,4 +1,4 @@
-﻿../../../bookCovers/harry.png
+../../../bookCovers/harry.png
 Bestseller
 J. K. Rowling
 75
