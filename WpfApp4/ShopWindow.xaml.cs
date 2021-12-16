@@ -44,25 +44,9 @@ namespace reader
             int currentBalanceInt = Convert.ToInt32(currentBalance.Content) + 25;
                StreamWriter Sw = new(@"../../../userData/balance.txt");
             currentBalance.Content = currentBalanceInt.ToString();
-
-            Sw.Close();
-         StreamReader SR=new(@"../../../userData/countmoney.txt");
-
-           
-            
-            
-            int buf = int.Parse(SR.ReadLine());
-            buf += 25;
-            SR.Close();
-            string numbers = buf.ToString();
-            string text = "";
-            for (int i = numbers.Length - 1; i > -1; i--)
-            {
-                text = text + numbers[i];
-
-            }
-            Sw=new(@"../../../userData/countmoney.txt");
-            Sw.WriteLine(text);
+      
+       
+            Sw.WriteLine(currentBalanceInt.ToString());
             Sw.Close();
             
             ItemPurchaseAvailability();
@@ -336,7 +320,6 @@ namespace reader
             StoreItemSearchBox.Text = "Search for book...";
             StoreItemSearchBox.Foreground = (Brush)new BrushConverter().ConvertFrom("#FFCACACA");
         }
-
         private void ThemeChange(string theme)
         {
             if(theme == "dark")

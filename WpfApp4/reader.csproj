@@ -26,7 +26,6 @@
     <None Remove="bookCovers\StarWars.png" />
     <None Remove="bookCovers\thegirl.png" />
     <None Remove="bookCovers\time.png" />
-
     <None Remove="content\book1.txt" />
     <None Remove="content\book2.txt" />
     <None Remove="content\book3.txt" />
@@ -36,7 +35,6 @@
     <None Remove="icons\add.png" />
     <None Remove="icons\addover.png" />
     <None Remove="icons\shopover.png" />
-
     <None Remove="images\chasi-glav.png" />
     <None Remove="images\clearButton.png" />
     <None Remove="images\emerald.png" />
@@ -143,9 +141,7 @@
   </ItemGroup>
 
   <ItemGroup>
-
     <Folder Include="books\Library\" />
-
   </ItemGroup>
 
 </Project>
