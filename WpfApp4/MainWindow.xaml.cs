@@ -56,7 +56,10 @@ namespace reader
             converted.Price = 50;
             converted.BookCoverUri = new Uri("../../../bookCovers/c++.png", UriKind.Relative);
 
-            Library.AddBook(converted);
+            if (!Library.Exists(converted.Name))
+            {
+                Library.AddBook(converted);
+            }
 
            
             AddLibraryBooksToComboBox();
@@ -94,7 +97,7 @@ namespace reader
             #endregion
 
             
-            AddLibraryBooksToComboBox();
+            
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
@@ -131,17 +134,26 @@ namespace reader
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
+            
+
             CurrentBookName.Content = item.Name; //тайтл книги на главном экране
             LibraryBooksComboBox.Text = item.Name; //добавления имя в бокс для переключения по книгам
         }
 
         public void addBookToLibrary(VisualBook book)
         {
-            Library.AddBook(new Book
+            if(!Library.Exists(book.persistentBook.Title))
             {
-                Name = book.persistentBook.Title,
-                Content = book.Content,
-            });
+                
+                Library.AddBook(new Book
+                {
+                    Name = book.persistentBook.Title,
+                    Content = book.Content,
+
+                });
+            }
+            
+          
 
         }
 
@@ -269,23 +281,39 @@ namespace reader
         }
         private void AddLibraryBooksToComboBox()
         {
+
+            LibraryBooksComboBox.Items.Clear();
+           
+
+            BookComboBoxItem toAdd;
+
+            for(int a = 0;a<Library.myLibrary.Count;a++)
+            {
+                
+                toAdd = new();
+                toAdd.BindedBook = Library.myLibrary[a];
+                toAdd.Content = toAdd.BindedBook.Name;
+
+                LibraryBooksComboBox.Items.Add(toAdd);
+            }
+            /*
             BookComboBoxItem bookItem;
 
             bool IsListed;
+
+            
 
             if (LibraryBooksComboBox.Items.Count == 0)
             {
                 for (int a = 0; a < Library.myLibrary.Count; a++)
                 {
+                    MessageBox.Show(Library.myLibrary.Count.ToString());
                     bookItem = new BookComboBoxItem();
                     bookItem.FontFamily = new FontFamily("Calibri");
                     bookItem.FontSize = 17;
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
-
-
-
                 }
             }
             else
@@ -299,6 +327,7 @@ namespace reader
                         if (bookItem1.BindedBook.Name == item.Name)
                         {
                             IsListed = true;
+                            MessageBox.Show(bookItem1.BindedBook.Name);
                         }
                     }
 
@@ -312,6 +341,7 @@ namespace reader
                 }
 
             }
+            */
         }
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
@@ -347,11 +377,14 @@ namespace reader
             ShopWindow shopwin = new ShopWindow(currentTheme);
             shopwin.ShowDialog();
 
+            AddLibraryBooksToComboBox();
+
             if (shopwin.BookToRead != null)
             {
+
                 SetContent(shopwin.BookToRead);
             }
-            AddLibraryBooksToComboBox();
+           
         }
         private void OnProgresButtonClick(object sender, RoutedEventArgs e)
         {
@@ -428,6 +461,16 @@ namespace reader
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            Settings settingsWindow = new();
+            settingsWindow.Show();
+        }
     } 
 
 }
