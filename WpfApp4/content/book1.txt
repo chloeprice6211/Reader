@@ -1,0 +1,5 @@
+../../../bookCovers/c++.png
+cat
+author
+9
+ggggggg

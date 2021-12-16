@@ -1,4 +1,4 @@
-﻿../../../bookCovers/snow.png
+../../../bookCovers/snow.png
 Bestseller
 David Guterson
 15

@@ -38,7 +38,7 @@ namespace reader.Controller
                 {
                     persistentBook = b,
                     Cover = createCover(b.CoverPath),
-                    //  Content = createContent(b.ContentPath)
+                    Content = createContent(b.ContentPath)
                 });
             }
 
@@ -49,14 +49,14 @@ namespace reader.Controller
             return new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute));
         }
 
-        //public string createContent(string path)
-        //{
-        //    using (StreamReader sr = new StreamReader(path))
-        //    {
-        //       return sr.ReadToEnd();
-        //    }
+        public string createContent(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                return sr.ReadToEnd();
+            }
 
-        //}
+        }
 
     }
 }
