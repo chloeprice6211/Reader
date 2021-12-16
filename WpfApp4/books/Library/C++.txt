@@ -3,7 +3,6 @@ Bestseller
 Lewis Arton
 35
 “Every C++ professional needs a copy of Effective C++. It is an absolute must-read for anyone thinking of doing serious C++ development. If you
-
 ve never read Effective C++ and you think you know everything about C++, think again.”
 ― Steve Schirripa, Software Engineer, Google
 “C++ and the C++ community have grown up in the last fifteen years, and the third edition of Effective C++ reflects this. The clear and precise style of the book is evidence of Scott's deep insight and distinctive ability to impart knowledge.”
