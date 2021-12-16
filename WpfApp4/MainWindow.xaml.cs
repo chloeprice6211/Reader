@@ -66,7 +66,7 @@ namespace reader
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            proverkacountbook();
+            //proverkacountbook();
 
         }
 
@@ -76,15 +76,15 @@ namespace reader
             //myParagraph.Inlines.Add(new Run(item.Content));
 
             FlowDocument flowdoc = new FlowDocument();
-            Paragraph pg = new Paragraph(new Run(item.Content));
+            Paragraph pg = new Paragraph(new Run(item.Content)); //содержимое книги в ридере
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
 
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
-            CurrentBookName.Content = item.Name;
-            LibraryBooksComboBox.Text = item.Name;
+            CurrentBookName.Content = item.Name; //тайтл книги на главном экране
+            LibraryBooksComboBox.Text = item.Name; //добавления имя в бокс для переключения по книгам
         }
         private void DotsClick(object sender, RoutedEventArgs e)
         {
@@ -369,6 +369,11 @@ namespace reader
             }
         }
 
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            Settings settWindon = new();
+            settWindon.Show();
+        }
     } 
 
 }
