@@ -79,6 +79,7 @@ namespace reader.View
                     Content = visualLibrary.createContent(book.ContentPath),
                 });
                 listBooks.ItemsSource = visualLibrary.VisualBooks;
+                visualLibrary.saveToJson(visualLibrary);
             }                 
         }
 
