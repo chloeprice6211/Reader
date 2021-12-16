@@ -45,6 +45,17 @@ namespace reader.Controller
 
         }
 
+        public void saveToJson(VisualLibrary visualLibrary)
+        {
+            library = new PersistentLibrary();
+            foreach (VisualBook b in visualLibrary.VisualBooks)
+            {
+                library.add(b.persistentBook);
+            }
+
+            library.save();
+        }
+
         public BitmapImage createCover(string path)
         {
             return new BitmapImage(new Uri(path, UriKind.RelativeOrAbsolute));
