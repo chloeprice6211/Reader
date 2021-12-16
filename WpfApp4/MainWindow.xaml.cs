@@ -432,6 +432,12 @@ namespace reader
         {
 
         }
+
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            Settings settingsWindow = new();
+            settingsWindow.Show();
+        }
     } 
 
 }

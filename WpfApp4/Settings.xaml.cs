@@ -27,7 +27,7 @@ namespace reader
         string userDataPath = @"../../../userData/profile/userData.txt";
         public Settings()
         {
-          InitializeComponent();
+            InitializeComponent();
             UserDataInput();
         }
         private void UserDataInput()
@@ -70,10 +70,10 @@ namespace reader
         {
             Button thisbutton = (Button)sender;
             File.WriteAllText(userDataPath, String.Empty);
-            
+
             StreamWriter writer = new StreamWriter(userDataPath);
 
-            
+
 
             writer.WriteLine(emailTxtBox.Text);
             writer.WriteLine(nameTxtBox.Text);
@@ -90,25 +90,5 @@ namespace reader
             MessageBox.Show("!!");
         }
 
-        private void OnChangePfpClick(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openPfpPictureDialog = new();
-            openPfpPictureDialog.Filter = "png files (*.png)|*.png*|jpg files (*.jpg)|*.jpg*| All files (*.*)|*.*";
-            openPfpPictureDialog.ShowDialog();
-
-            Uri imagePath = new Uri(openPfpPictureDialog.FileName, UriKind.Relative);
-
-            MessageBox.Show(openPfpPictureDialog.FileName);
-
-            BitmapImage bb = new BitmapImage(imagePath);
-            Image new1 = new Image();
-            new1.Source = bb;
-
-            pfpPic.Source = bb;
-
-            MessageBox.Show(pfpPic.Source.ToString());
-
-
-        }
     }
 }

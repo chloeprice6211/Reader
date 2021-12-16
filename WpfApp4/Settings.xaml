@@ -10,12 +10,12 @@
         <Label FontFamily="Calibri" FontSize="30" FontWeight="Bold">Profile</Label>
         <WrapPanel>
 
-            <StackPanel>
-                <Image Name="pfpPic" Source="/userData/profile/profilePicture.png" Height="100">
-                </Image>
-                <Button Click="OnChangePfpClick">Change</Button>
-            </StackPanel>
-            
+            <Ellipse Width="100" Height="100">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="userData/profile/profilePicture.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+
             <Grid Margin="40,0,0,0" Height="100" Name="profileDataGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="25"/>
