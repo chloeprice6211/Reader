@@ -29,9 +29,16 @@ namespace reader.View
         {
             InitializeComponent();
 
+            if (StoreLibrary.BooksToSell.Count == 0)
+            {
+            
             StoreLibrary.AddAllBooks(StoreLibrary.StorePath);
-            Library.AddAllBooks(Library.LibraryPath);
+            }
 
+            if (Library.myLibrary.Count == 0)
+            {
+                Library.AddAllBooks(Library.LibraryPath);
+            }
             visualLibrary = new VisualLibrary();
             visualLibrary.init();
 
@@ -61,15 +68,18 @@ namespace reader.View
             {
                 book = new PersistentBook()
                 {
-                    Title = openFileDialog.FileName,
-                    CoverPath = "../icons/google-docs.png"
+                    Title = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName),
+                    CoverPath = "../icons/google-docs.png",
+                    ContentPath = openFileDialog.FileName
                 };
                 visualLibrary.VisualBooks.Add(new VisualBook
                 {
                     persistentBook = book,
                     Cover = visualLibrary.createCover(book.CoverPath),
+                    Content = visualLibrary.createContent(book.ContentPath),
                 });
                 listBooks.ItemsSource = visualLibrary.VisualBooks;
+                visualLibrary.saveToJson(visualLibrary);
             }                 
         }
 
@@ -83,13 +93,14 @@ namespace reader.View
         {
             visualLibrary.selectedBook = ((Button)sender).Tag as VisualBook;
 
-            MainWindow reader = new MainWindow(visualLibrary.selectedBook.persistentBook);
+            MainWindow reader = new MainWindow(visualLibrary.selectedBook);
            // MainWindow reader = new MainWindow();
 
+            
             reader.addBookToLibrary(visualLibrary.selectedBook);
             reader.Show();
 
-            
+            Close();
             //mainWindow.Show();
         }
     }

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
@@ -42,6 +43,17 @@ namespace reader.Controller
                 });
             }
 
+        }
+
+        public void saveToJson(VisualLibrary visualLibrary)
+        {
+            library = new PersistentLibrary();
+            foreach (VisualBook b in visualLibrary.VisualBooks)
+            {
+                library.add(b.persistentBook);
+            }
+
+            library.save();
         }
 
         public BitmapImage createCover(string path)

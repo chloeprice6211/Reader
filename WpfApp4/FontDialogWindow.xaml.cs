@@ -19,14 +19,16 @@ namespace reader
     /// </summary>
     public partial class FontDialogWindow : Window
     {
+        double mainWinWidth;
         FlowDocumentReaderViewingMode viewMode;
-        public FontDialogWindow(Paragraph main, FlowDocumentReaderViewingMode incomingViewMode)
+        public FontDialogWindow(Paragraph main, FlowDocumentReaderViewingMode incomingViewMode, double windowWidth)
         {
             Title = "Font customization";
+            mainWinWidth = windowWidth;
             Uri FontDialogWindowIcon = new(@"..\..\..\icons\fontDialogWindowIcon.ico",UriKind.RelativeOrAbsolute);
             Icon = BitmapFrame.Create(FontDialogWindowIcon);
             InitializeComponent();
-            if (incomingViewMode == FlowDocumentReaderViewingMode.Page)
+            if (incomingViewMode == FlowDocumentReaderViewingMode.Page || incomingViewMode == FlowDocumentReaderViewingMode.TwoPage)
             {
                 SetPageView();
             }
@@ -144,7 +146,13 @@ namespace reader
             ScrollModeButton.BorderBrush = Brushes.Gray;
             ScrollModeButton.Foreground = Brushes.Gray;
 
-            ViewMode = FlowDocumentReaderViewingMode.Page;
+            if(mainWinWidth > 750)
+                ViewMode = FlowDocumentReaderViewingMode.TwoPage;
+
+            else
+                ViewMode = FlowDocumentReaderViewingMode.Page;
+
+
         }
         public FlowDocumentReaderViewingMode ViewMode
         {

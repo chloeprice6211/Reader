@@ -1,3 +1,7 @@
+../../../bookCovers/c++.png
+cat
+by George R. R. Martin (1996)
+50
 Winter is coming. Such is the stern motto of House Stark, the northernmost of the fiefdoms that owe allegiance to King Robert Baratheon in far-off King
 
 

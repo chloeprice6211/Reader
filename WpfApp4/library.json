@@ -40,5 +40,12 @@
     "Title": "The Witcher,  The Last Wish",
     "Author": "by Andrzej Sapkowski (1993)",
     "Description": "Geralt is a Witcher, a man whose magic powers, enhanced by long training and a mysterious elixir, have made him a brilliant fighter and a merciless hunter. Yet he is no ordinary killer. His sole purpose: to destroy the monsters that plague the world. But not everything monstrous - looking is evil and not everything fair is good... and in every fairy tale there is a grain of truth."
+  },
+  {
+    "ContentPath": "C:\\Users\\hard6\\Desktop\\1012.txt",
+    "CoverPath": "../icons/google-docs.png",
+    "Title": "1012",
+    "Author": null,
+    "Description": null
   }
 ]

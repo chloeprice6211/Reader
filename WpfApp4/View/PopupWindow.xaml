@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="{Binding}" Height="618" Width="430"
         WindowStartupLocation="CenterScreen"
-        Topmost="True"
+        Topmost="False"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent">
@@ -84,7 +84,8 @@
                                         FontFamily="Calibri"
                                         FontSize="18"
                                         BorderBrush="Transparent"
-                                        Cursor="Hand">
+                                        Cursor="Hand"
+                                        Click="buttonRead_Click">
                         <Button.Style>
                             <Style>
                                 <Setter Property="Button.Template">

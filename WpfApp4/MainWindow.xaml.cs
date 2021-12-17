@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using reader.View;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,7 +35,7 @@ namespace reader
         string currentTheme = "light";
         DispatcherTimer timer;
 
-        public MainWindow(PersistentBook bookItem)
+        public MainWindow(VisualBook bookItem)
         {
             InitializeComponent();
             #region windowCustomization
@@ -49,14 +50,17 @@ namespace reader
 
             Book converted = new();
 
-            converted.Name = bookItem.Title;
-            converted.Content = bookItem.ContentPath;
+            converted.Name = bookItem.persistentBook.Title;
+            converted.Content = bookItem.Content;
             converted.Category = "cat";
-            converted.Author = bookItem.Author;
+            converted.Author = bookItem.persistentBook.Author;
             converted.Price = 50;
             converted.BookCoverUri = new Uri("../../../bookCovers/c++.png", UriKind.Relative);
 
-            Library.AddBook(converted);
+            if (!Library.Exists(converted.Name))
+            {
+                Library.AddBook(converted);
+            }
 
            
             AddLibraryBooksToComboBox();
@@ -94,7 +98,7 @@ namespace reader
             #endregion
 
             
-            AddLibraryBooksToComboBox();
+            
             mainFlowDoc.IsScrollViewEnabled = true;
             LibraryBooksComboBox.FontFamily = new FontFamily("Calibri");
             LibraryBooksComboBox.FontSize = 20;
@@ -124,24 +128,38 @@ namespace reader
             //myParagraph.Inlines.Add(new Run(item.Content));
 
             FlowDocument flowdoc = new FlowDocument();
-            Paragraph pg = new Paragraph(new Run(item.Content));
+            Paragraph pg = new Paragraph(new Run(item.Content)); //содержимое книги в ридере
             pg.FontFamily = new FontFamily("Calibri");
             pg.FontSize = 24;
 
             mainFlowDoc.Document = flowdoc;
             flowdoc.Blocks.Add(pg);
 
-            CurrentBookName.Content = item.Name;
-            LibraryBooksComboBox.Text = item.Name;
+            
+
+            CurrentBookName.Content = item.Name; //тайтл книги на главном экране
+            LibraryBooksComboBox.Text = item.Name; //добавления имя в бокс для переключения по книгам
         }
 
         public void addBookToLibrary(VisualBook book)
         {
-            Library.AddBook(new Book
+            
+            if(!Library.Exists(book.persistentBook.Title))
             {
-                Name = book.persistentBook.Title,
-                Content = book.Content,
-            });
+
+                Library.AddBook(new Book
+                {
+                    Name = book.persistentBook.Title,
+                    Content = book.Content,
+                    Author = book.persistentBook.Author,
+                    Price = 35,
+                    Category = "Bestseller",
+                    
+
+                });
+            }
+            
+          
 
         }
 
@@ -191,6 +209,7 @@ namespace reader
         private void FontClick(object sender, RoutedEventArgs e)
         {
             FontWindowShow();
+         
         }
 
         private void ThemeClick(object sender, RoutedEventArgs e)
@@ -267,25 +286,41 @@ namespace reader
             (sender as Button).BorderBrush = Brushes.Black;
             (sender as Button).BorderThickness = new Thickness(1);
         }
-        private void AddLibraryBooksToComboBox()
+        public void AddLibraryBooksToComboBox()
         {
+
+            LibraryBooksComboBox.Items.Clear();
+           
+
+            BookComboBoxItem toAdd;
+
+            for(int a = 0;a<Library.myLibrary.Count;a++)
+            {
+                
+                toAdd = new();
+                toAdd.BindedBook = Library.myLibrary[a];
+                toAdd.Content = toAdd.BindedBook.Name;
+
+                LibraryBooksComboBox.Items.Add(toAdd);
+            }
+            /*
             BookComboBoxItem bookItem;
 
             bool IsListed;
+
+            
 
             if (LibraryBooksComboBox.Items.Count == 0)
             {
                 for (int a = 0; a < Library.myLibrary.Count; a++)
                 {
+                    MessageBox.Show(Library.myLibrary.Count.ToString());
                     bookItem = new BookComboBoxItem();
                     bookItem.FontFamily = new FontFamily("Calibri");
                     bookItem.FontSize = 17;
                     bookItem.BindedBook = Library.myLibrary[a];
                     bookItem.Content = bookItem.BindedBook.Name;
                     LibraryBooksComboBox.Items.Add(bookItem);
-
-
-
                 }
             }
             else
@@ -299,6 +334,7 @@ namespace reader
                         if (bookItem1.BindedBook.Name == item.Name)
                         {
                             IsListed = true;
+                            MessageBox.Show(bookItem1.BindedBook.Name);
                         }
                     }
 
@@ -312,6 +348,7 @@ namespace reader
                 }
 
             }
+            */
         }
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
@@ -319,7 +356,10 @@ namespace reader
         }
         private void HomeWindowShow()
         {
+            MainPage mp = new();
+            mp.Show();
 
+            Close();
         }
         private void FontWindowShow()
         {
@@ -327,7 +367,7 @@ namespace reader
             Paragraph my = mainFlowDoc.Document.Blocks.ElementAt(0) as Paragraph;
             viewingMode = mainFlowDoc.ViewingMode;
 
-            FontDialogWindow newWindow = new FontDialogWindow(my, viewingMode);
+            FontDialogWindow newWindow = new FontDialogWindow(my, viewingMode, this.ActualWidth);
             TextProperties newStyle;
 
             newWindow.ShowDialog();
@@ -335,6 +375,8 @@ namespace reader
             newStyle.SetParagraphStyle(my);
             HideControlElements();
             mainFlowDoc.ViewingMode = newWindow.ViewMode;
+
+
         }
         private void OnShopButtonClick(object sender, RoutedEventArgs e)
         {
@@ -347,11 +389,17 @@ namespace reader
             ShopWindow shopwin = new ShopWindow(currentTheme);
             shopwin.ShowDialog();
 
+            AddLibraryBooksToComboBox();
+
             if (shopwin.BookToRead != null)
             {
+
                 SetContent(shopwin.BookToRead);
             }
-            AddLibraryBooksToComboBox();
+            if(shopwin.BookToRead != null)
+                LibraryBooksComboBox.Text = shopwin.BookToRead.Name;
+
+
         }
         private void OnProgresButtonClick(object sender, RoutedEventArgs e)
         {
@@ -421,6 +469,7 @@ namespace reader
             switch (e.Key)
             {
                 case Key.F: FontWindowShow(); break;
+                case Key.E: SettingsShow(); break;
                 case Key.G: HideControlElements(); break;
                 case Key.S: ShopWindowShow(); break;
                 case Key.H: HomeWindowShow(); break;
@@ -429,6 +478,20 @@ namespace reader
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SettingsShow()
+        {
+            Settings settingsWindow = new(currentTheme);
+            settingsWindow.Show();
+        }
+        private void OnSettingsClick(object sender, RoutedEventArgs e)
+        {
+            SettingsShow();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

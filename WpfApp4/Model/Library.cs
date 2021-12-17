@@ -21,6 +21,7 @@ namespace reader
         }
         static void CreateBookFile(Book item)
         {
+
             string fileName = item.Name;
             fileName = fileName.Replace(' ', '_');
 
@@ -69,6 +70,18 @@ namespace reader
             {
                 return _libraryPath;
             }
+        }
+        public static bool Exists(string name)
+        {
+            foreach(Book libBook in Library.myLibrary)
+            {
+                if(name == libBook.Name)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
        
     }
