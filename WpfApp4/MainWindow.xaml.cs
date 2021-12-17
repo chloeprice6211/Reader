@@ -386,7 +386,7 @@ namespace reader
         private void ShopWindowShow()
         {
             //mainFlowDoc.Height += 100;
-            ShopWindow shopwin = new ShopWindow(currentTheme);
+            ShopWindow shopwin = new ShopWindow(currentTheme,"main");
             shopwin.ShowDialog();
 
             AddLibraryBooksToComboBox();

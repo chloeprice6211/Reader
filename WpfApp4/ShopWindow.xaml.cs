@@ -24,11 +24,12 @@ namespace reader
         Book bookToRead;
         string panelColorCode;
         string labelColorCode;
-        public ShopWindow(string theme)
+        string winMode;
+        public ShopWindow(string theme, string windmod)
         {
             InitializeComponent();
             Title = "Store";
-
+            winMode = windmod;
             StreamReader reader = new(@"../../../userData/balance.txt");
             currentBalance.Content = reader.ReadLine();
 
@@ -205,11 +206,14 @@ namespace reader
             BookToRead = ((StoreMenuElement)thisbutton.Parent).BookElement;
             
             
+            if(winMode == "home")
+            {
+
            MainWindow mainWindow = new MainWindow();
             mainWindow.AddLibraryBooksToComboBox();
            mainWindow.SetContent(BookToRead);
            mainWindow.Show();
-
+            }
             Close();
         }
         public Book BookToRead

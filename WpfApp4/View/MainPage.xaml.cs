@@ -85,7 +85,7 @@ namespace reader.View
 
         private void buttonOpenShop_Click(object sender, RoutedEventArgs e)
         {
-            ShopWindow shopWindow = new ShopWindow("light");
+            ShopWindow shopWindow = new ShopWindow("light","home");
             shopWindow.Show();
         }
 
